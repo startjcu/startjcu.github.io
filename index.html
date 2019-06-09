@@ -62,6 +62,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-HTTP基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/HTTP基础知识/" class="article-date">
+  <time datetime="2019-06-09T08:12:59.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/HTTP基础知识/">HTTP基础知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="URL-HTTP-HTML"><a href="#URL-HTTP-HTML" class="headerlink" title="URL-HTTP-HTML"></a>URL-HTTP-HTML</h3><h5 id="URL：Uniform-Resource-Locator"><a href="#URL：Uniform-Resource-Locator" class="headerlink" title="URL：Uniform Resource Locator"></a>URL：<code>Uniform Resource Locator</code></h5><p>统一资源定位符，用来定位页面</p>
+<h5 id="HTTP：HyperText-Transfer-Protoco"><a href="#HTTP：HyperText-Transfer-Protoco" class="headerlink" title="HTTP：HyperText Transfer Protoco"></a>HTTP：<code>HyperText Transfer Protoco</code></h5><p>超文本传输协议，用来下载页面</p>
+<h5 id="HTML：HyperText-Markup-Language"><a href="#HTML：HyperText-Markup-Language" class="headerlink" title="HTML：HyperText Markup Language"></a>HTML：<code>HyperText Markup Language</code></h5><p>超文本标记语言，用来显示页面</p>
+<hr>
+<h3 id="URI-URL-URN"><a href="#URI-URL-URN" class="headerlink" title="URI-URL-URN"></a>URI-URL-URN</h3><h5 id="URI：Uniform-Resource-Identifier"><a href="#URI：Uniform-Resource-Identifier" class="headerlink" title="URI：Uniform Resource Identifier"></a>URI：<code>Uniform Resource Identifier</code></h5><p>统一资源标识符，有两种实现方式<code>URL</code>和<code>URN</code></p>
+<h5 id="URL：Uniform-Resource-Locator-1"><a href="#URL：Uniform-Resource-Locator-1" class="headerlink" title="URL：Uniform Resource Locator"></a>URL：<code>Uniform Resource Locator</code></h5><p>统一资源定位符，用来定位一个资源，一般指代网址，但文件移动后就找不到了</p>
+<h5 id="URN：Uniform-Resource-Name"><a href="#URN：Uniform-Resource-Name" class="headerlink" title="URN：Uniform Resource Name"></a>URN：<code>Uniform Resource Name</code></h5><p>统一资源名称，用来唯一标识某个资源，如<code>ISBN</code>国际标准书号<code>International Standard Book Number</code></p>
+<hr>
+<h3 id="URL的组成"><a href="#URL的组成" class="headerlink" title="URL的组成"></a>URL的组成</h3><p>协议：(Protocal)<code>https://</code></p>
+<p>域名：(Host)<code>startjcu.com</code>，其中<code>com</code>为顶级域名、<code>startjcu</code>为二级域名</p>
+<p>端口：(Port)<code>:443</code>，对应服务器上的某个Web服务，http-80为默认端口</p>
+<p>路径：(Path)<code>/resum</code></p>
+<p>参数：(Parameter)<code>?id=1&amp;name=star</code></p>
+<p>锚点：(Hash)<code>#3</code>，用来实现某个页面内不同位置的跳转</p>
+<hr>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p>域名系统：<code>Domain Name System</code>，用来将域名解析为对应的IP地址</p>
+<p>流程：域名 &gt; (本地hosts)电信DNS服务 &gt; IP地址</p>
+<p>服务器(Server电脑) &gt; HTTP &gt; 客户端(Client浏览器)</p>
+<p>HTTP的作用是置动服务器和浏览器之间如何通信</p>
+<hr>
+<h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><h5 id="curl-X-POST-s-v-–-‘https-www-baidu-com-39"><a href="#curl-X-POST-s-v-–-‘https-www-baidu-com-39" class="headerlink" title="curl -X POST -s -v – ‘https://www.baidu.com&#39;"></a>curl -X POST -s -v – ‘<a href="https://www.baidu.com&#39;" target="_blank" rel="noopener">https://www.baidu.com&#39;</a></h5><p>curl：<code>command line url</code>，此命令用于在命令行实现url请求</p>
+<p>-X：<code>request method</code>，指定请求方法</p>
+<p>-s：<code>silence</code>，不显示请求进度条</p>
+<p>-v：<code>verbose</code>，详细地显示请求<code>&gt;</code>和响应<code>&lt;</code></p>
+<h5 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h5><p><code>GET</code>：获取数据</p>
+<p><code>POST</code>：上传(提交)数据</p>
+<p><code>PUT/PATCH</code>：更新(整体/局部)数据</p>
+<p><code>DELETE</code>：删除数据</p>
+<p>其他方法：<code>HEAD</code>、<code>OPTIONS</code>等</p>
+<h5 id="请求报文格式"><a href="#请求报文格式" class="headerlink" title="请求报文格式"></a>请求报文格式</h5><p>1、请求方法 路径及参数 协议/版本号</p>
+<p>2、<code>key : value</code>键值对，如<code>Host: www.baidu.com</code></p>
+<p>3、空行，用来分隔2和4</p>
+<p>4、要上传的数据，如用户名、密码等</p>
+<h5 id="响应报文格式"><a href="#响应报文格式" class="headerlink" title="响应报文格式"></a>响应报文格式</h5><p>1、协议/版本号 状态码 状态说明</p>
+<p>2、<code>key : value</code>键值对，如<code>Content-Type: 141</code></p>
+<p>3、空行，用来分隔2和4</p>
+<p>4、下载的数据</p>
+<p><strong><em>状态码</em></strong><br>1xx：消息，如100-<code>Continue</code>，表示还需要进一步的操作</p>
+<p>2xx：成功，如200-<code>OK</code>，表示普通成功；201-<code>Created</code>，表示创建成功</p>
+<p>3xx：重定向，如301-<code>Moved Permanently</code>；302-<code>Move Temporarily</code></p>
+<p>4xx：请求错误，如401-<code>Unauthorized</code>未登录；404-<code>Not Found</code>资源丢失</p>
+<hr>
+<h3 id="TCP-UDP-IP"><a href="#TCP-UDP-IP" class="headerlink" title="TCP-UDP-IP"></a>TCP-UDP-IP</h3><h5 id="TCP：Transmission-Control-Protocol"><a href="#TCP：Transmission-Control-Protocol" class="headerlink" title="TCP：Transmission Control Protocol"></a>TCP：<code>Transmission Control Protocol</code></h5><p>传输控制协议，每次建立连接前，客户端和服务器都要进行三次成功对话后，才正式开始传输内容(TCP三次握手)</p>
+<h5 id="UDP：User-Datagram-Protocol"><a href="#UDP：User-Datagram-Protocol" class="headerlink" title="UDP：User Datagram Protocol"></a>UDP：<code>User Datagram Protocol</code></h5><p>用户数据报协议，和TCP的区别是，TCP可靠，面向连接，相对UDP较慢，而UDP正好相反</p>
+<h5 id="IP：Internet-Protocol"><a href="#IP：Internet-Protocol" class="headerlink" title="IP：Internet Protocol"></a>IP：<code>Internet Protocol</code></h5><p>网络协议，每个电脑都应该有一个独立的IP地址。<code>127.0.0.1/localhost</code>指本机，<code>0.0.0.0</code>不指向任何设备</p>
+<p>外网IP &gt; 路由器 &gt; 内网IP</p>
+<p>路由器(必由之路)，用于给信息指路/进行内容分发，故又称网关</p>
+<p>HTTP是基于TCP/IP协议构建的，使用HTTP协议访问另一个主机时，必须提供IP地址和端口号</p>
+<p>小知识：<code>argc=arguments c</code>、<code>argv = arguments value</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwoqf81d00014wvah88tk06a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS归纳整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/09/CSS归纳整理/" class="article-date">
@@ -117,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwoncclx000124vaqrvxwflj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwoqf81600004wvaqwaldqam" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwoncclq000024va00pi6r55" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwoqf81i00034wvaf2et8x2n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwonccm2000324vam7dwhctd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwoqf81g00024wva74fdf42s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjwonccm0000224va8fi9stga" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjwoqf81j00044wvaqwof2gyi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -368,6 +453,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/06/09/HTTP基础知识/">HTTP基础知识</a>
+          </li>
         
           <li>
             <a href="/2019/06/09/CSS归纳整理/">CSS归纳整理</a>
