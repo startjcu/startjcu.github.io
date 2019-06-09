@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS归纳整理 | 冯义星的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念层叠样式表：Cascading Style Sheets 引入方式1、行内样式：style=&amp;quot;color:red;&amp;quot; 2、内部样式表：&amp;lt;style&amp;gt;*{ margin:0; padding:0; }&amp;lt;/style&amp;gt; 3、外部样式表：&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./css/a.css&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS归纳整理">
+<meta property="og:url" content="http://yoursite.com/2019/06/09/CSS归纳整理/index.html">
+<meta property="og:site_name" content="冯义星的博客">
+<meta property="og:description" content="概念层叠样式表：Cascading Style Sheets 引入方式1、行内样式：style=&amp;quot;color:red;&amp;quot; 2、内部样式表：&amp;lt;style&amp;gt;*{ margin:0; padding:0; }&amp;lt;/style&amp;gt; 3、外部样式表：&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./css/a.css&amp;q">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-09T00:35:09.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS归纳整理">
+<meta name="twitter:description" content="概念层叠样式表：Cascading Style Sheets 引入方式1、行内样式：style=&amp;quot;color:red;&amp;quot; 2、内部样式表：&amp;lt;style&amp;gt;*{ margin:0; padding:0; }&amp;lt;/style&amp;gt; 3、外部样式表：&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./css/a.css&amp;q">
+  
+    <link rel="alternate" href="/atom.xml" title="冯义星的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯义星的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS归纳整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/CSS归纳整理/" class="article-date">
+  <time datetime="2019-06-08T23:55:44.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS归纳整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>层叠样式表：<code>Cascading Style Sheets</code></p>
+<h3 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h3><p>1、行内样式：<code>style=&quot;color:red;&quot;</code></p>
+<p>2、内部样式表：<code>&lt;style&gt;*{ margin:0; padding:0; }&lt;/style&gt;</code></p>
+<p>3、外部样式表：<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/a.css&quot;&gt;</code></p>
+<p>4、样式表中引入另一个样式表：<code>@import url(./b.css)</code></p>
+<hr>
+<h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><p>1、给所有子元素添加float属性</p>
+<p>2、给父元素添加<code>clearfix</code>类：<code>.clearfix{ content:&#39;&#39;; display:block; clear:both; }</code></p>
+<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p>Normal Flow，指HTML文档内元素的流动方向</p>
+<p>1、行内元素，从左向右流动，遇到阻碍就另起一行</p>
+<p><code>word-break: break-all</code>将单词按字母打断，用于英文长单词遇到阻碍换行显示</p>
+<p>2、块级元素，每个块独占一行，从上往下流动</p>
+<p><code>display: inline-block</code>尽量少使用，优先考虑用<code>float: left</code>代替</p>
+<hr>
+<h3 id="块级元素的高度问题"><a href="#块级元素的高度问题" class="headerlink" title="块级元素的高度问题"></a>块级元素的高度问题</h3><p>1、用<code>height</code>属性指定的高度</p>
+<p>2、等于其内部文档流元素的高度总和</p>
+<p>有些行内元素的高度可能大于它所在的块级元素的高度，因为字体有设计建议行高</p>
+<h3 id="行内元素内容居中问题"><a href="#行内元素内容居中问题" class="headerlink" title="行内元素内容居中问题"></a>行内元素内容居中问题</h3><p>尽量少使用<code>height</code>和<code>line-height</code></p>
+<p>可考虑<code>display:inline-block</code>与<code>padding</code>来进行水平和垂直居中</p>
+<hr>
+<h3 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h3><p>1、给子元素添加绝对定位：<code>display: absolute</code></p>
+<p>2、给父元素添加相对定位：<code>display: relative</code></p>
+<p>绝对定位会使元素脱离文档流，定位基准为最接近的进行了相对定位的父级元素的左上角</p>
+<h3 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h3><p>给元素添加固定定位：<code>display: fixed</code></p>
+<p>固定定位会使元素脱离文档流，定位基准为浏览器左上角，定位后元素位置不会随页面的滚动变化</p>
+<hr>
+<h3 id="CSS资源"><a href="#CSS资源" class="headerlink" title="CSS资源"></a>CSS资源</h3><p>CSS经典范例：<a href="https://css-tricks.com/the-shapes-of-css/" target="_blank" rel="noopener">CSS Tricks</a></p>
+<p>iconfont图标：<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">矢量图标库</a></p>
+<p>其他资源：阮一峰CSS、张鑫旭CSS、Codrops、《CSS揭秘》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwon36yw0001lkvaf9nx3br9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/08/HTML常用标签/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTML常用标签</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/09/CSS归纳整理/">CSS归纳整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/08/HTML常用标签/">HTML常用标签</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/08/Markdown语法/">Markdown语法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/08/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 冯义星<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
