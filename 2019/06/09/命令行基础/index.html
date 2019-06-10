@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="路径符号用户目录：~ 整个硬盘：/故以/开头的路径为绝对路径 当前目录：.；父级目录：..  常用单词罗列：list 改变：change 目录：directory 文件：file 创建：make 删除：remove 移动：move 复制：copy 链接：link 查找：find 触摸：touch 回音：echo 命令是由常用单词组合的缩写，缩写规则是删掉元音字母，保留前2~3个辅音字母  常用命令">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-09T13:06:51.450Z">
+<meta property="og:updated_time" content="2019-06-10T06:21:17.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行基础">
 <meta name="twitter:description" content="路径符号用户目录：~ 整个硬盘：/故以/开头的路径为绝对路径 当前目录：.；父级目录：..  常用单词罗列：list 改变：change 目录：directory 文件：file 创建：make 删除：remove 移动：move 复制：copy 链接：link 查找：find 触摸：touch 回音：echo 命令是由常用单词组合的缩写，缩写规则是删掉元音字母，保留前2~3个辅音字母  常用命令">
@@ -123,16 +123,16 @@
 <h5 id="命令行url：curl"><a href="#命令行url：curl" class="headerlink" title="命令行url：curl"></a>命令行url：<code>curl</code></h5><p>全称：<code>command uniform resource locator</code></p>
 <h5 id="创建-更新文件：touch"><a href="#创建-更新文件：touch" class="headerlink" title="创建/更新文件：touch"></a>创建/更新文件：<code>touch</code></h5><p>touch fileName</p>
 <h5 id="编辑文件：echo"><a href="#编辑文件：echo" class="headerlink" title="编辑文件：echo"></a>编辑文件：<code>echo</code></h5><p>echo ‘content’ &gt; fileName</p>
-<p><code>&gt;写入内容，会覆盖之前的内容；&gt;&gt;追加内容；&gt;!mac上写入内容</code></p>
-<p>命令行中的空格具有特殊含义，所以带空格的字符串一定要用<code>&#39;&#39;</code>引起来</p>
+<p><code>&gt; 写入内容，会覆盖之前的内容；&gt;&gt; 追加内容；&gt;! 实现在mac上向文件写入内容</code></p>
+<p>命令行中的空格具有特殊含义(用于分隔命令、参数和值)，所以带空格的字符串一定要用<code>&#39;&#39;</code>引起来</p>
 <hr>
-<h3 id="命令资源"><a href="#命令资源" class="headerlink" title="命令资源"></a>命令资源</h3><p>1、查看手册：<code>man cName</code>/<code>cName --help</code></p>
+<h3 id="命令资源"><a href="#命令资源" class="headerlink" title="命令资源"></a>命令资源</h3><p>1、查看手册：<code>man cName</code> / <code>cName --help</code></p>
 <p>2、<a href="https://explainshell.com" target="_blank" rel="noopener">超级好用的命令详解网站</a></p>
-<p>3、查看精炼的使用文档:<code>tldr cName</code>(<code>too long didn&#39;t read</code>)</p>
+<p>3、查看常用的使用文档:<code>tldr cName</code> (<code>too long didn&#39;t read</code>)</p>
 <hr>
 <h3 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h3><h5 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a><code>git clone</code></h5><p>将远程存仓库的代码克隆到本地</p>
 <h5 id="git-status-sb-short-branch"><a href="#git-status-sb-short-branch" class="headerlink" title="git status -sb(short branch)"></a><code>git status -sb</code>(short branch)</h5><p>以简短的形式显示有变更的文件</p>
-<h5 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a><code>git add .</code></h5><p>将当前目录下的变动提交到暂存区</p>
+<h5 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a><code>git add .</code></h5><p>将当前目录下的变动提交到缓存区</p>
 <h5 id="git-commit-m-39-comment-39"><a href="#git-commit-m-39-comment-39" class="headerlink" title="git commit -m &#39;comment&#39;"></a><code>git commit -m &#39;comment&#39;</code></h5><p>将代码提交到本地仓库并添加注释</p>
 <h5 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a><code>git pull</code></h5><p>拉取远程代码，同步远程的变动</p>
 <h5 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a><code>git push</code></h5><p>将本地代码提交到远程仓库</p>
@@ -140,12 +140,12 @@
 <hr>
 <h3 id="script脚本"><a href="#script脚本" class="headerlink" title="script脚本"></a>script脚本</h3><p>脚本即一段程序，让计算机按照一定的顺序执行一系列命令</p>
 <p><code>JavaScript</code>是一门动态类型，面向对象的脚本语言</p>
-<p>通过在文件首行添加<code>#!/usr/bin/env node</code>来指定在Linux下该文件默认以node命令执行</p>
+<p>通过在文件首行添加<code>#!/usr/bin/env node</code>来指定在<code>Linux</code>下该文件默认以<code>node</code>命令执行</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjwpsbbed00055ova3ulomwf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjwqvcf600005bgvax70ku4qv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,6 +153,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/11/数据结构和排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据结构和排序算法
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/09/HTTP基础知识/" id="article-nav-older" class="article-nav-link-wrap">
@@ -194,6 +203,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/11/数据结构和排序算法/">数据结构和排序算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/09/命令行基础/">命令行基础</a>
           </li>
         
@@ -207,10 +220,6 @@
         
           <li>
             <a href="/2019/06/08/HTML常用标签/">HTML常用标签</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/Markdown语法/">Markdown语法</a>
           </li>
         
       </ul>

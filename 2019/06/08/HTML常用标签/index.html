@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="标题标签headline：&amp;lt;h&amp;gt;用来表示不同级别的标题&amp;lt;h1&amp;gt;~&amp;lt;h6&amp;gt; 段落标签paragraph：&amp;lt;p&amp;gt;用来表示一个段落  换行标签break：&amp;lt;br&amp;gt;用来实现网页上的换行 水平线标签horizontal line：&amp;lt;hr&amp;gt;用来在网页上画一条水平线  斜体italic：&amp;lt;i&amp;gt;、emphasize：&amp;lt;em&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T16:20:06.546Z">
+<meta property="og:updated_time" content="2019-06-10T05:45:10.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML常用标签">
 <meta name="twitter:description" content="标题标签headline：&amp;lt;h&amp;gt;用来表示不同级别的标题&amp;lt;h1&amp;gt;~&amp;lt;h6&amp;gt; 段落标签paragraph：&amp;lt;p&amp;gt;用来表示一个段落  换行标签break：&amp;lt;br&amp;gt;用来实现网页上的换行 水平线标签horizontal line：&amp;lt;hr&amp;gt;用来在网页上画一条水平线  斜体italic：&amp;lt;i&amp;gt;、emphasize：&amp;lt;em&amp;">
@@ -118,23 +118,23 @@
 <p>3、_parent，在父级页面打开链接（有iframe的情况下才可看见效果）</p>
 <p>4、_top，在顶级页面打开链接(有多个iframe嵌套的情况下效果可见）</p>
 <h5 id="href属性"><a href="#href属性" class="headerlink" title="href属性"></a>href属性</h5><p>用来指定跳转路径</p>
-<p>1、相对路径，./表示当前目录，../表示上级目录</p>
-<p>2、协议+域名+路径，//表示继承当前文件使用的协议</p>
+<p>1、相对路径，<code>./</code>表示当前目录，<code>../</code>表示上级目录</p>
+<p>2、协议+域名+路径，<code>//</code>表示继承当前文件使用的协议</p>
 <p>3、# 锚点，用于当前页面不同位置的跳转</p>
 <p>4、？参数，用于指定参数发起请求</p>
-<p>5、javascript伪协议，如javascript:;用于取消a标签的跳转行为</p>
+<p>5、javascript伪协议，如<code>javascript:;</code>用于取消a标签的跳转行为</p>
 <hr>
 <h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><p><code>&lt;form&gt;</code>用于发起POST请求，上传数据，一个表单中必须要有一个提交按钮</p>
 <p>提交按钮可以通过两种方式指定</p>
 <p>1、<code>&lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;</code></p>
 <p>2、<code>&lt;button&gt;submit&lt;/button&gt;</code>这种方式button的type属性值会默认指定为submit</p>
 <h3 id="输入标签"><a href="#输入标签" class="headerlink" title="输入标签"></a>输入标签</h3><p><code>&lt;input&gt;</code>用于提供输入框，选项框和提交按钮</p>
-<h5 id="type属性常用取值"><a href="#type属性常用取值" class="headerlink" title="type属性常用取值"></a>type属性常用取值</h5><p><strong>1、text</strong><br>普通输入框，输入的文本是明文</p>
-<p><strong>2、password</strong><br>密码输入框，输入的文本是密文</p>
+<h5 id="type属性常用取值"><a href="#type属性常用取值" class="headerlink" title="type属性常用取值"></a>type属性常用取值</h5><p><strong>1、text</strong><br>普通输入框，输入的文本会以明文显示</p>
+<p><strong>2、password</strong><br>密码输入框，输入的文本会以密文显示</p>
 <p><strong>3、checkbox</strong><br>复选框，要设置相同的<code>name</code>值，且必须指定<code>value</code>值，供后台服务器拿数据用</p>
 <p><strong>4、radio</strong><br>单选框，必须设置相同的<code>name</code>值，可以使用<code>checked</code>属性来设置默认选中项</p>
-<h5 id="通过-lt-label-gt-标签嵌套-lt-input-gt-标签的形式，可以不用指定前者的for和后者的id，精炼代码"><a href="#通过-lt-label-gt-标签嵌套-lt-input-gt-标签的形式，可以不用指定前者的for和后者的id，精炼代码" class="headerlink" title="通过&lt;label&gt;标签嵌套&lt;input&gt;标签的形式，可以不用指定前者的for和后者的id，精炼代码"></a>通过<code>&lt;label&gt;</code>标签嵌套<code>&lt;input&gt;</code>标签的形式，可以不用指定前者的for和后者的id，精炼代码</h5><h3 id="下拉列表"><a href="#下拉列表" class="headerlink" title="下拉列表"></a>下拉列表</h3><p><code>&lt;select&gt;</code>用于有多个可选项的情形</p>
-<p><code>&lt;option&gt;</code>用来指定下来列表项，<code>selected</code>指定默认选中项</p>
+<h5 id="通过-lt-label-gt-标签嵌套-lt-input-gt-标签的形式，可以省去指定前者的for和后者的id，使代码更简洁"><a href="#通过-lt-label-gt-标签嵌套-lt-input-gt-标签的形式，可以省去指定前者的for和后者的id，使代码更简洁" class="headerlink" title="通过&lt;label&gt;标签嵌套&lt;input&gt;标签的形式，可以省去指定前者的for和后者的id，使代码更简洁"></a>通过<code>&lt;label&gt;</code>标签嵌套<code>&lt;input&gt;</code>标签的形式，可以省去指定前者的for和后者的id，使代码更简洁</h5><h3 id="下拉列表"><a href="#下拉列表" class="headerlink" title="下拉列表"></a>下拉列表</h3><p><code>&lt;select&gt;</code>用于有多个可选项的情形</p>
+<p><code>&lt;option&gt;</code>用来指定下拉列表项，<code>selected</code>指定默认选中项</p>
 <p><code>&lt;select&gt;&lt;option selected&gt;one&lt;/option&gt;&lt;/select&gt;</code></p>
 <hr>
 <h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">style</span>=<span class="string">"border-collapse: collapse;text-align: center"</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">caption</span>&gt;</span>学生信息表<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">colgroup</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">col</span> <span class="attr">width</span>=<span class="string">70</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">col</span> <span class="attr">bgcolor</span>=<span class="string">"yellow"</span> <span class="attr">width</span>=<span class="string">50</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">col</span> <span class="attr">width</span>=<span class="string">50</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">colgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>身高<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>one<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>170<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>平均<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>19<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>173<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -143,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwpsbbe900035ovaj8zbt2ht" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwqvcf5r0001bgvapeoj5bma" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,6 +201,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/11/数据结构和排序算法/">数据结构和排序算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/09/命令行基础/">命令行基础</a>
           </li>
         
@@ -214,10 +218,6 @@
         
           <li>
             <a href="/2019/06/08/HTML常用标签/">HTML常用标签</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/Markdown语法/">Markdown语法</a>
           </li>
         
       </ul>

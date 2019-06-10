@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="概念层叠样式表：Cascading Style Sheets 引入方式1、行内样式：style=&amp;quot;color:red;&amp;quot; 2、内部样式表：&amp;lt;style&amp;gt;*{ margin:0; padding:0; }&amp;lt;/style&amp;gt; 3、外部样式表：&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./css/a.css&amp;q">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T02:55:43.692Z">
+<meta property="og:updated_time" content="2019-06-10T06:01:28.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS归纳整理">
 <meta name="twitter:description" content="概念层叠样式表：Cascading Style Sheets 引入方式1、行内样式：style=&amp;quot;color:red;&amp;quot; 2、内部样式表：&amp;lt;style&amp;gt;*{ margin:0; padding:0; }&amp;lt;/style&amp;gt; 3、外部样式表：&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./css/a.css&amp;q">
@@ -92,35 +92,35 @@
 <p>3、外部样式表：<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/a.css&quot;&gt;</code></p>
 <p>4、样式表中引入另一个样式表：<code>@import url(./b.css)</code></p>
 <hr>
-<h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><p>1、给所有子元素添加float属性</p>
+<h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><p>1、给所有子元素添加<code>float</code>属性</p>
 <p>2、给父元素添加<code>clearfix</code>类：<code>.clearfix::after{ content:&#39;&#39;; display:block; clear:both; }</code></p>
-<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p>Normal Flow，指HTML文档内元素的流动方向</p>
+<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p><code>Normal Flow</code>，指HTML文档内元素的流动方向</p>
 <p>1、行内元素，从左向右流动，遇到阻碍就另起一行</p>
-<p><code>word-break: break-all</code>将单词按字母打断，用于英文长单词遇到阻碍换行显示</p>
+<p><code>word-break: break-all</code>将单词按字母打断，用于英文长单词遇到阻碍时能换行显示</p>
 <p>2、块级元素，每个块独占一行，从上往下流动</p>
 <p><code>display: inline-block</code>尽量少使用，优先考虑用<code>float: left</code>代替</p>
 <hr>
 <h3 id="块级元素的高度问题"><a href="#块级元素的高度问题" class="headerlink" title="块级元素的高度问题"></a>块级元素的高度问题</h3><p>1、用<code>height</code>属性指定的高度</p>
 <p>2、等于其内部文档流元素的高度总和</p>
-<p>有些行内元素的高度可能大于它所在的块级元素的高度，因为字体有设计建议行高</p>
+<p>有些行内元素的高度可能大于它所在的块级元素的高度，因为字体有浏览器设计的建议行高，布局时高度要用line-height明确指定</p>
 <h3 id="行内元素内容居中问题"><a href="#行内元素内容居中问题" class="headerlink" title="行内元素内容居中问题"></a>行内元素内容居中问题</h3><p>尽量少使用<code>height</code>和<code>line-height</code></p>
-<p>可考虑<code>display:inline-block</code>与<code>padding</code>来进行水平和垂直居中</p>
+<p>可考虑<code>display:inline-block; vertical-align: top;</code>与<code>padding、box-sizing: border-box;</code>来进行水平和垂直居中</p>
 <hr>
 <h3 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h3><p>1、给子元素添加绝对定位：<code>display: absolute</code></p>
 <p>2、给父元素添加相对定位：<code>display: relative</code></p>
-<p>绝对定位会使元素脱离文档流，定位基准为最近一个的已定位的父级元素的左上角</p>
+<p>绝对定位会使元素脱离文档流，定位基准为最近的已定位的父级元素的左上角</p>
 <h3 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h3><p>给元素添加固定定位：<code>display: fixed</code></p>
 <p>固定定位会使元素脱离文档流，定位基准为浏览器左上角，定位后元素位置不会随页面的滚动变化</p>
 <hr>
 <h3 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h3><h5 id="1、左右布局"><a href="#1、左右布局" class="headerlink" title="1、左右布局"></a>1、左右布局</h5><p>使用浮动，左边元素左浮动，右侧元素右浮动，父级元素清除浮动</p>
-<h5 id="2、左右中布局"><a href="#2、左右中布局" class="headerlink" title="2、左右中布局"></a>2、左右中布局</h5><p>操作方式同1，左侧和中间元素左浮动，右侧元素右浮动，父级元素清除浮动</p>
-<h5 id="3、水平居中"><a href="#3、水平居中" class="headerlink" title="3、水平居中"></a>3、水平居中</h5><p>行内元素，在父级元素上加text-align实现居中</p>
-<p>块级元素，通过margin: 0 auto实现居中</p>
-<h5 id="4、垂直居中"><a href="#4、垂直居中" class="headerlink" title="4、垂直居中"></a>4、垂直居中</h5><p>通过指定height和line-height相对来居中</p>
-<p>或者将元素的上下填充padding设置为等值进行居中</p>
-<h5 id="5、其他小技巧"><a href="#5、其他小技巧" class="headerlink" title="5、其他小技巧"></a>5、其他小技巧</h5><p>伪元素：非空元素(可以有子元素的元素)默认都具有::before和::after伪元素<br>可以将其理解为一个隐藏的span，和生命周期钩子一样，但无法被选中进行复制操作</p>
-<p>伪类：选择器的:nth-child(even)可以对偶数个子元素单独设置样式，实现更复杂的布局</p>
-<p>对应浮动排版错乱的情况，使用border大法进行查看，看是否是因为由行高不一致导致浮动异常</p>
+<h5 id="2、左右中布局"><a href="#2、左右中布局" class="headerlink" title="2、左右中布局"></a>2、左右中布局</h5><p>操作方式同布局1，左侧和中间元素左浮动，右侧元素右浮动，父级元素清除浮动</p>
+<h5 id="3、水平居中"><a href="#3、水平居中" class="headerlink" title="3、水平居中"></a>3、水平居中</h5><p>行内元素，在父级元素上加<code>text-align</code>实现居中，或使用<code>padding</code>与<code>box-sizing</code>的组合进行居中</p>
+<p>块级元素，通过<code>margin: 0 auto</code>实现水平居中</p>
+<h5 id="4、垂直居中"><a href="#4、垂直居中" class="headerlink" title="4、垂直居中"></a>4、垂直居中</h5><p>通过将<code>height</code>和<code>line-height</code>指定为相同值来居中</p>
+<p>通过设置元素的上下<code>padding</code>属性的值相等来实现居中</p>
+<h5 id="5、其他小技巧"><a href="#5、其他小技巧" class="headerlink" title="5、其他小技巧"></a>5、其他小技巧</h5><p>伪元素：非空元素(可以有子元素的元素)默认都具有::before和::after伪元素<br>可以将其理解为一个无内容的<code>&lt;span&gt;</code>，和生命周期钩子一样，但无法被选中进行复制等操作</p>
+<p>伪类：选择器的<code>:nth-child(even)</code>可以对偶数个子元素单独设置样式，实现更复杂的布局</p>
+<p>对于浮动排版错乱的情况，使用<code>border</code>大法进行排查，看是否是由行高不一致导致的浮动异常</p>
 <hr>
 <h3 id="CSS资源"><a href="#CSS资源" class="headerlink" title="CSS资源"></a>CSS资源</h3><p>CSS经典范例：<a href="https://css-tricks.com/the-shapes-of-css/" target="_blank" rel="noopener">CSS Tricks</a></p>
 <p>iconfont图标：<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">矢量图标库</a></p>
@@ -129,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwpsbbdx00005ovax2d8oloo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwqvcf5j0000bgvabw5353o1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,6 +187,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/11/数据结构和排序算法/">数据结构和排序算法</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/09/命令行基础/">命令行基础</a>
           </li>
         
@@ -200,10 +204,6 @@
         
           <li>
             <a href="/2019/06/08/HTML常用标签/">HTML常用标签</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/Markdown语法/">Markdown语法</a>
           </li>
         
       </ul>
