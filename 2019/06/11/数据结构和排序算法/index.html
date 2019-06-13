@@ -7,17 +7,17 @@
   
   <title>数据结构和排序算法 | 冯义星的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 如数组 (索引和元素)、对象 (属性和值) 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数组是连续空间，无法直接删除中间某项，但链表可以 实现原理： a1={value:1, next:">
+  <meta name="description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 JS中用对象 (属性和值)表示哈希，数组是对象{0:&amp;#39;e1&amp;#39;, 1:&amp;#39;e2&amp;#39;, length: 2}的简写 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构和排序算法">
 <meta property="og:url" content="http://yoursite.com/2019/06/11/数据结构和排序算法/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 如数组 (索引和元素)、对象 (属性和值) 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数组是连续空间，无法直接删除中间某项，但链表可以 实现原理： a1={value:1, next:">
+<meta property="og:description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 JS中用对象 (属性和值)表示哈希，数组是对象{0:&amp;#39;e1&amp;#39;, 1:&amp;#39;e2&amp;#39;, length: 2}的简写 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T21:08:14.629Z">
+<meta property="og:updated_time" content="2019-06-11T08:36:20.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构和排序算法">
-<meta name="twitter:description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 如数组 (索引和元素)、对象 (属性和值) 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数组是连续空间，无法直接删除中间某项，但链表可以 实现原理： a1={value:1, next:">
+<meta name="twitter:description" content="数据结构哈希 Hash满足键值对(key:value)形式的都是哈希 JS中用对象 (属性和值)表示哈希，数组是对象{0:&amp;#39;e1&amp;#39;, 1:&amp;#39;e2&amp;#39;, length: 2}的简写 队列 Queue先进先出 如排队，可用数组(push、shift)实现 栈 Stack先进后出 如乘电梯、盗梦空间、递归原理，可用数组(push、pop)实现 链表 Linked List数">
   
     <link rel="alternate" href="/atom.xml" title="冯义星的博客" type="application/atom+xml">
   
@@ -87,7 +87,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h5 id="哈希-Hash"><a href="#哈希-Hash" class="headerlink" title="哈希 Hash"></a>哈希 <code>Hash</code></h5><p>满足键值对(<code>key:value</code>)形式的都是哈希</p>
-<p>如数组 (索引和元素)、对象 (属性和值)</p>
+<p><code>JS</code>中用对象 (属性和值)表示哈希，数组是对象<code>{0:&#39;e1&#39;, 1:&#39;e2&#39;, length: 2}</code>的简写</p>
 <h5 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列 Queue"></a>队列 <code>Queue</code></h5><p>先进先出</p>
 <p>如排队，可用数组(<code>push</code>、<code>shift</code>)实现</p>
 <h5 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈 Stack"></a>栈 <code>Stack</code></h5><p>先进后出</p>
@@ -129,20 +129,24 @@
 <p>依此类推 . . . 将原数组中的所有元素都放入新数组后，新数组即为排序好的结果</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByInsertion</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arrNew = [arr[<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arrNew.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arrNew[j] &gt; arr[i]) &#123;</span><br><span class="line">                arrNew.splice(j, <span class="number">0</span>, arr[i])</span><br><span class="line">                flag = <span class="literal">true</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//逻辑表达式返回能决定整个表达式真假的那个表达式的值</span></span><br><span class="line">        flag || arrNew.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arrNew</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="计数排序-强迫症起扑克牌法"><a href="#计数排序-强迫症起扑克牌法" class="headerlink" title="计数排序(强迫症起扑克牌法)"></a>计数排序(强迫症起扑克牌法)</h5><p>用于范围不是很大的数组排序，用空间换时间，效率比较高，无法对小数和负数排序</p>
-<p><del>入桶</del><br>将原数组中的每一个数，都作为<code>arrIn</code>数组的索引<br><code>arrIn</code>数组索引的值对应的是，原数组中特定(值为当前索引的)元素的个数</p>
-<p><del>出桶</del><br>再从<code>arrIn</code>数组中提取出元素不为<code>undefined</code>的(对应元素个)索引值<br>放入<code>arrOut</code>数组中，<code>arrOut</code>数组即为排序好的数组</p>
+<h5 id="计数排序-强迫症起扑克牌法"><a href="#计数排序-强迫症起扑克牌法" class="headerlink" title="计数排序(强迫症起扑克牌法)"></a>计数排序(强迫症起扑克牌法)</h5><p>用于范围不是很大的数组排序，用空间换时间。<br>无需二次排序，效率比较高；但大范围内排序很耗空间，且无法对小数和负数排序</p>
+<p><em>入桶</em><br>将原数组中的每一个数，都作为<code>arrIn</code>数组的索引<br><code>arrIn</code>数组索引的值对应的是，原数组中特定(值为当前索引的)元素的个数</p>
+<p><em>出桶</em><br>再从<code>arrIn</code>数组中提取出元素不为<code>undefined</code>的(对应元素个)索引值<br>放入<code>arrOut</code>数组中，<code>arrOut</code>数组即为排序好的数组</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByCounting</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//入桶</span></span><br><span class="line">    <span class="keyword">var</span> arrIn = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> index = arr[i]</span><br><span class="line">        <span class="keyword">if</span> (!arrIn[index]) &#123;</span><br><span class="line">            arrIn[index] = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            arrIn[index]++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//出桶</span></span><br><span class="line">    <span class="keyword">var</span> arrOut = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arrIn.length; j++) &#123;</span><br><span class="line">        <span class="keyword">var</span> count = arrIn[j]</span><br><span class="line">        <span class="keyword">while</span> (count) &#123;</span><br><span class="line">            arrOut.push(j)</span><br><span class="line">            count--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arrOut</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h5><p>1、桶排序<br>一个桶放一个范围内的数据，然后在桶内使用其他排序方法，<br>桶和桶之间的对比是独立的，减少对比次数，较计数排序减少了若干倍桶</p>
-<p>2、基数排序<br>按十进制分出十个桶0~9，先按个位排入桶再出桶，再排十位入桶在出桶，依此类推 . . .<br>适用于大范围内的排序，可在很大程度上节约空间</p>
-<p>3、二分排序(快速排序)<br>以一个元素为基准，小于它的排左边，大于它的排右边，排一次就能将这个元素在排好序的数组中的位置了<br>剩余的元素再按此方法排，只不过左边的只需要和左边比，右边的只需要和右边比，可以大大减少比对次数</p>
-<p>4、堆(二叉堆)排序<br>建立在最大堆(父级总比子级大)调整的基础上，每次调整为最大堆后，就将堆顶的元素和最后一个元素换位<br>然后将最后一个元素从堆上删除，放在当前堆对应数组末尾，再进行下一次的最大堆调整，直至排完整个数组</p>
+<h5 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h5><p><strong>1、桶排序</strong><br>一个桶放一个范围内的数据，然后在桶内使用其他排序方法，</p>
+<p>桶和桶之间的对比是独立的，减少对比次数，较计数排序减少了若干倍桶</p>
+<p><strong>2、基数排序</strong><br>按十进制分出十个桶0~9，先按个位排入桶再出桶，再排十位入桶在出桶，依此类推 . . . </p>
+<p>适用于大范围内的排序，可在很大程度上节约空间</p>
+<p><strong>3、二分排序(快速排序)</strong><br>以一个元素为基准，小于它的排左边，大于它的排右边，排一次就能将这个元素在排好序的数组中的位置了</p>
+<p>剩余的元素再按此方法排，只不过左边的只需要和左边比，右边的只需要和右边比，可以大大减少比对次数</p>
+<p><strong>4、堆(二叉堆)排序</strong><br>建立在最大堆(父级总比子级大)调整的基础上，每次调整为最大堆后，就将堆顶的元素和最后一个元素换位</p>
+<p>然后将最后一个元素从堆上删除，放在当前堆对应数组末尾，再进行下一次的最大堆调整，直至排完整个数组</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjwqvcf610006bgvagsoohx5t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjwutn7u00007p8vacqb3cyo6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,6 +154,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/13/JS实现键盘导航/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS实现键盘导航
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/09/命令行基础/" id="article-nav-older" class="article-nav-link-wrap">
@@ -191,6 +204,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/11/数据结构和排序算法/">数据结构和排序算法</a>
           </li>
         
@@ -204,10 +221,6 @@
         
           <li>
             <a href="/2019/06/09/CSS归纳整理/">CSS归纳整理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/HTML常用标签/">HTML常用标签</a>
           </li>
         
       </ul>
