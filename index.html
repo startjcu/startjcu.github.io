@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/14/JS数据类型/" class="article-date">
+  <time datetime="2019-06-14T14:53:31.000Z" itemprop="datePublished">2019-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/14/JS数据类型/">JS数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="7种数据类型"><a href="#7种数据类型" class="headerlink" title="7种数据类型"></a>7种数据类型</h3><h5 id="1、数字-number"><a href="#1、数字-number" class="headerlink" title="1、数字 number"></a>1、数字 <code>number</code></h5><p>整数：1</p>
+<p>浮点数：1.1、.1</p>
+<p>科学计数：1.23e2</p>
+<p>二进制：0b11，八进制：011、0o11，十六进制：0x10</p>
+<p>#####2、字符串 <code>string</code><br>使用引号包裹(<code>&#39;&#39;</code>、<code>&quot;&quot;</code>)，空字符串长度为0，和空格字符串不同</p>
+<p>#####3、布尔类型 <code>boolean</code><br>true和false</p>
+<p>#####4、符号类型 <code>symbol</code><br>Symbol()</p>
+<p>#####5、<code>null</code><br>空对象指针</p>
+<p>#####6、<code>undefined</code><br>未定义</p>
+<p>#####7、对象 <code>object</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjww8348900020kvad5b8z061" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS实现键盘导航" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/13/JS实现键盘导航/" class="article-date">
@@ -84,24 +130,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="JS向页面写入DOM元素"><a href="#JS向页面写入DOM元素" class="headerlink" title="JS向页面写入DOM元素"></a>JS向页面写入DOM元素</h3><p>1、获取页面元素：<code>var main = document.getElementById(&#39;main&#39;)</code></p>
-<p>2、创建一个元素：<code>var divEl = document.createElement(&#39;div&#39;)</code></p>
-<p>3、向元素中写入内容：<code>divEl.innerText = &#39;&#39;</code></p>
-<p>4、将新创建的元素放入指定位置：<code>main.appendChild(divEl)</code></p>
+        <h3 id="JS向页面写入DOM元素"><a href="#JS向页面写入DOM元素" class="headerlink" title="JS向页面写入DOM元素"></a>JS向页面写入DOM元素</h3><p>1、获取页面元素</p>
+<p><code>var main = document.getElementById(&#39;main&#39;)</code></p>
+<p>2、创建一个元素</p>
+<p><code>var divEl = document.createElement(&#39;div&#39;)</code></p>
+<p>3、向元素中写入内容</p>
+<p><code>divEl.innerText = &#39;&#39;</code></p>
+<p>4、将新创建的元素放入指定位置</p>
+<p><code>main.appendChild(divEl)</code></p>
 <hr>
-<h3 id="区别几个写入内容API"><a href="#区别几个写入内容API" class="headerlink" title="区别几个写入内容API"></a>区别几个写入内容API</h3><h5 id="innerText-innerHTML"><a href="#innerText-innerHTML" class="headerlink" title="innerText / innerHTML"></a>innerText / innerHTML</h5><p>前者向元素中写入纯文本，后者向页面中写入html文本(会将html标签进行转义)</p>
-<h5 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText / textContent"></a>innerText / textContent</h5><p>前者能获取html文档渲染后文档中的文本(如元素中若使用了<code>text-transform</code>样式后的文本)，后者获取的是源html中的文本</p>
+<h3 id="区别几个写入内容API"><a href="#区别几个写入内容API" class="headerlink" title="区别几个写入内容API"></a>区别几个写入内容API</h3><h5 id="innerText-innerHTML"><a href="#innerText-innerHTML" class="headerlink" title="innerText / innerHTML"></a>innerText / innerHTML</h5><p>前者向元素中写入纯文本</p>
+<p>后者向页面中写入html文本(会将html标签进行转义)</p>
+<h5 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText / textContent"></a>innerText / textContent</h5><p>前者能获取html文档渲染后文档中的文本(如元素中若使用了<code>text-transform</code>样式后的文本)</p>
+<p>后者获取的是源html中的文本</p>
 <hr>
-<h3 id="循环中绑定事件"><a href="#循环中绑定事件" class="headerlink" title="循环中绑定事件"></a>循环中绑定事件</h3><p>循环中的变量是容器，而事件绑定是异步的，所以不能直接在事件函数中使用变量，那样使用的不是循环时的变量，而是循环结束时的变量，这种情况下应该使用<code>e.target</code>来获取当前元素</p>
+<h3 id="循环中绑定事件"><a href="#循环中绑定事件" class="headerlink" title="循环中绑定事件"></a>循环中绑定事件</h3><p>循环中的变量是容器</p>
+<p>而事件绑定是异步的，会等循环执行完后才执行</p>
+<p>所以直接在事件函数中使用变量，使用的是循环结束时的变量</p>
+<p>这种情况下应该使用<code>e.target</code>来获取目标元素，才能绑定成功</p>
 <hr>
-<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>本地缓存，可以通过<code>setItem(key, value)</code>来设置缓存，通过<code>getItem(key)</code>来读取缓存中的信息</p>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>本地缓存</p>
+<p>通过<code>setItem(key, value)</code>来设置缓存</p>
+<p>通过<code>getItem(key)</code>来读取缓存中的信息</p>
 <hr>
-<h3 id="favicon-icon"><a href="#favicon-icon" class="headerlink" title="favicon.icon"></a>favicon.icon</h3><p>网站头像，默认放在根目录下，浏览器默认回去取这个图标，展示在合适的位置上</p>
+<h3 id="favicon-icon"><a href="#favicon-icon" class="headerlink" title="favicon.icon"></a>favicon.icon</h3><p>网站头像，默认放在根目录下，浏览器默认会去取这个图标，展示在合适的位置上</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwutn7ts0002p8va5ufz3q1s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjww8348c00040kva0it55gji" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjwutn7u00007p8vacqb3cyo6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjww8348j00080kvahok0l1gx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjwutn7tz0006p8vaifbtjybg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjww8348i00070kva4fd419xd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwutn7tq0001p8vao6wa3mgr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjww8347y00000kvam44qjtbc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwutn7tu0003p8vaekhtideh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjww8348600010kvaozzyujfv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwutn7th0000p8vafpvtu0ua" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjww8348b00030kvatiaafcfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -607,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwutn7tw0004p8va4dgiyj5h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjww8348e00050kvay2vqlsus" class="article-share-link">Share</a>
       
       
     </footer>
@@ -656,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjwutn7tx0005p8va7yeqehi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjww8348f00060kva3tlxk2sy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -697,6 +754,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/14/JS数据类型/">JS数据类型</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
           </li>
         
@@ -710,10 +771,6 @@
         
           <li>
             <a href="/2019/06/09/HTTP基础知识/">HTTP基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/09/CSS归纳整理/">CSS归纳整理</a>
           </li>
         
       </ul>

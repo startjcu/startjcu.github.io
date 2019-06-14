@@ -7,17 +7,17 @@
   
   <title>JS实现键盘导航 | 冯义星的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JS向页面写入DOM元素1、获取页面元素：var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素：var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容：divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置：main.appendCh">
+  <meta name="description" content="JS向页面写入DOM元素1、获取页面元素 var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素 var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容 divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置 main.appendCh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS实现键盘导航">
 <meta property="og:url" content="http://yoursite.com/2019/06/13/JS实现键盘导航/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="JS向页面写入DOM元素1、获取页面元素：var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素：var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容：divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置：main.appendCh">
+<meta property="og:description" content="JS向页面写入DOM元素1、获取页面元素 var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素 var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容 divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置 main.appendCh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T15:31:54.095Z">
+<meta property="og:updated_time" content="2019-06-14T15:03:52.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS实现键盘导航">
-<meta name="twitter:description" content="JS向页面写入DOM元素1、获取页面元素：var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素：var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容：divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置：main.appendCh">
+<meta name="twitter:description" content="JS向页面写入DOM元素1、获取页面元素 var main = document.getElementById(&amp;#39;main&amp;#39;) 2、创建一个元素 var divEl = document.createElement(&amp;#39;div&amp;#39;) 3、向元素中写入内容 divEl.innerText = &amp;#39;&amp;#39; 4、将新创建的元素放入指定位置 main.appendCh">
   
     <link rel="alternate" href="/atom.xml" title="冯义星的博客" type="application/atom+xml">
   
@@ -86,24 +86,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="JS向页面写入DOM元素"><a href="#JS向页面写入DOM元素" class="headerlink" title="JS向页面写入DOM元素"></a>JS向页面写入DOM元素</h3><p>1、获取页面元素：<code>var main = document.getElementById(&#39;main&#39;)</code></p>
-<p>2、创建一个元素：<code>var divEl = document.createElement(&#39;div&#39;)</code></p>
-<p>3、向元素中写入内容：<code>divEl.innerText = &#39;&#39;</code></p>
-<p>4、将新创建的元素放入指定位置：<code>main.appendChild(divEl)</code></p>
+        <h3 id="JS向页面写入DOM元素"><a href="#JS向页面写入DOM元素" class="headerlink" title="JS向页面写入DOM元素"></a>JS向页面写入DOM元素</h3><p>1、获取页面元素</p>
+<p><code>var main = document.getElementById(&#39;main&#39;)</code></p>
+<p>2、创建一个元素</p>
+<p><code>var divEl = document.createElement(&#39;div&#39;)</code></p>
+<p>3、向元素中写入内容</p>
+<p><code>divEl.innerText = &#39;&#39;</code></p>
+<p>4、将新创建的元素放入指定位置</p>
+<p><code>main.appendChild(divEl)</code></p>
 <hr>
-<h3 id="区别几个写入内容API"><a href="#区别几个写入内容API" class="headerlink" title="区别几个写入内容API"></a>区别几个写入内容API</h3><h5 id="innerText-innerHTML"><a href="#innerText-innerHTML" class="headerlink" title="innerText / innerHTML"></a>innerText / innerHTML</h5><p>前者向元素中写入纯文本，后者向页面中写入html文本(会将html标签进行转义)</p>
-<h5 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText / textContent"></a>innerText / textContent</h5><p>前者能获取html文档渲染后文档中的文本(如元素中若使用了<code>text-transform</code>样式后的文本)，后者获取的是源html中的文本</p>
+<h3 id="区别几个写入内容API"><a href="#区别几个写入内容API" class="headerlink" title="区别几个写入内容API"></a>区别几个写入内容API</h3><h5 id="innerText-innerHTML"><a href="#innerText-innerHTML" class="headerlink" title="innerText / innerHTML"></a>innerText / innerHTML</h5><p>前者向元素中写入纯文本</p>
+<p>后者向页面中写入html文本(会将html标签进行转义)</p>
+<h5 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText / textContent"></a>innerText / textContent</h5><p>前者能获取html文档渲染后文档中的文本(如元素中若使用了<code>text-transform</code>样式后的文本)</p>
+<p>后者获取的是源html中的文本</p>
 <hr>
-<h3 id="循环中绑定事件"><a href="#循环中绑定事件" class="headerlink" title="循环中绑定事件"></a>循环中绑定事件</h3><p>循环中的变量是容器，而事件绑定是异步的，所以不能直接在事件函数中使用变量，那样使用的不是循环时的变量，而是循环结束时的变量，这种情况下应该使用<code>e.target</code>来获取当前元素</p>
+<h3 id="循环中绑定事件"><a href="#循环中绑定事件" class="headerlink" title="循环中绑定事件"></a>循环中绑定事件</h3><p>循环中的变量是容器</p>
+<p>而事件绑定是异步的，会等循环执行完后才执行</p>
+<p>所以直接在事件函数中使用变量，使用的是循环结束时的变量</p>
+<p>这种情况下应该使用<code>e.target</code>来获取目标元素，才能绑定成功</p>
 <hr>
-<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>本地缓存，可以通过<code>setItem(key, value)</code>来设置缓存，通过<code>getItem(key)</code>来读取缓存中的信息</p>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>本地缓存</p>
+<p>通过<code>setItem(key, value)</code>来设置缓存</p>
+<p>通过<code>getItem(key)</code>来读取缓存中的信息</p>
 <hr>
-<h3 id="favicon-icon"><a href="#favicon-icon" class="headerlink" title="favicon.icon"></a>favicon.icon</h3><p>网站头像，默认放在根目录下，浏览器默认回去取这个图标，展示在合适的位置上</p>
+<h3 id="favicon-icon"><a href="#favicon-icon" class="headerlink" title="favicon.icon"></a>favicon.icon</h3><p>网站头像，默认放在根目录下，浏览器默认会去取这个图标，展示在合适的位置上</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwutn7ts0002p8va5ufz3q1s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjww8348c00040kva0it55gji" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,6 +122,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/14/JS数据类型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS数据类型
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/11/数据结构和排序算法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -152,6 +172,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/14/JS数据类型/">JS数据类型</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
           </li>
         
@@ -165,10 +189,6 @@
         
           <li>
             <a href="/2019/06/09/HTTP基础知识/">HTTP基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/09/CSS归纳整理/">CSS归纳整理</a>
           </li>
         
       </ul>
