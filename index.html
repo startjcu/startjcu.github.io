@@ -84,21 +84,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="7种数据类型"><a href="#7种数据类型" class="headerlink" title="7种数据类型"></a>7种数据类型</h3><h5 id="1、数字-number"><a href="#1、数字-number" class="headerlink" title="1、数字 number"></a>1、数字 <code>number</code></h5><p>整数：1</p>
+        <h3 id="7种数据类型"><a href="#7种数据类型" class="headerlink" title="7种数据类型"></a>7种数据类型</h3><p>包括6种基本数据类型和1种引用数据类型</p>
+<hr>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><h5 id="1、数字-number"><a href="#1、数字-number" class="headerlink" title="1、数字 number"></a>1、数字 <code>number</code></h5><p>整数：1</p>
 <p>浮点数：1.1、.1</p>
 <p>科学计数：1.23e2</p>
 <p>二进制：0b11，八进制：011、0o11，十六进制：0x10</p>
-<p>#####2、字符串 <code>string</code><br>使用引号包裹(<code>&#39;&#39;</code>、<code>&quot;&quot;</code>)，空字符串长度为0，和空格字符串不同</p>
-<p>#####3、布尔类型 <code>boolean</code><br>true和false</p>
-<p>#####4、符号类型 <code>symbol</code><br>Symbol()</p>
-<p>#####5、<code>null</code><br>空对象指针</p>
-<p>#####6、<code>undefined</code><br>未定义</p>
-<p>#####7、对象 <code>object</code></p>
+<h5 id="2、字符串-string"><a href="#2、字符串-string" class="headerlink" title="2、字符串 string"></a>2、字符串 <code>string</code></h5><p>单行字符串：使用引号包裹(<code>&#39;&#39;</code>、<code>&quot;&quot;</code>)</p>
+<p>空字符串<code>&#39;&#39;</code>长度为0，和空格字符串<code>&#39; &#39;</code>不同</p>
+<p>多行字符串，ES6中使用反引号，多行字符串中包括空格<br>(在此之前也可以在要换行的地方加<code>\</code>，但使用这种方法若<code>\</code>后面加了空格引起BUG很难排查)</p>
+<p>字符串中出现引号的解决方法：1、单双引号嵌套，2、使用转义字符<code>\</code></p>
+<h5 id="3、布尔类型-boolean"><a href="#3、布尔类型-boolean" class="headerlink" title="3、布尔类型 boolean"></a>3、布尔类型 <code>boolean</code></h5><p><code>true</code>和<code>false</code></p>
+<p>逻辑运算：<code>&amp;&amp;</code>与、<code>||</code>或，返回能决定整个表达式真假的表达式的运算结果</p>
+<h5 id="4、符号类型-symbol"><a href="#4、符号类型-symbol" class="headerlink" title="4、符号类型 symbol"></a>4、符号类型 <code>symbol</code></h5><p>通过<code>Symbol()</code>来创建symbol类型的数据，此数据不会重复</p>
+<h5 id="5、null"><a href="#5、null" class="headerlink" title="5、null"></a>5、<code>null</code></h5><p>空对象指针，null类型只有一个取值就是null，但<code>typeof(null)</code>结果是<code>object</code></p>
+<h5 id="6、undefined"><a href="#6、undefined" class="headerlink" title="6、undefined"></a>6、<code>undefined</code></h5><p>未定义，变量只有声明，未被赋值，就会默认赋值为undefined</p>
+<hr>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><h5 id="7、对象-object"><a href="#7、对象-object" class="headerlink" title="7、对象 object"></a>7、对象 <code>object</code></h5><p>哈希表，是引用数据类型，由基本数据类型组成</p>
+<p><strong>读取属性的方法</strong><br>1、<code>obj[&#39;prop&#39;]</code>：最通用的方法，属性的键可以是不合法的标识符(如数字、带空格字符串)</p>
+<p>2、<code>obj.prop</code>：简写的方法，但是要求键名必须是合法的标识符</p>
+<p><strong>删除属性的方法</strong></p>
+<p><code>delete obj[prop]</code></p>
+<p><strong>检查对象是否具有某个属性</strong></p>
+<p><code>prop in obj</code>检测对象种是包含某个键</p>
+<p>使用<code>delete</code>删除属性后，用<code>in</code>检测被删除的属性返回<code>false</code><br>但给某属性赋值<code>undefined</code>后，用<code>in</code>检测返回的是<code>true</code></p>
+<p><strong>遍历对象中的属性</strong></p>
+<p><code>for(var key in person){ console.log(person[key]) }</code></p>
+<p><strong>检测某个数据的类型的方法</strong></p>
+<p><code>typeof()</code></p>
+<p>两个特例：<code>1、typeof(null) -&gt; object</code>，<code>2、typeof(console.log) -&gt; function</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjww8348900020kvad5b8z061" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjwx1qy9r00023cvagg12ia49" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjww8348c00040kva0it55gji" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwx1qy9u00053cva29boj81l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjww8348j00080kvahok0l1gx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/数据结构和排序算法/" data-id="cjwx1qya700083cvakok4f15j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjww8348i00070kva4fd419xd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/命令行基础/" data-id="cjwx1qy9y00073cva4wg4u3qe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -426,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjww8347y00000kvam44qjtbc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwx1qy9s00033cvay7ynecqa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -501,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjww8348600010kvaozzyujfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/CSS归纳整理/" data-id="cjwx1qy9o00013cvah6krg46k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,7 +609,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjww8348b00030kvatiaafcfy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/HTML常用标签/" data-id="cjwx1qy9h00003cva726t841m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -664,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjww8348e00050kvay2vqlsus" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwx1qy9t00043cva87euq2n8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -713,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjww8348f00060kva3tlxk2sy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/hello-world/" data-id="cjwx1qy9w00063cvajkbrzb3g" class="article-share-link">Share</a>
       
       
     </footer>
