@@ -7,17 +7,17 @@
   
   <title>JS类型转换与内存 | 冯义星的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类型转换转字符串1、toString()方法除null和undefined以外的数据类型都有此方法对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时会先调用String()方法将其他类型的数据转换成字符串再运">
+  <meta name="description" content="转字符串1、toString()方法除null和undefined以外的数据类型都有此方法 对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时 会先调用String()方法将其他类型的数据转换成字符串再运算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS类型转换与内存">
 <meta property="og:url" content="http://yoursite.com/2019/06/15/JS类型转换与内存/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="类型转换转字符串1、toString()方法除null和undefined以外的数据类型都有此方法对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时会先调用String()方法将其他类型的数据转换成字符串再运">
+<meta property="og:description" content="转字符串1、toString()方法除null和undefined以外的数据类型都有此方法 对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时 会先调用String()方法将其他类型的数据转换成字符串再运算">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-15T14:36:18.628Z">
+<meta property="og:updated_time" content="2019-06-15T14:51:30.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS类型转换与内存">
-<meta name="twitter:description" content="类型转换转字符串1、toString()方法除null和undefined以外的数据类型都有此方法对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时会先调用String()方法将其他类型的数据转换成字符串再运">
+<meta name="twitter:description" content="转字符串1、toString()方法除null和undefined以外的数据类型都有此方法 对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39;因为+只操作相同类型的数据，故其他类型与字符串相加时 会先调用String()方法将其他类型的数据转换成字符串再运算">
   
     <link rel="alternate" href="/atom.xml" title="冯义星的博客" type="application/atom+xml">
   
@@ -86,39 +86,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><h5 id="转字符串"><a href="#转字符串" class="headerlink" title="转字符串"></a>转字符串</h5><p>1、<code>toString()</code>方法<br>除<code>null</code>和<code>undefined</code>以外的数据类型都有此方法<br>对象使用此方法获得的是<code>&quot;[object Object]&quot;</code></p>
-<p>2、<code>String(data)</code>方法<br>可以将任意类型的数据转换成字符串</p>
-<p>3、在数据后面加空字符串<code>+&#39;&#39;</code><br>因为+只操作相同类型的数据，故其他类型与字符串相加时<br>会先调用String()方法将其他类型的数据转换成字符串再运算</p>
-<h5 id="转布尔值"><a href="#转布尔值" class="headerlink" title="转布尔值"></a>转布尔值</h5><p>1、<code>Boolean(data)</code>方法</p>
+        <h3 id="转字符串"><a href="#转字符串" class="headerlink" title="转字符串"></a>转字符串</h3><h5 id="1、toString-方法"><a href="#1、toString-方法" class="headerlink" title="1、toString()方法"></a>1、<code>toString()</code>方法</h5><p>除<code>null</code>和<code>undefined</code>以外的数据类型都有此方法</p>
+<p>对象使用此方法获得的是<code>&quot;[object Object]&quot;</code></p>
+<h5 id="2、String-data-方法"><a href="#2、String-data-方法" class="headerlink" title="2、String(data)方法"></a>2、<code>String(data)</code>方法</h5><p>可以将任意类型的数据转换成字符串</p>
+<h5 id="3、在数据后面加空字符串-39-39"><a href="#3、在数据后面加空字符串-39-39" class="headerlink" title="3、在数据后面加空字符串+&#39;&#39;"></a>3、在数据后面加空字符串<code>+&#39;&#39;</code></h5><p>因为+只操作相同类型的数据，故其他类型与字符串相加时</p>
+<p>会先调用String()方法将其他类型的数据转换成字符串再运算</p>
+<hr>
+<h3 id="转布尔值"><a href="#转布尔值" class="headerlink" title="转布尔值"></a>转布尔值</h3><p>1、<code>Boolean(data)</code>方法</p>
 <p>2、在数据前加两个逻辑非运算符<code>!!</code></p>
 <p>五个falsy值：<code>0</code>、<code>NaN</code>、<code>&#39;&#39;</code>、<code>null</code>、<code>undefined</code></p>
-<h5 id="转数字"><a href="#转数字" class="headerlink" title="转数字"></a>转数字</h5><p>1、<code>Number(data)</code>方法<br>这种方法将字符串转成数字只能转纯数字字符串，否则会得到NaN(Not a Number)</p>
-<p>2、<code>parseInt(data)</code>、<code>parseFloat(data)</code>方法<br>解析数字字符，按从左到右的顺序能解析多少个就解析多少个，遇到不能解析的就返回已解析的结果</p>
-<p>3、减零法<code>-0</code><br>底层使用的转换方法是<code>Number()</code></p>
-<p>4、取正法<br>在数据前加<code>+</code>号，即可将其转换成数字，底层使用的也是<code>Number()</code>方法</p>
 <hr>
-<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><h5 id="内存和硬盘"><a href="#内存和硬盘" class="headerlink" title="内存和硬盘"></a>内存和硬盘</h5><p>内存，断电即失，读写数据快</p>
+<h3 id="转数字"><a href="#转数字" class="headerlink" title="转数字"></a>转数字</h3><h5 id="1、Number-data-方法"><a href="#1、Number-data-方法" class="headerlink" title="1、Number(data)方法"></a>1、<code>Number(data)</code>方法</h5><p>这种方法将字符串转成数字只能转纯数字字符串，否则会得到NaN(Not a Number)</p>
+<h5 id="2、parseInt-data-、parseFloat-data-方法"><a href="#2、parseInt-data-、parseFloat-data-方法" class="headerlink" title="2、parseInt(data)、parseFloat(data)方法"></a>2、<code>parseInt(data)</code>、<code>parseFloat(data)</code>方法</h5><p>解析数字字符，按从左到右的顺序能解析多少个就解析多少个，遇到不能解析的就返回已解析的结果</p>
+<h5 id="3、减零法-0"><a href="#3、减零法-0" class="headerlink" title="3、减零法-0"></a>3、减零法<code>-0</code></h5><p>底层使用的转换方法是<code>Number()</code></p>
+<h5 id="4、取正法"><a href="#4、取正法" class="headerlink" title="4、取正法"></a>4、取正法</h5><p>在数据前加<code>+</code>号，即可将其转换成数字，底层使用的也是<code>Number()</code>方法</p>
+<hr>
+<h3 id="内存和硬盘"><a href="#内存和硬盘" class="headerlink" title="内存和硬盘"></a>内存和硬盘</h3><p>内存，断电即失，读写数据快</p>
 <p>硬盘，持久存储，读写速度慢，如SSD固态硬盘、机械硬盘</p>
-<h5 id="JS内存"><a href="#JS内存" class="headerlink" title="JS内存"></a>JS内存</h5><p>浏览器会将电脑分配给JS的内存氛围代码区和数据区</p>
-<p>数据区又划分为：<br>1、栈内存(Stack)<br>用来存储基本数据类型和64位内存地址(对象的引用)</p>
-<p>2、堆内存(Heap)<br>因为对象可扩展属性，存在栈内存中扩展很消耗性能(类似向数组中插入数据)</p>
-<p>故将引用数据类型存储在堆内存中，通过引用操纵对象<br>‘’’js<br>var a = { n: 1 } //a = ADDR45<br>var b = a //b = ADDR45<br>/**浏览器执行顺序从左到右</p>
-<ul>
-<li>但赋值运算符运算顺序从右到左</li>
-<li>故a.x = ADDR45.x, a = { n: 2 }-ADDR55, a.x = ADDR55 */<br>a.x = a = { n: 2 }<br>console.log(a.x) //ADDR55.x = undefined<br>console.log(b.x) //ADDR45.x = { n: 2 }<br>‘’’<h5 id="垃圾回收-GC"><a href="#垃圾回收-GC" class="headerlink" title="垃圾回收(GC)"></a>垃圾回收(GC)</h5>如果一个对象没有被引用，他就是垃圾，将被回收<br>‘’’js<br>var fn = function () { } //函数1</li>
-</ul>
-<p>document.body.onclick = fn</p>
-<p>fn = null//此时函数1还不是垃圾，因为还有document.body.oclick引用它</p>
-<p>document.body.onclick = null//此时函数1已不被引用，就会视作垃圾进行回收<br>‘’’</p>
-<h5 id="引用类型的-浅拷贝和深拷贝"><a href="#引用类型的-浅拷贝和深拷贝" class="headerlink" title="(引用类型的)浅拷贝和深拷贝"></a>(引用类型的)浅拷贝和深拷贝</h5><p>浅拷贝，拷贝的是引用</p>
-<p><code>var a = {}; var b = a</code> b改变会影响a</p>
-<p>深拷贝，拷贝的是值</p>
-<p><code>var a = {}; var b = JSON.parse(JSON.stringify(a))</code></p>
+<hr>
+<h3 id="JS内存"><a href="#JS内存" class="headerlink" title="JS内存"></a>JS内存</h3><p>浏览器会将电脑分配给JS的内存氛围代码区和数据区</p>
+<p>数据区又划分为：</p>
+<h5 id="1、栈内存-Stack"><a href="#1、栈内存-Stack" class="headerlink" title="1、栈内存(Stack)"></a>1、栈内存(Stack)</h5><p>用来存储基本数据类型和64位内存地址(对象的引用)</p>
+<h5 id="2、堆内存-Heap"><a href="#2、堆内存-Heap" class="headerlink" title="2、堆内存(Heap)"></a>2、堆内存(Heap)</h5><p>因为对象可扩展属性，存在栈内存中扩展很消耗性能(类似向数组中插入数据)</p>
+<p>故将引用数据类型存储在堆内存中，通过引用操纵对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">n</span>: <span class="number">1</span> &#125; <span class="comment">//a = ADDR45</span></span><br><span class="line"><span class="keyword">var</span> b = a <span class="comment">//b = ADDR45</span></span><br><span class="line"><span class="comment">/**浏览器执行顺序从左到右</span></span><br><span class="line"><span class="comment"> * 但赋值运算符运算顺序从右到左</span></span><br><span class="line"><span class="comment"> * 故a.x = ADDR45.x, a = &#123; n: 2 &#125;-ADDR55, a.x = ADDR55 */</span></span><br><span class="line">a.x = a = &#123; <span class="attr">n</span>: <span class="number">2</span> &#125; </span><br><span class="line"><span class="built_in">console</span>.log(a.x) <span class="comment">//ADDR55.x = undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x) <span class="comment">//ADDR45.x = &#123; n: 2 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="垃圾回收-GC"><a href="#垃圾回收-GC" class="headerlink" title="垃圾回收(GC)"></a>垃圾回收(GC)</h3><p>如果一个对象没有被引用，他就是垃圾，将被回收</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125; <span class="comment">//函数1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn</span><br><span class="line"></span><br><span class="line">fn = <span class="literal">null</span><span class="comment">//此时函数1还不是垃圾，因为还有document.body.oclick引用它</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.onclick = <span class="literal">null</span><span class="comment">//此时函数1已不被引用，就会视作垃圾进行回收</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用类型的-浅拷贝和深拷贝"><a href="#引用类型的-浅拷贝和深拷贝" class="headerlink" title="(引用类型的)浅拷贝和深拷贝"></a>(引用类型的)浅拷贝和深拷贝</h3><h5 id="浅拷贝，拷贝的是引用"><a href="#浅拷贝，拷贝的是引用" class="headerlink" title="浅拷贝，拷贝的是引用"></a>浅拷贝，拷贝的是引用</h5><p><code>var a = {}; var b = a</code> b改变会影响a</p>
+<h5 id="深拷贝，拷贝的是值"><a href="#深拷贝，拷贝的是值" class="headerlink" title="深拷贝，拷贝的是值"></a>深拷贝，拷贝的是值</h5><p><code>var a = {}; var b = JSON.parse(JSON.stringify(a))</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjwxmk1u00005vsvao7t8a10s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjwxn2wmk0005egva51u4h4ik" class="article-share-link">Share</a>
       
       
     </footer>
