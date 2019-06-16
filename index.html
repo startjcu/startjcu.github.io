@@ -121,14 +121,14 @@
 <p>如<code>var obj = {}(new Object())</code></p>
 <p><code>obj</code>是一个对象，它的<code>__proto__</code>属性指向其构造函数<code>Object</code>的<code>prototype</code>属性<br>即<code>obj.__proto__ === Object.prototype</code></p>
 <p>而<code>Object.prototype</code>也是一个对象，它的<code>__proto__</code>属性指向<code>null</code></p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>通过对象调用属性/方法，若该对象中没有此属性，就会取它的原型中找</p>
-<p>即去其构造函数的<code>prototype</code>中找，过还没找到，就会去其构造函数的原型中找</p>
-<p>即去构造函数(也是一种对象)的构造函数的<code>prototype</code>中找，依此类推，链式查找</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>通过对象调用属性/方法，若该对象中没有此属性，</p>
+<p>就会去它的(隐式)原型<code>obj.__proto__</code>中找，即去其构造函数的(显式)原型<code>fn.prototype</code>中找</p>
+<p>如果还没找到，就会去其原型的原型<code>obj.__proto__.__proto__</code>中找，层层向上直到一个对象的原型对象为<code>null</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjwyunycc0002rovacux1h7sb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjwz3th0n0003z0va3sfktv7k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -194,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjwyunycg0004rovawua44iv5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjwz3th0p0004z0vaadazlbvf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjwyunycj0006rova6gxulo01" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjwz3th0r0006z0vayri0brg3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwyunych0005rovab19l1ayy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwz3th0q0005z0vabojrdfj3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjwyunycq000arovaegdwq131" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjwz3th0v0009z0vad9l48lz6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjwyunyc90001rova0uudva4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjwz3th0e0000z0va2bnd06qy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -575,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjwyunyc10000rovamprqyskj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjwz3th0k0001z0vaxz2tht0w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -660,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwyunyce0003rovajsf2jzsg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwz3th0m0002z0va8n8yeaiw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +751,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/命令行基础/" data-id="cjwyunycn0009rovapbelpf74" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/命令行基础/" data-id="cjwz3th1a000az0vaqq5itr24" class="article-share-link">Share</a>
       
       
     </footer>
@@ -825,7 +825,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwyunyck0007rova14pl436f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwz3th0u0008z0vagw3uy8nv" class="article-share-link">Share</a>
       
       
     </footer>
