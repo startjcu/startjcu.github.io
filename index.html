@@ -62,6 +62,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS数组和伪数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/17/JS数组和伪数组/" class="article-date">
+  <time datetime="2019-06-17T15:51:17.000Z" itemprop="datePublished">2019-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/17/JS数组和伪数组/">JS数组和伪数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h3><p>一种术语，指浏览器提供给JS的<code>API</code></p>
+<h3 id="常用内置函数"><a href="#常用内置函数" class="headerlink" title="常用内置函数"></a>常用内置函数</h3><h5 id="Number、String、Boolean"><a href="#Number、String、Boolean" class="headerlink" title="Number、String、Boolean"></a><code>Number</code>、<code>String</code>、<code>Boolean</code></h5><p>不加<code>new</code>，用于类型转换</p>
+<p>加<code>new</code>，用于创建相应对象</p>
+<h5 id="Object、Array、Function"><a href="#Object、Array、Function" class="headerlink" title="Object、Array、Function"></a><code>Object</code>、<code>Array</code>、<code>Function</code></h5><p>加不加<code>new</code>关键字都表示创建对象</p>
+<p><strong><em>Object</em></strong></p>
+<p><code>var obj = {}</code>是<code>var obj = new Object()</code>的语法糖</p>
+<p><strong><em>Array</em></strong></p>
+<p><code>var arr = []</code>是<code>var arr = new Array()</code>的语法糖</p>
+<p>但<code>Array(3)</code>表示创建一个长度为3的数组，并不是<code>[3]</code></p>
+<p>因为<code>Array</code>只传一个参数且为数字时，必须是自然数，且表示的是数组长度</p>
+<p><strong><em>Function</em></strong></p>
+<p>使用关键字创建函数：<code>function fn(){}</code>，ES6箭头函数<code>() =&gt; {}</code></p>
+<p>使用内置函数创建函数：<code>var fn = new Function(&#39;a&#39;,&#39;b&#39;,&#39;return a-b&#39;)</code></p>
+<hr>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组的本质是<code>__proto__</code>属性指向<code>Array.prototype</code>的对象</p>
+<p>数组也可以扩展属性，只是遍历的时候使用的<code>key</code>值为数字，一般不会遍历到自定义的属性而已</p>
+<h5 id="数组首尾操作API"><a href="#数组首尾操作API" class="headerlink" title="数组首尾操作API"></a>数组首尾操作API</h5><p><code>push(data)</code>：在数组的末尾追加一个元素</p>
+<p><code>pop()</code>：删除数组最后一个元素</p>
+<p><code>unshift(data)</code>：在数组开头插入一个元素</p>
+<p><code>shift()</code>：删除数组的首个元素</p>
+<h5 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h5><p>某一对象中也有类似数组以自然数为<code>key</code>值得键值对</p>
+<p>但原型链中没有<code>Array.prototype</code>这一环，如<code>arguments</code>(参数伪数组)对象</p>
+<hr>
+<h3 id="数组常用API"><a href="#数组常用API" class="headerlink" title="数组常用API"></a>数组常用API</h3><h5 id="concat"><a href="#concat" class="headerlink" title="concat"></a><code>concat</code></h5><p>返回两个数组连接生成的新数组，<code>arr1.concat(arr2)</code></p>
+<p>巧妙用于进行数组的深拷贝：<code>arr2 = arr1.concat([])</code></p>
+<h5 id="join"><a href="#join" class="headerlink" title="join"></a><code>join</code></h5><p>将数组转换为字符串，默认以逗号连接</p>
+<p>即<code>arr.toString()</code>等效于<code>arr.join()</code></p>
+<p>数组转字符串<code>arr.join(&#39;&#39;)</code>，字符串转字符数组<code>str.split(&#39;&#39;)</code></p>
+<hr>
+<h5 id="sort"><a href="#sort" class="headerlink" title="sort"></a><code>sort</code></h5><p>用于进行数组排序</p>
+<p>语法：<code>sort(function(a, b){ return a-b }</code>表示从小到大排序</p>
+<h5 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a><code>forEach</code></h5><p>用于遍历数组，无返回值</p>
+<p>语法：<code>forEach(function(item, index){})</code></p>
+<h5 id="map"><a href="#map" class="headerlink" title="map"></a><code>map</code></h5><p>映射，将当前数组元素进行指定操作，返回新数组</p>
+<p>语法：<code>map(function(item, index){ return item*2 }</code>将所有元素扩大两倍</p>
+<h5 id="filter"><a href="#filter" class="headerlink" title="filter"></a><code>filter</code></h5><p>过滤，将当前数组中符合条件的元素过滤出来，组成新数组</p>
+<p>语法：<code>filter(function(item, index){ return item%2 }</code>获取所有奇数</p>
+<hr>
+<h5 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a><code>reduce</code></h5><p>减少，将数组中的元素依次进行某项操作，返回一个值</p>
+<p>语法：<code>reduce(function(prev, cur){ return prev+cur }, initial)</code></p>
+<p>可以用<code>reduce</code>方法表示<code>map</code>和<code>filter</code>，或是实现<code>forEach</code>的功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="comment">//使用reduce表示map将数组元素*2</span></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    prev.push(cur * <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="comment">//使用reduce表示filter过滤出数组中的奇数</span></span><br><span class="line"><span class="keyword">var</span> arr2 = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    cur % <span class="number">2</span> &amp;&amp; prev.push(cur)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="comment">//使用reduce表示forEach求数组中偶数项的和</span></span><br><span class="line"><span class="keyword">var</span> sum = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    cur % <span class="number">2</span> || (prev += cur)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/17/JS数组和伪数组/" data-id="cjx0vry510005iovahek8lps9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS原型和原型链" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/16/JS原型和原型链/" class="article-date">
@@ -128,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjwz3th0n0003z0va3sfktv7k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjx0vry4y0003iova8p0yt7pd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -194,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjwz3th0p0004z0vaadazlbvf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjx0vry540007iovad44997iv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjwz3th0r0006z0vayri0brg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjx0vry520006iovamdmgw28t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjwz3th0q0005z0vabojrdfj3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjx0vry4z0004iovap2tkwyn1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjwz3th0v0009z0vad9l48lz6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjx0vry5d000biovawvl8qfpm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjwz3th0e0000z0va2bnd06qy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjx0vry4m0000iovaxv1o94wq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -575,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjwz3th0k0001z0vaxz2tht0w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjx0vry4u0001iovaqn5ydvs2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -660,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjwz3th0m0002z0va8n8yeaiw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjx0vry4w0002iovaxtj2fgy1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,81 +828,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/命令行基础/" data-id="cjwz3th1a000az0vaqq5itr24" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/08/Markdown语法/" class="article-date">
-  <time datetime="2019-06-08T09:15:00.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/Markdown语法/">Markdown语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题：<code>#代表一级标题，##代表二级标题，依此类推</code></p>
-<p>分隔线：<code>在一个空行中插入三个及以上的*号，除此外行内不能有其他内容</code></p>
-<hr>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p><em>倾斜</em>：<code>*倾斜*</code></p>
-<p><strong>加粗</strong>：<code>**加粗**</code></p>
-<p><del>中划线</del>：<code>~~中划线~~</code></p>
-<p><strong><em>倾斜加粗</em></strong>：<code>***倾斜加粗***</code></p>
-<hr>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>单行代码：<code>反引号</code></p>
-<p><code>console.log(&#39;hello world&#39;)</code></p>
-<p>多行代码：<code>三反引号</code></p>
-<hr>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
-<li>无序列表：<code>* 无序列表</code></li>
-</ul>
-<ol>
-<li>有序列表：<code>1. 有序列表</code></li>
-</ol>
-<hr>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
-<thead>
-<tr>
-<th align="center">姓名</th>
-<th align="center">年龄</th>
-<th align="center">身高</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">star</td>
-<td align="center">18</td>
-<td align="center">168</td>
-</tr>
-</tbody></table>
-<p><code>表头：姓名|年龄|身高；标识：-|-|-；内容：star|18|168</code></p>
-<hr>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>链接：<code>&lt;链接地址&gt;或[链接名称](链接地址)</code><br><a href="https://blog.csdn.net/sinat_37781304/article/details/82729029" target="_blank" rel="noopener">hexo搭建教程</a><br><a href="https://blog.csdn.net/u014061630/article/details/81359144" target="_blank" rel="noopener">markdown语法教程</a><br>百度一下: <a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></p>
-<hr>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>图片使用方法：<code>![图片描述](图片地址)路径可用相对路径或网络地址，图片难加载，尽量少用</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/Markdown语法/" data-id="cjwz3th0u0008z0vagw3uy8nv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/命令行基础/" data-id="cjx0vry580009iovam9nqw7as" class="article-share-link">Share</a>
       
       
     </footer>
@@ -871,6 +874,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/17/JS数组和伪数组/">JS数组和伪数组</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/16/JS原型和原型链/">JS原型和原型链</a>
           </li>
         
@@ -884,10 +891,6 @@
         
           <li>
             <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/12/数据结构和排序算法/">数据结构和排序算法</a>
           </li>
         
       </ul>
