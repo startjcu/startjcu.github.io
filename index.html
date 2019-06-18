@@ -62,6 +62,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/JS-DOM/" class="article-date">
+  <time datetime="2019-06-18T15:37:03.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/18/JS-DOM/">JS-DOM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>文档对象模型：<code>Document Object Model</code>是<code>HTML</code>和<code>XML</code>文档的编程接口</p>
+<h3 id="Node接口"><a href="#Node接口" class="headerlink" title="Node接口"></a>Node接口</h3><p>Node(节点)是一个接口，许多<code>DOM API</code>都会继承这个接口，如<code>Document</code>、<code>Element</code>、<code>Text</code></p>
+<h5 id="Node常用属性"><a href="#Node常用属性" class="headerlink" title="Node常用属性"></a><code>Node</code>常用属性</h5><p><code>childNodes</code>:获取所有子节点</p>
+<p><code>firstChild</code>：获取第一个子节点</p>
+<p><code>lastChild</code>：获取最后一个子节点</p>
+<p><code>nodeName</code>：通过该属性获取的是节点名是大写格式的，后加入的<code>svg</code>除外</p>
+<p><code>nodeType</code>：节点类型，<code>1-Node.ELEMENT_NODE</code>、<code>3-Node.TEXT_NODE</code></p>
+<p><code>parentNode</code>：获取父节点</p>
+<p><code>previousSibling</code>：获取上一个兄弟节点</p>
+<p><code>nextSibling</code>：获取下一个兄弟节点</p>
+<p><code>Node</code>(节点)的类型很多，如注释节点、文本节点等，易忽略的是换行和空格也会构成文本节点</p>
+<hr>
+<h5 id="Node常用方法"><a href="#Node常用方法" class="headerlink" title="Node常用方法"></a><code>Node</code>常用方法</h5><p><code>appendChild()</code>：添加子节点</p>
+<p><code>cloneNode()</code>：克隆节点，可以传入布尔值；默认浅拷贝，传入<code>true</code>后是深拷贝</p>
+<p><code>isEqualNode()</code>：判断两个节点是否相同</p>
+<p><code>isSameNode()</code>：判断两个节点是否是同一个节点</p>
+<p><code>normalize()</code>：标准化，常见的将同时添加的两个文本节点转化为一个文本节点</p>
+<hr>
+<h3 id="Document接口"><a href="#Document接口" class="headerlink" title="Document接口"></a>Document接口</h3><p>指整个加载好的网页，是操作<code>DOM</code>树的入口</p>
+<p><code>document</code>是浏览器全局对象<code>window</code>的一个属性，原型是<code>HTMLDocument.prototype</code></p>
+<h5 id="Document常用属性"><a href="#Document常用属性" class="headerlink" title="Document常用属性"></a><code>Document</code>常用属性</h5><p><code>body</code>：获取body节点</p>
+<p><code>characterSet</code>：获取当前页面字符编码</p>
+<p><code>doctype</code>：获取文档类型</p>
+<p><code>documentElement</code>：获取文档元素，不包括doctype</p>
+<p><code>location</code>：获取网页URI</p>
+<p>浏览器加载<code>document</code>的过程：<code>open -&gt; write -&gt; close</code>(页面加载完毕后自动执行)</p>
+<p>所以如果异步向页面写入内容，会覆盖之前页面中的内容，因为有网页关闭后在重新开启的过程</p>
+<h5 id="Document常用方法"><a href="#Document常用方法" class="headerlink" title="Document常用方法"></a><code>Document</code>常用方法</h5><p><code>createElement()</code>：创建一个元素节点，在<code>HTML</code>中元素特指标签</p>
+<p><code>createTextNode()</code>：创建一个文本节点</p>
+<p><code>getElementById()</code>：获取某个DOM节点</p>
+<p><code>getElementsByClassName()</code>、<code>getElementsByTagName()</code>：获取一组DOM节点</p>
+<hr>
+<h3 id="Element接口"><a href="#Element接口" class="headerlink" title="Element接口"></a>Element接口</h3><p><strong>特有属性</strong></p>
+<p><code>tagName</code>：获取标签名，是大写格式的</p>
+<p><code>classList</code>：获取class属性伪数组</p>
+<p><code>children</code>：获取所有子元素</p>
+<p><code>previousElementSibling</code>：前一个兄弟元素</p>
+<p><code>nextElementSibling</code>：下一个兄弟元素</p>
+<p><strong>优化查找DOM元素的方法</strong></p>
+<p><code>querySelector()</code>：获取匹配指定选择器的第一个元素</p>
+<p><code>querySelectorAll()</code>：获取匹配指定选择器的一组元素</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/JS-DOM/" data-id="cjx21g4v20002bsvagatse5ls" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/JS函数/" class="article-date">
+  <time datetime="2019-06-18T10:05:11.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/18/JS函数/">JS函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数的5种声明方式"><a href="#函数的5种声明方式" class="headerlink" title="函数的5种声明方式"></a>函数的5种声明方式</h3><h5 id="1、具名函数"><a href="#1、具名函数" class="headerlink" title="1、具名函数"></a>1、具名函数</h5><p>指有具体名称的函数</p>
+<p>如：<code>function fn(){ return undefined }</code>，<code>fn.name -&gt; fn</code></p>
+<h5 id="2、匿名函数"><a href="#2、匿名函数" class="headerlink" title="2、匿名函数"></a>2、匿名函数</h5><p>一般要赋值给一个变量进行调用，且要放在调用前声明</p>
+<p>如：<code>var fn = function(){ return undefined }</code>，<code>fn.name -&gt; fn</code></p>
+<h5 id="3、将具名函数赋值给变量"><a href="#3、将具名函数赋值给变量" class="headerlink" title="3、将具名函数赋值给变量"></a>3、将具名函数赋值给变量</h5><p><code>var fn1 = function fn(){ return undefined }</code>，<code>fn1.name -&gt; fn</code></p>
+<p>这种声明方式下，<code>fn</code>只能在函数体里才能访问，外部访问会报错</p>
+<h5 id="4、使用内置函数Function声明"><a href="#4、使用内置函数Function声明" class="headerlink" title="4、使用内置函数Function声明"></a>4、使用内置函数Function声明</h5><p><code>var fn = new Function(&#39;x&#39;, &#39;y&#39;, &#39;return x+y&#39;)</code>，<code>fn.name -&gt; anonymous</code></p>
+<p>这种声明方式比较繁琐，很少用到，而且其<code>name</code>属性值为<code>anonymous</code></p>
+<h5 id="5、ES6箭头函数"><a href="#5、ES6箭头函数" class="headerlink" title="5、ES6箭头函数"></a>5、ES6箭头函数</h5><p>用法同匿名函数，但写法要简洁很多</p>
+<p>语法：<code>var fn = ()=&gt;{}</code>，<code>fn.name -&gt; fn</code></p>
+<p><code>()</code>中放参数列表，若只有一个参数，<code>()</code>可以省略不写</p>
+<p><code>{}</code>中放函数体，如果只有一条<code>return</code>语句，可以省略<code>{}</code>和<code>return</code>关键字；若返回的是一个对象，省略后要用<code>()</code>包裹对象</p>
+<hr>
+<h3 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h3><p>函数本质是一个对象</p>
+<p>可描述为：<code>var fn = { params:[&#39;x&#39;,&#39;y&#39;], fBody:&#39;return x+y&#39;, call:function(){ eval(fn.fBody) }}</code></p>
+<h5 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h5><p><code>f(1, 2)</code>是<code>f.call(undefined, 1, 2)</code>的语法糖</p>
+<h3 id="this和arguments"><a href="#this和arguments" class="headerlink" title="this和arguments"></a>this和arguments</h3><p><code>call</code>的第一个参数可以用<code>this</code>得到</p>
+<p><code>call</code>的第一个参数后面的参数可用<code>arguments</code>得到</p>
+<h3 id="call-stack"><a href="#call-stack" class="headerlink" title="call stack"></a>call stack</h3><p>调用栈</p>
+<p>先进后出，指后调用的函数先执行，一般是指函数中嵌套其他函数</p>
+<p>如同递归，先执行目标函数，层层递进到结束点，再从结束点回归到目标函数</p>
+<p>常见错误：<code>stack overflow</code>堆栈溢出，是递归深度超过了最大限制而报出的错误</p>
+<hr>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>可用用树结构来描述作用域</p>
+<h5 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h5><p>当使用一个变量时，会先在当前作用域中找</p>
+<p>若没有就去上一级作用域，依次往上查找，直至顶层<code>window</code>作用域</p>
+<p><code>a=3</code>这个表达式是赋值，若当前作用域中无<code>a</code>变量的声明，就会沿着作用域链去查找</p>
+<p>如果一直找不到，就会成为一个全局变量，即给<code>window</code>下的变量<code>a</code>赋值为<code>3</code></p>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><p>在JS一行一行执行代码之前，会进行预解析，将声明提前</p>
+<p>1、变量声明，如<code>var a=1</code>这个表达式包括声明和赋值，故会将<code>var a</code>提到最前面</p>
+<p>若在<code>var a=1</code>之前使用了<code>a</code>变量，JS会视为已声明未赋值而默认赋值为<code>undefined</code></p>
+<p>2、函数声明，会将函数声明提前，这样函数就可以定义在调用代码之后了，函数体内部也存在变量提升</p>
+<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>如果一个函数使用了它范围外的变量，那么 <code>这个函数+这个变量</code> 就构成了闭包</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/JS函数/" data-id="cjx21g4v40003bsva3n7db8q0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS数组和伪数组" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/17/JS数组和伪数组/" class="article-date">
@@ -129,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/17/JS数组和伪数组/" data-id="cjx0vry510005iovahek8lps9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/17/JS数组和伪数组/" data-id="cjx21g4vd0008bsvau93urimk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,17 +326,17 @@
 <h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><p>用于将其他类型转换成字符串，也可用来创建<code>String</code>对象</p>
 <p>通过字符串调用方法的底层原理和数字调用属性/方法原理相同</p>
 <p>常用方法</p>
-<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h5><p>用于去除字符串两端空格</p>
-<h5 id="charAt-index"><a href="#charAt-index" class="headerlink" title="charAt(index)"></a>charAt(index)</h5><p>获取指定位置字符</p>
-<h5 id="indexOf-str"><a href="#indexOf-str" class="headerlink" title="indexOf(str)"></a>indexOf(str)</h5><p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
-<h5 id="slice-startIndex-endIndex"><a href="#slice-startIndex-endIndex" class="headerlink" title="slice(startIndex, endIndex)"></a>slice(startIndex, endIndex)</h5><p>截取指定(左闭右开)区间的子串</p>
+<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a><code>trim()</code></h5><p>用于去除字符串两端空格</p>
+<h5 id="charAt-index"><a href="#charAt-index" class="headerlink" title="charAt(index)"></a><code>charAt(index)</code></h5><p>获取指定位置字符</p>
+<h5 id="indexOf-str"><a href="#indexOf-str" class="headerlink" title="indexOf(str)"></a><code>indexOf(str)</code></h5><p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
+<h5 id="slice-startIndex-endIndex"><a href="#slice-startIndex-endIndex" class="headerlink" title="slice(startIndex, endIndex)"></a><code>slice(startIndex, endIndex)</code></h5><p>截取指定(左闭右开)区间的子串</p>
 <p><code>startIndex</code>为负数，会默认加上<code>length</code></p>
 <p><code>endIndex</code>缺省或大于<code>length</code>时，会默认指定为<code>length</code></p>
-<h5 id="substring-startIndex-endIndex"><a href="#substring-startIndex-endIndex" class="headerlink" title="substring(startIndex, endIndex)"></a>substring(startIndex, endIndex)</h5><p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
-<h5 id="substr-startIndex-count"><a href="#substr-startIndex-count" class="headerlink" title="substr(startIndex, count)"></a>substr(startIndex, count)</h5><p>从指定位置开始，截取指定长度的子串</p>
+<h5 id="substring-startIndex-endIndex"><a href="#substring-startIndex-endIndex" class="headerlink" title="substring(startIndex, endIndex)"></a><code>substring(startIndex, endIndex)</code></h5><p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
+<h5 id="substr-startIndex-count"><a href="#substr-startIndex-count" class="headerlink" title="substr(startIndex, count)"></a><code>substr(startIndex, count)</code></h5><p>从指定位置开始，截取指定长度的子串</p>
 <p>当<code>start + count &gt; length</code>时，会默认指定为<code>length</code>，即截取到末尾</p>
-<h5 id="s1-concat-s2"><a href="#s1-concat-s2" class="headerlink" title="s1.concat(s2)"></a>s1.concat(s2)</h5><p>将两个字符串拼接，返回一个新的字符串</p>
-<h5 id="replace-REG-ig-target"><a href="#replace-REG-ig-target" class="headerlink" title="replace(/REG/ig, target)"></a>replace(/REG/ig, target)</h5><p>将字符串中符合正则匹配的都替换为目标字符串</p>
+<h5 id="s1-concat-s2"><a href="#s1-concat-s2" class="headerlink" title="s1.concat(s2)"></a><code>s1.concat(s2)</code></h5><p>将两个字符串拼接，返回一个新的字符串</p>
+<h5 id="replace-REG-ig-target"><a href="#replace-REG-ig-target" class="headerlink" title="replace(/REG/ig, target)"></a><code>replace(/REG/ig, target)</code></h5><p>将字符串中符合正则匹配的都替换为目标字符串</p>
 <p><code>i：ignoreCase</code>忽略大小写，<code>g：global</code>全局</p>
 <p>若不使用参数，可用字符串代替正则，默认只会替换第一处匹配的结果</p>
 <hr>
@@ -205,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjx0vry4y0003iova8p0yt7pd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjx21g4v90006bsvag0fn9tl5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjx0vry540007iovad44997iv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/15/JS类型转换与内存/" data-id="cjx21g4vi000absvaplddwb9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjx0vry520006iovamdmgw28t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/14/JS数据类型/" data-id="cjx21g4vb0007bsvaggjtkuxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjx0vry4z0004iovap2tkwyn1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/JS实现键盘导航/" data-id="cjx21g4v70005bsva3d35ch3y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -488,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjx0vry5d000biovawvl8qfpm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/12/数据结构和排序算法/" data-id="cjx21g4w0000cbsva0n91rg31" class="article-share-link">Share</a>
       
       
     </footer>
@@ -563,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjx0vry4m0000iovaxv1o94wq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/CSS归纳整理/" data-id="cjx21g4us0000bsvaa8kflez9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -652,183 +798,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjx0vry4u0001iovaqn5ydvs2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP基础知识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/09/HTTP基础知识/" class="article-date">
-  <time datetime="2019-06-09T08:12:59.000Z" itemprop="datePublished">2019-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/HTTP基础知识/">HTTP基础知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="页面相关术语"><a href="#页面相关术语" class="headerlink" title="页面相关术语"></a>页面相关术语</h3><h5 id="URL：Uniform-Resource-Locator"><a href="#URL：Uniform-Resource-Locator" class="headerlink" title="URL：Uniform Resource Locator"></a>URL：<code>Uniform Resource Locator</code></h5><p>统一资源定位符，用来定位页面</p>
-<h5 id="HTTP：HyperText-Transfer-Protocol"><a href="#HTTP：HyperText-Transfer-Protocol" class="headerlink" title="HTTP：HyperText Transfer Protocol"></a>HTTP：<code>HyperText Transfer Protocol</code></h5><p>超文本传输协议，用来下载页面</p>
-<h5 id="HTML：HyperText-Markup-Language"><a href="#HTML：HyperText-Markup-Language" class="headerlink" title="HTML：HyperText Markup Language"></a>HTML：<code>HyperText Markup Language</code></h5><p>超文本标记语言，用来显示页面</p>
-<hr>
-<h3 id="资源相关术语"><a href="#资源相关术语" class="headerlink" title="资源相关术语"></a>资源相关术语</h3><h5 id="URI：Uniform-Resource-Identifier"><a href="#URI：Uniform-Resource-Identifier" class="headerlink" title="URI：Uniform Resource Identifier"></a>URI：<code>Uniform Resource Identifier</code></h5><p>统一资源标识符，有两种实现方式<code>URL</code>和<code>URN</code></p>
-<h5 id="URL：Uniform-Resource-Locator-1"><a href="#URL：Uniform-Resource-Locator-1" class="headerlink" title="URL：Uniform Resource Locator"></a>URL：<code>Uniform Resource Locator</code></h5><p>统一资源定位符，用来定位一个资源，一般指代网址，但文件移动后就找不到了</p>
-<h5 id="URN：Uniform-Resource-Name"><a href="#URN：Uniform-Resource-Name" class="headerlink" title="URN：Uniform Resource Name"></a>URN：<code>Uniform Resource Name</code></h5><p>统一资源名称，用来唯一标识某个资源，如<code>ISBN</code>国际标准书号<code>International Standard Book Number</code></p>
-<hr>
-<h3 id="URL的组成"><a href="#URL的组成" class="headerlink" title="URL的组成"></a>URL的组成</h3><p>协议：(Protocal)<code>https://</code></p>
-<p>域名：(Host)<code>startjcu.com</code>，其中<code>com</code>为顶级域名、<code>startjcu</code>为二级域名</p>
-<p>端口：(Port)<code>:443</code>，对应服务器上的某个Web服务，http-80为默认端口</p>
-<p>路径：(Path)<code>/resum</code></p>
-<p>参数：(Parameter)<code>?id=1&amp;name=star</code></p>
-<p>锚点：(Hash)<code>#3</code>，用来实现某个页面内不同位置的跳转</p>
-<hr>
-<h3 id="DNS服务"><a href="#DNS服务" class="headerlink" title="DNS服务"></a>DNS服务</h3><p>域名系统：<code>Domain Name System</code>，用来将域名解析为对应的IP地址</p>
-<p>流程：域名 &gt; (本地hosts)电信DNS服务 &gt; IP地址</p>
-<p>服务器(Server电脑) &gt; HTTP &gt; 客户端(Client浏览器)</p>
-<p>HTTP的作用是置动服务器和浏览器之间如何通信</p>
-<hr>
-<h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><h5 id="curl-X-POST-s-v-39-https-www-baidu-com-39"><a href="#curl-X-POST-s-v-39-https-www-baidu-com-39" class="headerlink" title="curl -X POST -s -v -- &#39;https://www.baidu.com&#39;"></a><code>curl -X POST -s -v -- &#39;https://www.baidu.com&#39;</code></h5><p>curl：<code>command line url</code>，此命令用于在命令行实现url请求</p>
-<p>-X：<code>request method</code>，指定请求方法</p>
-<p>-s：<code>silence</code>，不显示请求进度条</p>
-<p>-v：<code>verbose</code>，详细地显示请求<code>&gt;</code>和响应<code>&lt;</code></p>
-<h5 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h5><p><code>GET</code>：获取数据</p>
-<p><code>POST</code>：上传(提交)数据</p>
-<p><code>PUT/PATCH</code>：更新(整体/局部)数据</p>
-<p><code>DELETE</code>：删除数据</p>
-<p>其他方法：<code>HEAD</code>、<code>OPTIONS</code>等</p>
-<h5 id="请求报文格式"><a href="#请求报文格式" class="headerlink" title="请求报文格式"></a>请求报文格式</h5><p>1、请求方法 路径及参数 协议/版本号</p>
-<p>2、<code>key : value</code>键值对，如<code>Host: www.baidu.com</code></p>
-<p>3、空行，用来分隔2和4</p>
-<p>4、要上传的数据，如用户名、密码等</p>
-<h5 id="响应报文格式"><a href="#响应报文格式" class="headerlink" title="响应报文格式"></a>响应报文格式</h5><p>1、协议/版本号 状态码 状态说明</p>
-<p>2、<code>key : value</code>键值对，如<code>Content-Type: 141</code></p>
-<p>3、空行，用来分隔2和4</p>
-<p>4、下载的数据</p>
-<p><strong><em>状态码</em></strong><br>1xx：消息，如100-<code>Continue</code>，表示还需要进一步的操作</p>
-<p>2xx：成功，如200-<code>OK</code>，表示普通成功；201-<code>Created</code>，表示创建成功</p>
-<p>3xx：重定向，如301-<code>Moved Permanently</code>；302-<code>Move Temporarily</code></p>
-<p>4xx：请求错误，如401-<code>Unauthorized</code>未登录；404-<code>Not Found</code>资源丢失</p>
-<hr>
-<h3 id="连接相关术语"><a href="#连接相关术语" class="headerlink" title="连接相关术语"></a>连接相关术语</h3><h5 id="TCP：Transmission-Control-Protocol"><a href="#TCP：Transmission-Control-Protocol" class="headerlink" title="TCP：Transmission Control Protocol"></a>TCP：<code>Transmission Control Protocol</code></h5><p>传输控制协议，每次建立连接前，客户端和服务器都要进行三次成功对话后，才正式开始传输内容(TCP三次握手)</p>
-<h5 id="UDP：User-Datagram-Protocol"><a href="#UDP：User-Datagram-Protocol" class="headerlink" title="UDP：User Datagram Protocol"></a>UDP：<code>User Datagram Protocol</code></h5><p>用户数据报协议，和TCP的区别是，TCP可靠，面向连接，相对UDP较慢，而UDP正好相反</p>
-<h5 id="IP：Internet-Protocol"><a href="#IP：Internet-Protocol" class="headerlink" title="IP：Internet Protocol"></a>IP：<code>Internet Protocol</code></h5><p>网络协议，每个电脑都应该有一个独立的IP地址。<code>127.0.0.1/localhost</code>指本机，<code>0.0.0.0</code>不指向任何设备</p>
-<p>外网IP &gt; 路由器 &gt; 内网IP</p>
-<p>路由器(必由之路)，用于给信息指路/进行内容分发，故又称网关</p>
-<p>HTTP是基于TCP/IP协议构建的，使用HTTP协议访问另一个主机时，必须提供IP地址和端口号</p>
-<p>小知识：<code>argc=arguments count</code>、<code>argv = arguments value</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/HTTP基础知识/" data-id="cjx0vry4w0002iovaxtj2fgy1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-命令行基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/08/命令行基础/" class="article-date">
-  <time datetime="2019-06-08T09:50:24.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/命令行基础/">命令行基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="路径符号"><a href="#路径符号" class="headerlink" title="路径符号"></a>路径符号</h3><p>用户目录：<code>~</code></p>
-<p>整个硬盘：<code>/</code><br>故以/开头的路径为绝对路径</p>
-<p>当前目录：<code>.</code>；父级目录：<code>..</code></p>
-<hr>
-<h3 id="常用单词"><a href="#常用单词" class="headerlink" title="常用单词"></a>常用单词</h3><p>罗列：<code>list</code></p>
-<p>改变：<code>change</code></p>
-<p>目录：<code>directory</code></p>
-<p>文件：<code>file</code></p>
-<p>创建：<code>make</code></p>
-<p>删除：<code>remove</code></p>
-<p>移动：<code>move</code></p>
-<p>复制：<code>copy</code></p>
-<p>链接：<code>link</code></p>
-<p>查找：<code>find</code></p>
-<p>触摸：<code>touch</code></p>
-<p>回音：<code>echo</code></p>
-<p>命令是由常用单词组合的缩写，缩写规则是删掉元音字母，保留前2~3个辅音字母</p>
-<hr>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h5 id="创建目录：mkdir"><a href="#创建目录：mkdir" class="headerlink" title="创建目录：mkdir"></a>创建目录：<code>mkdir</code></h5><p>全称：<code>make directory</code></p>
-<p>-p：<code>parents</code>，创建多级目录</p>
-<h5 id="删除：rm"><a href="#删除：rm" class="headerlink" title="删除：rm"></a>删除：<code>rm</code></h5><p>全称：<code>remove</code></p>
-<p>-r：<code>recursive</code>，递归删除，删除文件夹必加参数</p>
-<p>-f：<code>force</code>，强制删除，取消逐级递归提示是否删除</p>
-<h5 id="复制：cp"><a href="#复制：cp" class="headerlink" title="复制：cp"></a>复制：<code>cp</code></h5><p>全称：<code>copy</code></p>
-<p>-r：<code>recursive</code>，递归复制，复制文件夹必加参数</p>
-<h5 id="移动或重命名：mv"><a href="#移动或重命名：mv" class="headerlink" title="移动或重命名：mv"></a>移动或重命名：<code>mv</code></h5><p>全称：<code>move</code></p>
-<h5 id="列出文件：ls"><a href="#列出文件：ls" class="headerlink" title="列出文件：ls"></a>列出文件：<code>ls</code></h5><p>全称：<code>list</code></p>
-<p>-l：<code>long</code>，以较长的格式列出文件信息</p>
-<p>-a：<code>all</code>，列出当前目录下所有文件的信息</p>
-<h5 id="改变目录：cd"><a href="#改变目录：cd" class="headerlink" title="改变目录：cd"></a>改变目录：<code>cd</code></h5><p>全称：<code>change directory</code></p>
-<h5 id="打印当前路径：pwd"><a href="#打印当前路径：pwd" class="headerlink" title="打印当前路径：pwd"></a>打印当前路径：<code>pwd</code></h5><p>全称：<code>print working directory</code></p>
-<h5 id="磁盘文件系统：df"><a href="#磁盘文件系统：df" class="headerlink" title="磁盘文件系统：df"></a>磁盘文件系统：<code>df</code></h5><p>全称 <code>disk file system</code></p>
-<p>-h：<code>human-readable</code></p>
-<h5 id="当前目录使用情况：du"><a href="#当前目录使用情况：du" class="headerlink" title="当前目录使用情况：du"></a>当前目录使用情况：<code>du</code></h5><p>全称：<code>disk usage</code></p>
-<h5 id="命令行url：curl"><a href="#命令行url：curl" class="headerlink" title="命令行url：curl"></a>命令行url：<code>curl</code></h5><p>全称：<code>command uniform resource locator</code></p>
-<h5 id="创建-更新文件：touch"><a href="#创建-更新文件：touch" class="headerlink" title="创建/更新文件：touch"></a>创建/更新文件：<code>touch</code></h5><p>touch fileName</p>
-<h5 id="编辑文件：echo"><a href="#编辑文件：echo" class="headerlink" title="编辑文件：echo"></a>编辑文件：<code>echo</code></h5><p>echo ‘content’ &gt; fileName</p>
-<p><code>&gt; 写入内容，会覆盖之前的内容；&gt;&gt; 追加内容；&gt;! 实现在mac上向文件写入内容</code></p>
-<p>命令行中的空格具有特殊含义(用于分隔命令、参数和值)，所以带空格的字符串一定要用<code>&#39;&#39;</code>引起来</p>
-<hr>
-<h3 id="命令资源"><a href="#命令资源" class="headerlink" title="命令资源"></a>命令资源</h3><p>1、查看手册：<code>man cName</code> / <code>cName --help</code></p>
-<p>2、<a href="https://explainshell.com" target="_blank" rel="noopener">超级好用的命令详解网站</a></p>
-<p>3、查看常用的使用文档:<code>tldr cName</code> (<code>too long didn&#39;t read</code>)</p>
-<hr>
-<h3 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h3><h5 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a><code>git clone</code></h5><p>将远程存仓库的代码克隆到本地</p>
-<h5 id="git-status-sb-short-branch"><a href="#git-status-sb-short-branch" class="headerlink" title="git status -sb(short branch)"></a><code>git status -sb</code>(short branch)</h5><p>以简短的形式显示有变更的文件</p>
-<h5 id="git-add"><a href="#git-add" class="headerlink" title="git add ."></a><code>git add .</code></h5><p>将当前目录下的变动提交到缓存区</p>
-<h5 id="git-commit-m-39-comment-39"><a href="#git-commit-m-39-comment-39" class="headerlink" title="git commit -m &#39;comment&#39;"></a><code>git commit -m &#39;comment&#39;</code></h5><p>将代码提交到本地仓库并添加注释</p>
-<h5 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a><code>git pull</code></h5><p>拉取远程代码，同步远程的变动</p>
-<h5 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a><code>git push</code></h5><p>将本地代码提交到远程仓库</p>
-<h5 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h5><p>查看提交日志</p>
-<hr>
-<h3 id="script脚本"><a href="#script脚本" class="headerlink" title="script脚本"></a>script脚本</h3><p>脚本即一段程序，让计算机按照一定的顺序执行一系列命令</p>
-<p><code>JavaScript</code>是一门动态类型，面向对象的脚本语言</p>
-<p>通过在文件首行添加<code>#!/usr/bin/env node</code>来指定在<code>Linux</code>下该文件默认以<code>node</code>命令执行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/命令行基础/" data-id="cjx0vry580009iovam9nqw7as" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/HTML常用标签/" data-id="cjx21g4v00001bsvat3z0wrsv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -874,6 +844,14 @@
       <ul>
         
           <li>
+            <a href="/2019/06/18/JS-DOM/">JS-DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/18/JS函数/">JS函数</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/17/JS数组和伪数组/">JS数组和伪数组</a>
           </li>
         
@@ -883,14 +861,6 @@
         
           <li>
             <a href="/2019/06/15/JS类型转换与内存/">JS类型转换与内存</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/14/JS数据类型/">JS数据类型</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
           </li>
         
       </ul>

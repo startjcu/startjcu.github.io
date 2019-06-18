@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="全局对象浏览器全局对象：window ECMAScript全局对象：global window常用属性alert(data)：警告弹框，给用户传达某些信息 prompt(desc)：提示填写框，返回用户输入的值 confirm(desc)：确认弹框，返回的是一个布尔值 console：控制台，开发者常用属性，如console.log document：文档对象，属于DOM对象 history：历史">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-16T14:14:01.904Z">
+<meta property="og:updated_time" content="2019-06-17T21:20:58.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS原型和原型链">
 <meta name="twitter:description" content="全局对象浏览器全局对象：window ECMAScript全局对象：global window常用属性alert(data)：警告弹框，给用户传达某些信息 prompt(desc)：提示填写框，返回用户输入的值 confirm(desc)：确认弹框，返回的是一个布尔值 console：控制台，开发者常用属性，如console.log document：文档对象，属于DOM对象 history：历史">
@@ -105,17 +105,17 @@
 <h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><p>用于将其他类型转换成字符串，也可用来创建<code>String</code>对象</p>
 <p>通过字符串调用方法的底层原理和数字调用属性/方法原理相同</p>
 <p>常用方法</p>
-<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h5><p>用于去除字符串两端空格</p>
-<h5 id="charAt-index"><a href="#charAt-index" class="headerlink" title="charAt(index)"></a>charAt(index)</h5><p>获取指定位置字符</p>
-<h5 id="indexOf-str"><a href="#indexOf-str" class="headerlink" title="indexOf(str)"></a>indexOf(str)</h5><p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
-<h5 id="slice-startIndex-endIndex"><a href="#slice-startIndex-endIndex" class="headerlink" title="slice(startIndex, endIndex)"></a>slice(startIndex, endIndex)</h5><p>截取指定(左闭右开)区间的子串</p>
+<h5 id="trim"><a href="#trim" class="headerlink" title="trim()"></a><code>trim()</code></h5><p>用于去除字符串两端空格</p>
+<h5 id="charAt-index"><a href="#charAt-index" class="headerlink" title="charAt(index)"></a><code>charAt(index)</code></h5><p>获取指定位置字符</p>
+<h5 id="indexOf-str"><a href="#indexOf-str" class="headerlink" title="indexOf(str)"></a><code>indexOf(str)</code></h5><p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
+<h5 id="slice-startIndex-endIndex"><a href="#slice-startIndex-endIndex" class="headerlink" title="slice(startIndex, endIndex)"></a><code>slice(startIndex, endIndex)</code></h5><p>截取指定(左闭右开)区间的子串</p>
 <p><code>startIndex</code>为负数，会默认加上<code>length</code></p>
 <p><code>endIndex</code>缺省或大于<code>length</code>时，会默认指定为<code>length</code></p>
-<h5 id="substring-startIndex-endIndex"><a href="#substring-startIndex-endIndex" class="headerlink" title="substring(startIndex, endIndex)"></a>substring(startIndex, endIndex)</h5><p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
-<h5 id="substr-startIndex-count"><a href="#substr-startIndex-count" class="headerlink" title="substr(startIndex, count)"></a>substr(startIndex, count)</h5><p>从指定位置开始，截取指定长度的子串</p>
+<h5 id="substring-startIndex-endIndex"><a href="#substring-startIndex-endIndex" class="headerlink" title="substring(startIndex, endIndex)"></a><code>substring(startIndex, endIndex)</code></h5><p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
+<h5 id="substr-startIndex-count"><a href="#substr-startIndex-count" class="headerlink" title="substr(startIndex, count)"></a><code>substr(startIndex, count)</code></h5><p>从指定位置开始，截取指定长度的子串</p>
 <p>当<code>start + count &gt; length</code>时，会默认指定为<code>length</code>，即截取到末尾</p>
-<h5 id="s1-concat-s2"><a href="#s1-concat-s2" class="headerlink" title="s1.concat(s2)"></a>s1.concat(s2)</h5><p>将两个字符串拼接，返回一个新的字符串</p>
-<h5 id="replace-REG-ig-target"><a href="#replace-REG-ig-target" class="headerlink" title="replace(/REG/ig, target)"></a>replace(/REG/ig, target)</h5><p>将字符串中符合正则匹配的都替换为目标字符串</p>
+<h5 id="s1-concat-s2"><a href="#s1-concat-s2" class="headerlink" title="s1.concat(s2)"></a><code>s1.concat(s2)</code></h5><p>将两个字符串拼接，返回一个新的字符串</p>
+<h5 id="replace-REG-ig-target"><a href="#replace-REG-ig-target" class="headerlink" title="replace(/REG/ig, target)"></a><code>replace(/REG/ig, target)</code></h5><p>将字符串中符合正则匹配的都替换为目标字符串</p>
 <p><code>i：ignoreCase</code>忽略大小写，<code>g：global</code>全局</p>
 <p>若不使用参数，可用字符串代替正则，默认只会替换第一处匹配的结果</p>
 <hr>
@@ -130,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjx0vry4y0003iova8p0yt7pd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/JS原型和原型链/" data-id="cjx21g4v90006bsvag0fn9tl5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,6 +188,14 @@
       <ul>
         
           <li>
+            <a href="/2019/06/18/JS-DOM/">JS-DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/18/JS函数/">JS函数</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/17/JS数组和伪数组/">JS数组和伪数组</a>
           </li>
         
@@ -197,14 +205,6 @@
         
           <li>
             <a href="/2019/06/15/JS类型转换与内存/">JS类型转换与内存</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/14/JS数据类型/">JS数据类型</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/13/JS实现键盘导航/">JS实现键盘导航</a>
           </li>
         
       </ul>

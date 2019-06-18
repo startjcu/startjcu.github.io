@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS函数 | 冯义星的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="函数的5种声明方式1、具名函数指有具体名称的函数 如：function fn(){ return undefined }，fn.name -&amp;gt; fn 2、匿名函数一般要赋值给一个变量进行调用，且要放在调用前声明 如：var fn = function(){ return undefined }，fn.name -&amp;gt; fn 3、将具名函数赋值给变量var fn1 = function f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS函数">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/JS函数/index.html">
+<meta property="og:site_name" content="冯义星的博客">
+<meta property="og:description" content="函数的5种声明方式1、具名函数指有具体名称的函数 如：function fn(){ return undefined }，fn.name -&amp;gt; fn 2、匿名函数一般要赋值给一个变量进行调用，且要放在调用前声明 如：var fn = function(){ return undefined }，fn.name -&amp;gt; fn 3、将具名函数赋值给变量var fn1 = function f">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-18T16:44:45.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS函数">
+<meta name="twitter:description" content="函数的5种声明方式1、具名函数指有具体名称的函数 如：function fn(){ return undefined }，fn.name -&amp;gt; fn 2、匿名函数一般要赋值给一个变量进行调用，且要放在调用前声明 如：var fn = function(){ return undefined }，fn.name -&amp;gt; fn 3、将具名函数赋值给变量var fn1 = function f">
+  
+    <link rel="alternate" href="/atom.xml" title="冯义星的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯义星的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/JS函数/" class="article-date">
+  <time datetime="2019-06-18T10:05:11.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数的5种声明方式"><a href="#函数的5种声明方式" class="headerlink" title="函数的5种声明方式"></a>函数的5种声明方式</h3><h5 id="1、具名函数"><a href="#1、具名函数" class="headerlink" title="1、具名函数"></a>1、具名函数</h5><p>指有具体名称的函数</p>
+<p>如：<code>function fn(){ return undefined }</code>，<code>fn.name -&gt; fn</code></p>
+<h5 id="2、匿名函数"><a href="#2、匿名函数" class="headerlink" title="2、匿名函数"></a>2、匿名函数</h5><p>一般要赋值给一个变量进行调用，且要放在调用前声明</p>
+<p>如：<code>var fn = function(){ return undefined }</code>，<code>fn.name -&gt; fn</code></p>
+<h5 id="3、将具名函数赋值给变量"><a href="#3、将具名函数赋值给变量" class="headerlink" title="3、将具名函数赋值给变量"></a>3、将具名函数赋值给变量</h5><p><code>var fn1 = function fn(){ return undefined }</code>，<code>fn1.name -&gt; fn</code></p>
+<p>这种声明方式下，<code>fn</code>只能在函数体里才能访问，外部访问会报错</p>
+<h5 id="4、使用内置函数Function声明"><a href="#4、使用内置函数Function声明" class="headerlink" title="4、使用内置函数Function声明"></a>4、使用内置函数Function声明</h5><p><code>var fn = new Function(&#39;x&#39;, &#39;y&#39;, &#39;return x+y&#39;)</code>，<code>fn.name -&gt; anonymous</code></p>
+<p>这种声明方式比较繁琐，很少用到，而且其<code>name</code>属性值为<code>anonymous</code></p>
+<h5 id="5、ES6箭头函数"><a href="#5、ES6箭头函数" class="headerlink" title="5、ES6箭头函数"></a>5、ES6箭头函数</h5><p>用法同匿名函数，但写法要简洁很多</p>
+<p>语法：<code>var fn = ()=&gt;{}</code>，<code>fn.name -&gt; fn</code></p>
+<p><code>()</code>中放参数列表，若只有一个参数，<code>()</code>可以省略不写</p>
+<p><code>{}</code>中放函数体，如果只有一条<code>return</code>语句，可以省略<code>{}</code>和<code>return</code>关键字；若返回的是一个对象，省略后要用<code>()</code>包裹对象</p>
+<hr>
+<h3 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h3><p>函数本质是一个对象</p>
+<p>可描述为：<code>var fn = { params:[&#39;x&#39;,&#39;y&#39;], fBody:&#39;return x+y&#39;, call:function(){ eval(fn.fBody) }}</code></p>
+<h5 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h5><p><code>f(1, 2)</code>是<code>f.call(undefined, 1, 2)</code>的语法糖</p>
+<h3 id="this和arguments"><a href="#this和arguments" class="headerlink" title="this和arguments"></a>this和arguments</h3><p><code>call</code>的第一个参数可以用<code>this</code>得到</p>
+<p><code>call</code>的第一个参数后面的参数可用<code>arguments</code>得到</p>
+<h3 id="call-stack"><a href="#call-stack" class="headerlink" title="call stack"></a>call stack</h3><p>调用栈</p>
+<p>先进后出，指后调用的函数先执行，一般是指函数中嵌套其他函数</p>
+<p>如同递归，先执行目标函数，层层递进到结束点，再从结束点回归到目标函数</p>
+<p>常见错误：<code>stack overflow</code>堆栈溢出，是递归深度超过了最大限制而报出的错误</p>
+<hr>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>可用用树结构来描述作用域</p>
+<h5 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h5><p>当使用一个变量时，会先在当前作用域中找</p>
+<p>若没有就去上一级作用域，依次往上查找，直至顶层<code>window</code>作用域</p>
+<p><code>a=3</code>这个表达式是赋值，若当前作用域中无<code>a</code>变量的声明，就会沿着作用域链去查找</p>
+<p>如果一直找不到，就会成为一个全局变量，即给<code>window</code>下的变量<code>a</code>赋值为<code>3</code></p>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><p>在JS一行一行执行代码之前，会进行预解析，将声明提前</p>
+<p>1、变量声明，如<code>var a=1</code>这个表达式包括声明和赋值，故会将<code>var a</code>提到最前面</p>
+<p>若在<code>var a=1</code>之前使用了<code>a</code>变量，JS会视为已声明未赋值而默认赋值为<code>undefined</code></p>
+<p>2、函数声明，会将函数声明提前，这样函数就可以定义在调用代码之后了，函数体内部也存在变量提升</p>
+<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>如果一个函数使用了它范围外的变量，那么 <code>这个函数+这个变量</code> 就构成了闭包</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/18/JS函数/" data-id="cjx21g4v40003bsva3n7db8q0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/18/JS-DOM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS-DOM
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/17/JS数组和伪数组/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS数组和伪数组</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/18/JS-DOM/">JS-DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/18/JS函数/">JS函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/17/JS数组和伪数组/">JS数组和伪数组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/16/JS原型和原型链/">JS原型和原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/15/JS类型转换与内存/">JS类型转换与内存</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 冯义星<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
