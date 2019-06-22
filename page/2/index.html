@@ -311,6 +311,416 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/JS数组和伪数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/17/JS数组和伪数组/" class="post-title-link" itemprop="url">JS数组和伪数组</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-17 23:51:17" itemprop="dateCreated datePublished" datetime="2019-06-17T23:51:17+08:00">2019-06-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-19 17:31:52" itemprop="dateModified" datetime="2019-06-19T17:31:52+08:00">2019-06-19</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h3><p>一种术语，指浏览器提供给JS的<code>API</code></p>
+<h3 id="常用内置函数"><a href="#常用内置函数" class="headerlink" title="常用内置函数"></a>常用内置函数</h3><p><strong><code>Number</code>、<code>String</code>、<code>Boolean</code></strong></p>
+<p>不加<code>new</code>，用于类型转换</p>
+<p>加<code>new</code>，用于创建相应对象</p>
+<p><strong><code>Object</code>、<code>Array</code>、<code>Function</code></strong></p>
+<p>加不加<code>new</code>关键字都表示创建对象</p>
+<p><strong><em>Object</em></strong></p>
+<p><code>var obj = {}</code>是<code>var obj = new Object()</code>的语法糖</p>
+<p><strong><em>Array</em></strong></p>
+<p><code>var arr = []</code>是<code>var arr = new Array()</code>的语法糖</p>
+<p>但<code>Array(3)</code>表示创建一个长度为3的数组，并不是<code>[3]</code></p>
+<p>因为<code>Array</code>只传一个参数且为数字时，必须是自然数，且表示的是数组长度</p>
+<p><strong><em>Function</em></strong></p>
+<p>使用关键字创建函数：<code>function fn(){}</code>，ES6箭头函数<code>() =&gt; {}</code></p>
+<p>使用内置函数创建函数：<code>var fn = new Function(&#39;a&#39;,&#39;b&#39;,&#39;return a-b&#39;)</code></p>
+<hr>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组的本质是<code>__proto__</code>属性指向<code>Array.prototype</code>的对象</p>
+<p>数组也可以扩展属性，只是遍历的时候使用的<code>key</code>值为数字，一般不会遍历到自定义的属性而已</p>
+<p><strong>数组首尾操作API</strong></p>
+<p><code>push(data)</code>：在数组的末尾追加一个元素</p>
+<p><code>pop()</code>：删除数组最后一个元素</p>
+<p><code>unshift(data)</code>：在数组开头插入一个元素</p>
+<p><code>shift()</code>：删除数组的首个元素</p>
+<p><strong>伪数组</strong></p>
+<p>某一对象中也有类似数组以自然数为<code>key</code>值得键值对</p>
+<p>但原型链中没有<code>Array.prototype</code>这一环，如<code>arguments</code>(参数伪数组)对象</p>
+<hr>
+<h3 id="数组常用API"><a href="#数组常用API" class="headerlink" title="数组常用API"></a>数组常用API</h3><p><strong><code>concat</code></strong></p>
+<p>返回两个数组连接生成的新数组，<code>arr1.concat(arr2)</code></p>
+<p>巧妙用于进行数组的深拷贝：<code>arr2 = arr1.concat([])</code></p>
+<p><strong><code>join</code></strong></p>
+<p>将数组转换为字符串，默认以逗号连接</p>
+<p>即<code>arr.toString()</code>等效于<code>arr.join()</code></p>
+<p>数组转字符串<code>arr.join(&#39;&#39;)</code>，字符串转字符数组<code>str.split(&#39;&#39;)</code></p>
+<hr>
+<p><strong><code>sort</code></strong></p>
+<p>用于进行数组排序，默认从小到大排序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>forEach</code></strong></p>
+<p>用于遍历数组，无返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>map</code></strong></p>
+<p>映射，将当前数组元素进行指定操作，返回新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item * <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>filter</code></strong></p>
+<p>过滤，将当前数组中符合条件的元素过滤出来，组成新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item % <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>reduce</code></strong></p>
+<p>减少，将数组中的元素依次进行某项操作，返回一个值</p>
+<p>可以用<code>reduce</code>方法表示<code>map</code>和<code>filter</code>，或是实现<code>forEach</code>的功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="comment">//使用reduce表示map将数组元素*2</span></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    prev.push(cur * <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="comment">//使用reduce表示filter过滤出数组中的奇数</span></span><br><span class="line"><span class="keyword">var</span> arr2 = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    cur % <span class="number">2</span> &amp;&amp; prev.push(cur)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="comment">//使用reduce表示forEach求数组中偶数项的和</span></span><br><span class="line"><span class="keyword">var</span> sum = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, cur</span>) </span>&#123;</span><br><span class="line">    cur % <span class="number">2</span> || (prev += cur)</span><br><span class="line">    <span class="keyword">return</span> prev</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/16/JS原型和原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/16/JS原型和原型链/" class="post-title-link" itemprop="url">JS常用对象与原型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-16 17:50:31" itemprop="dateCreated datePublished" datetime="2019-06-16T17:50:31+08:00">2019-06-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-19 17:29:59" itemprop="dateModified" datetime="2019-06-19T17:29:59+08:00">2019-06-19</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><p>浏览器全局对象：<code>window</code></p>
+<p><code>ECMAScript</code>全局对象：<code>global</code></p>
+<h3 id="window常用属性"><a href="#window常用属性" class="headerlink" title="window常用属性"></a><code>window</code>常用属性</h3><p><code>alert(data)</code>：警告弹框，给用户传达某些信息</p>
+<p><code>prompt(desc)</code>：提示填写框，返回用户输入的值</p>
+<p><code>confirm(desc)</code>：确认弹框，返回的是一个布尔值</p>
+<p><code>console</code>：控制台，开发者常用属性，如<code>console.log</code></p>
+<p><code>document</code>：文档对象，属于<code>DOM</code>对象</p>
+<p><code>history</code>：历史对象，属于<code>BOM</code>对象</p>
+<p><code>setTimeout( function(){}, time )</code>：定时器</p>
+<hr>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number()"></a><code>Number()</code></h3><p>可将其他类型转换成数字，也可用来创建<code>Number</code>对象</p>
+<p><code>var n = 1; n.toString()</code>底层原理</p>
+<p>临时创建<code>new Number(n)</code>对象(将基本数字包装成一个<code>Number</code>对象)</p>
+<p>然后通过此对象调用<code>toString()</code>方法，返回结果后，再将此对象销毁</p>
+<p>故：<code>n.xxx = 2 , console.log(n.xxx) -&gt; undefined</code></p>
+<hr>
+<h3 id="String"><a href="#String" class="headerlink" title="String()"></a><code>String()</code></h3><p>用于将其他类型转换成字符串，也可用来创建<code>String</code>对象</p>
+<p>通过字符串调用方法的底层原理和数字调用属性/方法原理相同</p>
+<p>常用方法</p>
+<p><strong><code>trim()</code></strong></p>
+<p>用于去除字符串两端空格</p>
+<p><strong><code>charAt(index)</code></strong></p>
+<p>获取指定位置字符</p>
+<p><strong><code>indexOf(str)</code></strong></p>
+<p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
+<p><strong><code>slice(startIndex, endIndex)</code></strong></p>
+<p>截取指定(左闭右开)区间的子串</p>
+<p><code>startIndex</code>为负数，会默认加上<code>length</code></p>
+<p><code>endIndex</code>缺省或大于<code>length</code>时，会默认指定为<code>length</code></p>
+<p><strong><code>substring(startIndex, endIndex)</code></strong></p>
+<p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
+<p><strong><code>substr(startIndex, count)</code></strong></p>
+<p>从指定位置开始，截取指定长度的子串</p>
+<p>当<code>start + count &gt; length</code>时，会默认指定为<code>length</code>，即截取到末尾</p>
+<p><strong><code>s1.concat(s2)</code></strong></p>
+<p>将两个字符串拼接，返回一个新的字符串</p>
+<p><strong><code>replace(/REG/ig, target)</code></strong></p>
+<p>将字符串中符合正则匹配的都替换为目标字符串</p>
+<p><code>i：ignoreCase</code>忽略大小写，<code>g：global</code>全局</p>
+<p>若不使用参数，可用字符串代替正则，默认只会替换第一处匹配的结果</p>
+<hr>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>对象的<code>__proto__</code>属性指向其构造函数的<code>prototype</code>属性</p>
+<p>如<code>var obj = {}(new Object())</code></p>
+<p><code>obj</code>是一个对象，它的<code>__proto__</code>属性指向其构造函数<code>Object</code>的<code>prototype</code>属性<br>即<code>obj.__proto__ === Object.prototype</code></p>
+<p>而<code>Object.prototype</code>也是一个对象，它的<code>__proto__</code>属性指向<code>null</code></p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>通过对象调用属性/方法，若该对象中没有此属性，</p>
+<p>就会去它的(隐式)原型<code>obj.__proto__</code>中找，即去其构造函数的(显式)原型<code>fn.prototype</code>中找</p>
+<p>如果还没找到，就会去其原型的原型<code>obj.__proto__.__proto__</code>中找，层层向上直到一个对象的原型对象为<code>null</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/16/JS常用对象与原型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -887,412 +1297,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/JS实现键盘导航/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/13/JS实现键盘导航/" class="post-title-link" itemprop="url">JS实现键盘导航</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-13 23:13:51" itemprop="dateCreated datePublished" datetime="2019-06-13T23:13:51+08:00">2019-06-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-19 17:33:26" itemprop="dateModified" datetime="2019-06-19T17:33:26+08:00">2019-06-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="JS向页面写入DOM元素"><a href="#JS向页面写入DOM元素" class="headerlink" title="JS向页面写入DOM元素"></a>JS向页面写入DOM元素</h3><p>1、获取页面元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> main = <span class="built_in">document</span>.getElementById(<span class="string">'main'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>2、创建一个元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> divEl = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>3、向元素中写入内容</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">divEl.innerText = <span class="string">''</span></span><br></pre></td></tr></table></figure>
-
-<p>4、将新创建的元素放入指定位置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main.appendChild(divEl);</span><br></pre></td></tr></table></figure>
-
-<h3 id="区别几个写入内容API"><a href="#区别几个写入内容API" class="headerlink" title="区别几个写入内容API"></a>区别几个写入内容<code>API</code></h3><p><strong><code>innerText</code> / <code>innerHTML</code></strong></p>
-<p>前者向元素中写入纯文本</p>
-<p>后者向页面中写入html文本(会将html标签进行转义)</p>
-<p><strong><code>textContent</code> / <code>innerText</code></strong></p>
-<p>前者获取的是源html中的文本</p>
-<p>后者能获取html文档渲染后文档中的文本(如元素中若使用了<code>text-transform</code>样式后的文本)</p>
-<hr>
-<h3 id="循环中绑定事件"><a href="#循环中绑定事件" class="headerlink" title="循环中绑定事件"></a>循环中绑定事件</h3><p>循环中的变量是容器</p>
-<p>而事件绑定是异步的，会等循环执行完后才执行</p>
-<p>所以直接在事件函数中使用变量，使用的是循环结束时的变量</p>
-<p>这种情况下应该使用<code>e.target</code>来获取目标元素，才能绑定成功</p>
-<hr>
-<h3 id="本地缓存localStorage"><a href="#本地缓存localStorage" class="headerlink" title="本地缓存localStorage"></a>本地缓存<code>localStorage</code></h3><p>通过<code>setItem(key, value)</code>来设置缓存</p>
-<p>通过<code>getItem(key)</code>来读取缓存中的信息</p>
-<hr>
-<h3 id="网站图标favicon-ico"><a href="#网站图标favicon-ico" class="headerlink" title="网站图标favicon.ico"></a>网站图标<code>favicon.ico</code></h3><p>默认放在根目录下，浏览器默认会去取这个图标，展示在合适的位置上</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/数据结构和排序算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/12/数据结构和排序算法/" class="post-title-link" itemprop="url">数据结构和排序算法</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-12 04:02:47" itemprop="dateCreated datePublished" datetime="2019-06-12T04:02:47+08:00">2019-06-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-19 17:29:01" itemprop="dateModified" datetime="2019-06-19T17:29:01+08:00">2019-06-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><strong>哈希 <code>Hash</code></strong></p>
-<p>满足键值对(<code>key:value</code>)形式的都是哈希</p>
-<p><code>JS</code>中用对象 (属性和值)表示哈希，数组是对象<code>{0:&#39;e1&#39;, 1:&#39;e2&#39;, length: 2}</code>的简写</p>
-<p><strong>队列 <code>Queue</code></strong></p>
-<p>先进先出</p>
-<p>如排队，可用数组(<code>push</code>、<code>shift</code>)实现</p>
-<p><strong>栈 <code>Stack</code></strong></p>
-<p>先进后出</p>
-<p>如乘电梯、盗梦空间、递归原理，可用数组(<code>push</code>、<code>pop</code>)实现</p>
-<p><strong>链表 <code>Linked List</code></strong></p>
-<p>数组是连续空间，无法直接删除中间某项，但链表可以</p>
-<p>实现原理：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a1 = &#123; <span class="attr">value</span>: <span class="number">1</span>, <span class="attr">next</span>: a2 &#125;</span><br><span class="line">a2 = &#123; <span class="attr">value</span>: <span class="number">2</span>, <span class="attr">next</span>: a3 &#125;</span><br><span class="line">a3 = &#123; <span class="attr">value</span>: <span class="number">3</span>, <span class="attr">next</span>: <span class="literal">undefined</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>若要删除a2，只需将a1的<code>next</code>改为a3即可</p>
-<p>可用哈希(JS中用对象表示哈希，嵌套对象)来实现链表</p>
-<p>相关术语：表头<code>head</code>，表示链表的开头元素；节点<code>node</code>，表示其他元素</p>
-<p><strong>树 <code>Tree</code></strong></p>
-<p>层级结构，如<code>DOM</code>树</p>
-<p>常用属性：层数、深度(一共多少层)、节点个数</p>
-<p><strong>二叉树 <code>Binary Tree</code></strong></p>
-<p>每个节点最多只有两个分支</p>
-<p>满二叉树：最后一层都是满的 (倒数第二层都有左子树和右子树)</p>
-<p>完全二叉树：最后一层不一定满，但是连续的 (即不会出现只有两个左子树的情况)</p>
-<p><strong>堆 <code>Heap</code></strong></p>
-<p>二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）</p>
-<p>二叉堆有两种：最大堆和最小堆，一般用数组来表示</p>
-<p>其他树可用哈希 (JS对象)来实现</p>
-<hr>
-<h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><p><strong>冒泡排序</strong></p>
-<p>从右往左排</p>
-<p>两两对比，若左边的元素大于右边的元素，就交换两元素的位置</p>
-<p>第一次，即可将数组中最大的元素排到最右边</p>
-<p>第二次，再排剩下的元素，可排好第二大的元素</p>
-<p>依此类推 . . . 一共排<code>arr.length-1</code>次即可排完所有元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByBubble</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="comment">//ES6交换两变量的值的方法</span></span><br><span class="line">                [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>选择排序</strong></p>
-<p>从左往右排</p>
-<p>第一次，遍历整个数组，找出最小的元素，获取其位置，再与首个元素交换位置，即可确定最小的元素</p>
-<p>第二次，遍历剩下的元素，其他方法同上一步，即可确定第二个元素</p>
-<p>依此类推 . . . 一共排<code>arr.length-1</code>次即可排完所有元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortBySelection</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> min = arr[i]</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = i; j &lt; arr.length; j++) &#123;</span><br><span class="line">            min = arr[j] &lt; min ? arr[j] : min</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此处查找范围必须指定，不然具有相同值的数组会出现BUG</span></span><br><span class="line">        <span class="keyword">var</span> index = arr.indexOf(min, i)</span><br><span class="line">        arr[index] = arr[i]</span><br><span class="line">        arr[i] = min</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>插入排序(起扑克牌法)</strong></p>
-<p>将原数组中的元素一个一个的放入新数组中</p>
-<p>第一个元素，直接放入新数组不用排</p>
-<p>第二个元素，和第一个元素比较，小于就放在它前面，大于就放在它后面</p>
-<p>第三个元素，循环地与新数组中的所有元素比对：<br>    若是遇到大于它的元素，就停止比对，将它放到那(第一个大于它的)元素之前<br>    若是没有找到大于它的元素，就放到新数组最后</p>
-<p>依此类推 . . . 将原数组中的所有元素都放入新数组后，新数组即为排序好的结果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByInsertion</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arrNew = [arr[<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arrNew.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arrNew[j] &gt; arr[i]) &#123;</span><br><span class="line">                arrNew.splice(j, <span class="number">0</span>, arr[i])</span><br><span class="line">                flag = <span class="literal">true</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//逻辑表达式返回能决定整个表达式真假的那个表达式的值</span></span><br><span class="line">        flag || arrNew.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arrNew</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>计数排序(强迫症起扑克牌法)</strong></p>
-<p>用于范围不是很大的数组排序，用空间换时间。<br>无需二次排序，效率比较高；但大范围内排序很耗空间，且无法对小数和负数排序</p>
-<p><em>入桶</em><br>将原数组中的每一个数，都作为<code>arrIn</code>数组的索引<br><code>arrIn</code>数组索引的值对应的是，原数组中特定(值为当前索引的)元素的个数</p>
-<p><em>出桶</em><br>再从<code>arrIn</code>数组中提取出元素不为<code>undefined</code>的(对应元素个)索引值<br>放入<code>arrOut</code>数组中，<code>arrOut</code>数组即为排序好的数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByCounting</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//入桶</span></span><br><span class="line">    <span class="keyword">var</span> arrIn = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> index = arr[i]</span><br><span class="line">        <span class="keyword">if</span> (!arrIn[index]) &#123;</span><br><span class="line">            arrIn[index] = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            arrIn[index]++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//出桶</span></span><br><span class="line">    <span class="keyword">var</span> arrOut = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arrIn.length; j++) &#123;</span><br><span class="line">        <span class="keyword">var</span> count = arrIn[j]</span><br><span class="line">        <span class="keyword">while</span> (count) &#123;</span><br><span class="line">            arrOut.push(j)</span><br><span class="line">            count--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arrOut</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h3><p><strong>1、桶排序</strong></p>
-<p>一个桶放一个范围内的数据，然后在桶内使用其他排序方法，</p>
-<p>桶和桶之间的对比是独立的，减少对比次数，较计数排序减少了若干倍桶</p>
-<p><strong>2、基数排序</strong></p>
-<p>按十进制分出十个桶0~9，先按个位排入桶再出桶，再排十位入桶在出桶，依此类推 . . . </p>
-<p>适用于大范围内的排序，可在很大程度上节约空间</p>
-<p><strong>3、二分排序(快速排序)</strong></p>
-<p>以一个元素为基准，小于它的排左边，大于它的排右边，排一次就能将这个元素在排好序的数组中的位置了</p>
-<p>剩余的元素再按此方法排，只不过左边的只需要和左边比，右边的只需要和右边比，可以大大减少比对次数</p>
-<p><strong>4、堆(二叉堆)排序</strong></p>
-<p>建立在最大堆(父级总比子级大)调整的基础上，每次调整为最大堆后，就将堆顶的元素和最后一个元素换位</p>
-<p>然后将最后一个元素从堆上删除，放在当前堆对应数组末尾，再进行下一次的最大堆调整，直至排完整个数组</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1339,7 +1343,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

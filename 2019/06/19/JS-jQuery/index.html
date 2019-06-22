@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="jQuery本质window下的一个函数，采用闭包的方式，调用原生的JavaScript API，封装一些逻辑，实现一些常用的功能 1typeof jQuery -&amp;gt; &quot;function&quot;  将jQuery赋值给一个简单符号，方便调用 12window.jQuery = function(node)&amp;#123; return node &amp;#125; //将node返回，是jQuery特有的链">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-20T03:12:39.415Z">
+<meta property="og:updated_time" content="2019-06-21T08:24:49.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS-jQuery">
 <meta name="twitter:description" content="jQuery本质window下的一个函数，采用闭包的方式，调用原生的JavaScript API，封装一些逻辑，实现一些常用的功能 1typeof jQuery -&amp;gt; &quot;function&quot;  将jQuery赋值给一个简单符号，方便调用 12window.jQuery = function(node)&amp;#123; return node &amp;#125; //将node返回，是jQuery特有的链">
@@ -371,7 +371,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-20 11:12:39" itemprop="dateModified" datetime="2019-06-20T11:12:39+08:00">2019-06-20</time>
+                <time title="修改时间：2019-06-21 16:24:49" itemprop="dateModified" datetime="2019-06-21T16:24:49+08:00">2019-06-21</time>
               
             
           </span>
@@ -411,35 +411,20 @@
 <p>将<code>jQuery</code>赋值给一个简单符号，方便调用</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123; <span class="keyword">return</span> node &#125; <span class="comment">//将node返回，是jQuery特有的链式操作的实现原理</span></span><br><span class="line"><span class="built_in">window</span>.$ = <span class="built_in">window</span>.jQuery;</span><br></pre></td></tr></table></figure>
 
-<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a><code>jQuery</code>对象</h3><p><code>$(&#39;li&#39;)</code>是一个<code>jQuery</code>对象，它的原型为<code>jQuery.prototype</code>，有<code>addClass</code>、<code>removeClass</code>、<code>text</code>、<code>html</code>和<code>on</code>等</p>
+<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a><code>jQuery</code>对象</h3><p><code>$(&#39;li&#39;)</code>是一个<code>jQuery</code>对象，它的原型为<code>jQuery.prototype</code>，有<code>addClass</code>、<code>removeClass</code>、<code>text</code>、<code>html</code>和<code>on</code>等属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//div 的属性和方法有childNodes firstChid nodeType等</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>)</span><br><span class="line"><span class="comment">//$div 的 属性和方法有addClass removeClass toggleClass等</span></span><br><span class="line"><span class="keyword">var</span> $div = $(<span class="string">'#x'</span>);</span><br><span class="line"><span class="comment">//$div[0] === div ，$div 的第一项就是 div</span></span><br><span class="line"><span class="comment">//将普通DOM元素转为jQuery对象：btns.eq(n % size)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><p><strong><code>addEventListener</code></strong> </p>
-<p>事件队列，可以给一个元素添加两个<code>click</code>事件，按定义顺序执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.addEventListener(type, listener, <span class="literal">false</span>); <span class="comment">//指事件冒泡：false为默认值，可省</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><code>onclick</code></strong></p>
-<p>是<code>DOM</code>元素都有的一个属性</p>
-<p>相当于一个变量，只能指向一个函数，故同一个元素，通过它后添加的点击事件会覆盖掉前面的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>one</code></strong></p>
-<p>指指向依次就会移除事件监听的事件，即事件一触发就会调用<code>removeEventListener</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doLeave(getImage(n)).one(<span class="string">'transitionend'</span>, (e) =&gt; &#123; doStay($(e.currentTarget)) &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>事件冒泡/捕获</strong></p>
-<p>事件冒泡：事件从子元素到父元素的顺序触发，是默认方式</p>
-<p>事件捕获：事件从父元素到子元素的顺序触发，须将添加事件队列的第三个参数设为<code>true</code></p>
-<hr>
 <h3 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a>其他相关</h3><p><a href="https://api.jquery.com/" target="_blank" rel="noopener">jQuery文档</a></p>
 <p><a href="https://www.jquery123.com/" target="_blank" rel="noopener">jQuery中文文档</a></p>
 <p><strong>立即调用函数</strong></p>
 <p>因为全局遍历可能存在互相覆盖的隐患，所以尽量使用局部变量</p>
 <p>在ES5中，有函数作用域，一般用<code>()</code>将整个函数包裹起来</p>
 <p>或在匿名函数前加一元运算符<code>+</code>、<code>-</code>、<code>!</code>、<code>~</code>，然后用<code>call()</code>或<code>()</code>执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>) &#125;)()</span><br></pre></td></tr></table></figure>
+
 <p>在ES6中，新增块级作用域，但需用<code>let</code>声明变量，用<code>const</code>声明常量</p>
-<p><strong>图片尽量指定宽度</strong></p>
-<p>因为<code>&lt;img&gt;</code>是可替换元素，若不指定宽高，浏览器可能因无法正确判断尺寸而造成重复渲染，影响性能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123; <span class="keyword">let</span> a = <span class="number">3</span> &#125; <span class="built_in">console</span>.log(a); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -488,6 +473,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/20/JS-DOM事件/" rel="prev" title="JS-DOM事件">
+                JS-DOM事件 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -556,7 +545,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -619,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery本质"><span class="nav-number">1.</span> <span class="nav-text">jQuery本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery对象"><span class="nav-number">2.</span> <span class="nav-text">jQuery对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM事件"><span class="nav-number">3.</span> <span class="nav-text">DOM事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关"><span class="nav-number">4.</span> <span class="nav-text">其他相关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery本质"><span class="nav-number">1.</span> <span class="nav-text">jQuery本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery对象"><span class="nav-number">2.</span> <span class="nav-text">jQuery对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关"><span class="nav-number">3.</span> <span class="nav-text">其他相关</span></a></li></ol></div>
             
 
           </div>
