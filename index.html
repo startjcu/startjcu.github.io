@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/JS-AJAX/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CSS宽度和高度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -331,7 +331,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/22/JS-AJAX/" class="post-title-link" itemprop="url">JS-AJAX</a>
+                <a href="/2019/02/11/CSS宽度和高度/" class="post-title-link" itemprop="url">CSS宽度和高度</a>
               
             
           </h1>
@@ -356,25 +356,193 @@
                 
               
 
-              <time title="创建时间：2019-06-22 19:13:12" itemprop="dateCreated datePublished" datetime="2019-06-22T19:13:12+08:00">2019-06-22</time>
+              <time title="创建时间：2019-02-11 03:39:31" itemprop="dateCreated datePublished" datetime="2019-02-11T03:39:31+08:00">2019-02-11</time>
             
 
             
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p><code>Normal Flow</code>，常规浮动，内联元素(行内元素)从左往右排，块级元素从上往下排</p>
+<p>块级元素的高度若无具体指定，则由其内部的文档流决定，宽度默认为<code>body</code>宽度</p>
+<p>内联元素的高度由行高决定，宽度由内容、<code>padding</code>、<code>margin</code>和<code>border</code>决定，无法自定义设置</p>
+<p>文字的对齐方式为基线(四线三格中的第三条线)对齐，不同的字体有不同的设计行高，布局时要特别注意</p>
+<p><strong>脱离文档流</strong></p>
+<p>绝对定位、固定定位(<code>position: absolute/fixed</code>)和浮动(<code>float: left</code>)会脱离文档流</p>
+<p><strong>HTML中的空格</strong></p>
+<p><code>HTML</code>会将内联元素之外的空格全部删去(<code>trim</code>)，内联元素之间的多个空格会合并为一个空格</p>
+<p>若要添加多个空格，须用转义字符<code>nbsp;</code>(no break space)</p>
+<p><strong>长单词遇到阻碍自动换行</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attribute">word-break</span>: break-all; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>单行文字两端对齐</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">5em</span>; <span class="attribute">height</span>: <span class="number">20px</span>; </span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>; <span class="attribute">text-align</span>: justify; <span class="attribute">overflow</span>: hidden; &#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>清除浮动</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: block; <span class="attribute">clear</span>: both; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多行文本转一行带<code>...</code></strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">white-space</span>: nowrap; <span class="attribute">overflow</span>: hidden; <span class="attribute">text-overflow</span>: ellipsis; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定保留若干行，末尾带<code>...</code></strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block-with-text</span> &#123; <span class="attribute">overflow</span>: hidden; <span class="attribute">display</span>: -webkit-box; </span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>; <span class="attribute">-webkit-box-orient</span>: vertical; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><p>内联元素水平居中，在父元素上加文本居中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">text-align</span>: center; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>内联元素垂直居中，父元素上使用行高和上下填充</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">line-height</span>: <span class="number">20px</span>; <span class="attribute">padding</span>: <span class="number">8px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>块级元素尽量不要直接指定高度，否则多行会出现溢出，导致排版错乱；一般由其内部文档流决定它的高度</p>
+<p><strong>margin合并</strong></p>
+<p>父<code>div</code>与子<code>div</code>间若无阻隔(<code>border</code>、<code>padding</code>或内联元素等)，</p>
+<p>那么子元素的<code>margin</code>会与父元素的<code>margin</code>合并，且不会增加父元素的高度</p>
+<p><strong>outline/border</strong></p>
+<p><code>outline</code>不会改变盒模型的大小</p>
+<p>块级元素水平居中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">0</span> auto; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>块级元素垂直居中一般在父元素上加上下填充</p>
+<p>如父元素指定了高度，就需在父元素上使用<code>flex</code>布局</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">display</span>: flex; <span class="attribute">justify-content</span>: center; <span class="attribute">align-items</span>: center; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>1X1的div</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">padding-top</span>: <span class="number">100%</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/JS-AJAX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/08/JS-AJAX/" class="post-title-link" itemprop="url">JS-AJAX</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-23 06:38:54" itemprop="dateModified" datetime="2019-06-23T06:38:54+08:00">2019-06-23</time>
               
+
+              <time title="创建时间：2019-02-08 19:13:12" itemprop="dateCreated datePublished" datetime="2019-02-08T19:13:12+08:00">2019-02-08</time>
+            
+
             
           </span>
 
@@ -483,7 +651,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/JS-JSONP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/JS-JSONP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -503,7 +671,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/21/JS-JSONP/" class="post-title-link" itemprop="url">JS-JSONP</a>
+                <a href="/2019/02/06/JS-JSONP/" class="post-title-link" itemprop="url">JS-JSONP</a>
               
             
           </h1>
@@ -528,25 +696,9 @@
                 
               
 
-              <time title="创建时间：2019-06-21 23:35:13" itemprop="dateCreated datePublished" datetime="2019-06-21T23:35:13+08:00">2019-06-21</time>
+              <time title="创建时间：2019-02-06 23:35:13" itemprop="dateCreated datePublished" datetime="2019-02-06T23:35:13+08:00">2019-02-06</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-23 01:24:07" itemprop="dateModified" datetime="2019-06-23T01:24:07+08:00">2019-06-23</time>
-              
             
           </span>
 
@@ -673,7 +825,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/JS-DOM事件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/04/JS-DOM事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -693,7 +845,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/20/JS-DOM事件/" class="post-title-link" itemprop="url">JS-DOM事件</a>
+                <a href="/2019/02/04/JS-DOM事件/" class="post-title-link" itemprop="url">JS-DOM事件</a>
               
             
           </h1>
@@ -718,25 +870,9 @@
                 
               
 
-              <time title="创建时间：2019-06-20 23:24:30" itemprop="dateCreated datePublished" datetime="2019-06-20T23:24:30+08:00">2019-06-20</time>
+              <time title="创建时间：2019-02-04 23:24:30" itemprop="dateCreated datePublished" datetime="2019-02-04T23:24:30+08:00">2019-02-04</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-21 20:01:43" itemprop="dateModified" datetime="2019-06-21T20:01:43+08:00">2019-06-21</time>
-              
             
           </span>
 
@@ -851,7 +987,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/JS-jQuery/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/JS-jQuery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -871,7 +1007,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/19/JS-jQuery/" class="post-title-link" itemprop="url">JS-jQuery</a>
+                <a href="/2019/02/01/JS-jQuery/" class="post-title-link" itemprop="url">JS-jQuery</a>
               
             
           </h1>
@@ -896,25 +1032,9 @@
                 
               
 
-              <time title="创建时间：2019-06-19 23:27:47" itemprop="dateCreated datePublished" datetime="2019-06-19T23:27:47+08:00">2019-06-19</time>
+              <time title="创建时间：2019-02-01 23:27:47" itemprop="dateCreated datePublished" datetime="2019-02-01T23:27:47+08:00">2019-02-01</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-21 16:24:49" itemprop="dateModified" datetime="2019-06-21T16:24:49+08:00">2019-06-21</time>
-              
             
           </span>
 
@@ -969,204 +1089,6 @@
 <p>在ES6中，新增块级作用域，但需用<code>let</code>声明变量，用<code>const</code>声明常量</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123; <span class="keyword">let</span> a = <span class="number">3</span> &#125; <span class="built_in">console</span>.log(a); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
 
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/JS-DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/18/JS-DOM/" class="post-title-link" itemprop="url">JS-DOM</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-18 23:37:03" itemprop="dateCreated datePublished" datetime="2019-06-18T23:37:03+08:00">2019-06-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-19 17:41:47" itemprop="dateModified" datetime="2019-06-19T17:41:47+08:00">2019-06-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><code>DOM</code></h3><p>文档对象模型：<code>Document Object Model</code>是<code>HTML</code>和<code>XML</code>文档的编程接口</p>
-<h3 id="Node接口"><a href="#Node接口" class="headerlink" title="Node接口"></a><code>Node</code>接口</h3><p>Node(节点)是一个接口，许多<code>DOM API</code>都会继承这个接口，如<code>Document</code>、<code>Element</code>、<code>Text</code></p>
-<p><strong><code>Node</code>常用属性</strong></p>
-<p><code>childNodes</code>:获取所有子节点</p>
-<p><code>firstChild</code>：获取第一个子节点</p>
-<p><code>lastChild</code>：获取最后一个子节点</p>
-<p><code>nodeName</code>：通过该属性获取的是节点名是大写格式的，后加入的<code>svg</code>除外</p>
-<p><code>nodeType</code>：节点类型，<code>1-Node.ELEMENT_NODE</code>、<code>3-Node.TEXT_NODE</code></p>
-<p><code>parentNode</code>：获取父节点</p>
-<p><code>previousSibling</code>：获取上一个兄弟节点</p>
-<p><code>nextSibling</code>：获取下一个兄弟节点</p>
-<p><code>Node</code>(节点)的类型很多，如注释节点、文本节点等，易忽略的是换行和空格也会构成文本节点</p>
-<p><strong><code>Node</code>常用方法</strong></p>
-<p><code>appendChild()</code>：添加子节点</p>
-<p><code>cloneNode()</code>：克隆节点，可以传入布尔值；默认浅拷贝，传入<code>true</code>后是深拷贝</p>
-<p><code>isEqualNode()</code>：判断两个节点是否相同</p>
-<p><code>isSameNode()</code>：判断两个节点是否是同一个节点</p>
-<p><code>normalize()</code>：标准化，常见的将同时添加的两个文本节点转化为一个文本节点</p>
-<hr>
-<h3 id="Document接口"><a href="#Document接口" class="headerlink" title="Document接口"></a><code>Document</code>接口</h3><p>指整个加载好的网页，是操作<code>DOM</code>树的入口</p>
-<p><code>document</code>是浏览器全局对象<code>window</code>的一个属性，原型是<code>HTMLDocument.prototype</code></p>
-<p><strong><code>Document</code>常用属性</strong></p>
-<p><code>body</code>：获取body节点</p>
-<p><code>characterSet</code>：获取当前页面字符编码</p>
-<p><code>doctype</code>：获取文档类型</p>
-<p><code>documentElement</code>：获取文档元素，不包括doctype</p>
-<p><code>location</code>：获取网页URI</p>
-<p>浏览器加载<code>document</code>的过程：<code>open -&gt; write -&gt; close</code>(页面加载完毕后自动执行)</p>
-<p>所以如果异步向页面写入内容，会覆盖之前页面中的内容，因为有网页关闭后在重新开启的过程</p>
-<p><strong><code>Document</code>常用方法</strong></p>
-<p><code>createElement()</code>：创建一个元素节点，在<code>HTML</code>中元素特指标签</p>
-<p><code>createTextNode()</code>：创建一个文本节点</p>
-<p><code>getElementById()</code>：获取某个DOM节点</p>
-<p><code>getElementsByClassName()</code>、<code>getElementsByTagName()</code>：获取一组DOM节点</p>
-<hr>
-<h3 id="Element接口"><a href="#Element接口" class="headerlink" title="Element接口"></a><code>Element</code>接口</h3><p><strong>特有属性</strong></p>
-<p><code>tagName</code>：获取标签名，是大写格式的</p>
-<p><code>classList</code>：获取class属性伪数组</p>
-<p><code>children</code>：获取所有子元素</p>
-<p><code>previousElementSibling</code>：前一个兄弟元素</p>
-<p><code>nextElementSibling</code>：下一个兄弟元素</p>
-<p><strong>优化查找<code>DOM</code>元素的方法</strong></p>
-<p><code>querySelector()</code>：获取匹配指定选择器的第一个元素</p>
-<p><code>querySelectorAll()</code>：获取匹配指定选择器的一组元素</p>
 
           
         

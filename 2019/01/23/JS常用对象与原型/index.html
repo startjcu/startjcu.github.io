@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="全局对象浏览器全局对象：window ECMAScript全局对象：global window常用属性alert(data)：警告弹框，给用户传达某些信息 prompt(desc)：提示填写框，返回用户输入的值 confirm(desc)：确认弹框，返回的是一个布尔值 console：控制台，开发者常用属性，如console.log document：文档对象，属于DOM对象 history：历史">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用对象与原型">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/JS常用对象与原型/index.html">
+<meta property="og:site_name" content="冯义星的博客">
+<meta property="og:description" content="全局对象浏览器全局对象：window ECMAScript全局对象：global window常用属性alert(data)：警告弹框，给用户传达某些信息 prompt(desc)：提示填写框，返回用户输入的值 confirm(desc)：确认弹框，返回的是一个布尔值 console：控制台，开发者常用属性，如console.log document：文档对象，属于DOM对象 history：历史">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-25T15:22:09.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常用对象与原型">
+<meta name="twitter:description" content="全局对象浏览器全局对象：window ECMAScript全局对象：global window常用属性alert(data)：警告弹框，给用户传达某些信息 prompt(desc)：提示填写框，返回用户输入的值 confirm(desc)：确认弹框，返回的是一个布尔值 console：控制台，开发者常用属性，如console.log document：文档对象，属于DOM对象 history：历史">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/JS常用对象与原型/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JS常用对象与原型 | 冯义星的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冯义星的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">滴水穿石，不是水滴的力量，而是坚持的力量。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/JS常用对象与原型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS常用对象与原型
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-23 17:50:31" itemprop="dateCreated datePublished" datetime="2019-01-23T17:50:31+08:00">2019-01-23</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><p>浏览器全局对象：<code>window</code></p>
+<p><code>ECMAScript</code>全局对象：<code>global</code></p>
+<h3 id="window常用属性"><a href="#window常用属性" class="headerlink" title="window常用属性"></a><code>window</code>常用属性</h3><p><code>alert(data)</code>：警告弹框，给用户传达某些信息</p>
+<p><code>prompt(desc)</code>：提示填写框，返回用户输入的值</p>
+<p><code>confirm(desc)</code>：确认弹框，返回的是一个布尔值</p>
+<p><code>console</code>：控制台，开发者常用属性，如<code>console.log</code></p>
+<p><code>document</code>：文档对象，属于<code>DOM</code>对象</p>
+<p><code>history</code>：历史对象，属于<code>BOM</code>对象</p>
+<p><code>setTimeout( function(){}, time )</code>：定时器</p>
+<hr>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number()"></a><code>Number()</code></h3><p>可将其他类型转换成数字，也可用来创建<code>Number</code>对象</p>
+<p><code>var n = 1; n.toString()</code>底层原理</p>
+<p>临时创建<code>new Number(n)</code>对象(将基本数字包装成一个<code>Number</code>对象)</p>
+<p>然后通过此对象调用<code>toString()</code>方法，返回结果后，再将此对象销毁</p>
+<p>故：<code>n.xxx = 2 , console.log(n.xxx) -&gt; undefined</code></p>
+<hr>
+<h3 id="String"><a href="#String" class="headerlink" title="String()"></a><code>String()</code></h3><p>用于将其他类型转换成字符串，也可用来创建<code>String</code>对象</p>
+<p>通过字符串调用方法的底层原理和数字调用属性/方法原理相同</p>
+<p>常用方法</p>
+<p><strong><code>trim()</code></strong></p>
+<p>用于去除字符串两端空格</p>
+<p><strong><code>charAt(index)</code></strong></p>
+<p>获取指定位置字符</p>
+<p><strong><code>indexOf(str)</code></strong></p>
+<p>获取字符或子串的位置，子串获得的是其首个字符在目标字符串中的位置</p>
+<p><strong><code>slice(startIndex, endIndex)</code></strong></p>
+<p>截取指定(左闭右开)区间的子串</p>
+<p><code>startIndex</code>为负数，会默认加上<code>length</code></p>
+<p><code>endIndex</code>缺省或大于<code>length</code>时，会默认指定为<code>length</code></p>
+<p><strong><code>substring(startIndex, endIndex)</code></strong></p>
+<p>作用同<code>slice</code>，但<code>startIndex</code>为负数时，会视为<code>0</code>处理</p>
+<p><strong><code>substr(startIndex, count)</code></strong></p>
+<p>从指定位置开始，截取指定长度的子串</p>
+<p>当<code>start + count &gt; length</code>时，会默认指定为<code>length</code>，即截取到末尾</p>
+<p><strong><code>s1.concat(s2)</code></strong></p>
+<p>将两个字符串拼接，返回一个新的字符串</p>
+<p><strong><code>replace(/REG/ig, target)</code></strong></p>
+<p>将字符串中符合正则匹配的都替换为目标字符串</p>
+<p><code>i：ignoreCase</code>忽略大小写，<code>g：global</code>全局</p>
+<p>若不使用参数，可用字符串代替正则，默认只会替换第一处匹配的结果</p>
+<hr>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>对象的<code>__proto__</code>属性指向其构造函数的<code>prototype</code>属性</p>
+<p>如<code>var obj = {}(new Object())</code></p>
+<p><code>obj</code>是一个对象，它的<code>__proto__</code>属性指向其构造函数<code>Object</code>的<code>prototype</code>属性<br>即<code>obj.__proto__ === Object.prototype</code></p>
+<p>而<code>Object.prototype</code>也是一个对象，它的<code>__proto__</code>属性指向<code>null</code></p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>通过对象调用属性/方法，若该对象中没有此属性，</p>
+<p>就会去它的(隐式)原型<code>obj.__proto__</code>中找，即去其构造函数的(显式)原型<code>fn.prototype</code>中找</p>
+<p>如果还没找到，就会去其原型的原型<code>obj.__proto__.__proto__</code>中找，层层向上直到一个对象的原型对象为<code>null</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/JS类型转换与内存/" rel="next" title="JS类型转换与内存">
+                <i class="fa fa-chevron-left"></i> JS类型转换与内存
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/JS数组和伪数组/" rel="prev" title="JS数组和伪数组">
+                JS数组和伪数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">冯义星</p>
+              <div class="site-description motion-element" itemprop="description">不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局对象"><span class="nav-number">1.</span> <span class="nav-text">全局对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window常用属性"><span class="nav-number">2.</span> <span class="nav-text">window常用属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">3.</span> <span class="nav-text">Number()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">4.</span> <span class="nav-text">String()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-number">5.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">6.</span> <span class="nav-text">原型链</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冯义星</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
