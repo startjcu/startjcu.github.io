@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="AJAX定义 异步的JavaScript和XML：Asynchronous Javascript And XML 使用 1、使用XMLHttpRequest发请求 2、服务器返回XML格式的字符串 3、JS解析XML，并更新局部页面 现在使用更轻量级的JSON代替XML readyState：0 - open() - 1 - send() - 2 (获取响应头) - 3 (正在下载响应体) - 4">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="堆叠顺序负z-index &amp;gt; background &amp;gt; border &amp;gt; 块元素   -&amp;gt; 浮动 &amp;gt; 文字/内联元素 &amp;gt; 定位 &amp;gt; 正z-index 同级的根据HTML定义顺序，后出现的会覆盖先出现的元素 已定位 (static默认定位值除外) 的元素才能设置z-index  堆叠上下文可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-AJAX">
-<meta property="og:url" content="http://yoursite.com/2019/02/08/JS-AJAX/index.html">
+<meta property="og:title" content="CSS堆叠与图标">
+<meta property="og:url" content="http://yoursite.com/2019/02/13/CSS堆叠与图标/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="AJAX定义 异步的JavaScript和XML：Asynchronous Javascript And XML 使用 1、使用XMLHttpRequest发请求 2、服务器返回XML格式的字符串 3、JS解析XML，并更新局部页面 现在使用更轻量级的JSON代替XML readyState：0 - open() - 1 - send() - 2 (获取响应头) - 3 (正在下载响应体) - 4">
+<meta property="og:description" content="堆叠顺序负z-index &amp;gt; background &amp;gt; border &amp;gt; 块元素   -&amp;gt; 浮动 &amp;gt; 文字/内联元素 &amp;gt; 定位 &amp;gt; 正z-index 同级的根据HTML定义顺序，后出现的会覆盖先出现的元素 已定位 (static默认定位值除外) 的元素才能设置z-index  堆叠上下文可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T15:28:28.781Z">
+<meta property="og:updated_time" content="2019-06-26T19:47:46.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS-AJAX">
-<meta name="twitter:description" content="AJAX定义 异步的JavaScript和XML：Asynchronous Javascript And XML 使用 1、使用XMLHttpRequest发请求 2、服务器返回XML格式的字符串 3、JS解析XML，并更新局部页面 现在使用更轻量级的JSON代替XML readyState：0 - open() - 1 - send() - 2 (获取响应头) - 3 (正在下载响应体) - 4">
+<meta name="twitter:title" content="CSS堆叠与图标">
+<meta name="twitter:description" content="堆叠顺序负z-index &amp;gt; background &amp;gt; border &amp;gt; 块元素   -&amp;gt; 浮动 &amp;gt; 文字/内联元素 &amp;gt; 定位 &amp;gt; 正z-index 同级的根据HTML定义顺序，后出现的会覆盖先出现的元素 已定位 (static默认定位值除外) 的元素才能设置z-index  堆叠上下文可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/02/08/JS-AJAX/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/13/CSS堆叠与图标/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>JS-AJAX | 冯义星的博客</title>
+  <title>CSS堆叠与图标 | 冯义星的博客</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/JS-AJAX/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/CSS堆叠与图标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS-AJAX
+          <h1 class="post-title" itemprop="name headline">CSS堆叠与图标
 
               
             
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2019-02-08 19:13:12" itemprop="dateCreated datePublished" datetime="2019-02-08T19:13:12+08:00">2019-02-08</time>
+              <time title="创建时间：2019-02-13 06:55:11" itemprop="dateCreated datePublished" datetime="2019-02-13T06:55:11+08:00">2019-02-13</time>
             
 
             
@@ -389,23 +389,31 @@
       
 
       
-        <h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a><code>AJAX</code></h3><p><strong>定义</strong></p>
-<p>异步的<code>JavaScript</code>和<code>XML</code>：<code>Asynchronous Javascript And XML</code></p>
-<p><strong>使用</strong></p>
-<p>1、使用<code>XMLHttpRequest</code>发请求</p>
-<p>2、服务器返回<code>XML</code>格式的字符串</p>
-<p>3、<code>JS</code>解析<code>XML</code>，并更新局部页面</p>
-<p>现在使用更轻量级的<code>JSON</code>代替<code>XML</code></p>
-<p><code>readyState</code>：<code>0</code> - open() - <code>1</code> - send() - <code>2</code> (获取响应头) - <code>3</code> (正在下载响应体) - <code>4</code> (请求完成)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 配置请求报文 */</span></span><br><span class="line"><span class="comment">//第一部分</span></span><br><span class="line">request.open(<span class="string">'POST'</span>, <span class="string">'/pay'</span>)</span><br><span class="line"><span class="comment">//第二部分</span></span><br><span class="line">request.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'x-www-form-urlencoded'</span>)</span><br><span class="line"><span class="comment">//第四部分</span></span><br><span class="line">request.send(<span class="string">'a=1&amp;b=2'</span>)</span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">window</span>.JSON.parse(request.responseText)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/** 获取响应报文 */</span></span><br><span class="line">        <span class="comment">//第一部分</span></span><br><span class="line">        request.status <span class="comment">//获取HTTP状态码</span></span><br><span class="line">        request.statusText <span class="comment">//获取HTTP状态码解释文本</span></span><br><span class="line">        <span class="comment">//第二部分</span></span><br><span class="line">        request.getAllResponseHeaders() <span class="comment">//获取所有响应头</span></span><br><span class="line">        request.getResponseHeader(<span class="string">'Content-Type'</span>) <span class="comment">//获取指定响应头</span></span><br><span class="line">        <span class="comment">//第四部分</span></span><br><span class="line">        request.responseText <span class="comment">//获取响应体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>同源：协议、域名和端口均相同为同源</p>
-<p>目的：保证用户信息的安全，防止恶意的网站窃取数据</p>
-<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a><code>CORS</code>跨域</h3><p>跨域资源共享：<code>Cross-Origin Resource Sharing</code></p>
-<p><code>AJAX</code>请求是严格遵守同源策略的，若要突破同源策略，就需要用到<code>CORS</code>跨域</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>,<span class="string">'http://star.com:80'</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用jQuery发AJAX请求"><a href="#使用jQuery发AJAX请求" class="headerlink" title="使用jQuery发AJAX请求"></a>使用<code>jQuery</code>发<code>AJAX</code>请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> menuId = $( <span class="string">"ul.nav"</span> ).first().attr( <span class="string">"id"</span> );</span><br><span class="line"><span class="keyword">var</span> request = $.ajax(&#123;</span><br><span class="line">  url: <span class="string">"script.php"</span>,</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  data: &#123; <span class="attr">id</span> : menuId &#125;,</span><br><span class="line">  dataType: <span class="string">"html"</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">request.done(<span class="function"><span class="keyword">function</span>(<span class="params"> msg </span>) </span>&#123;</span><br><span class="line">  $( <span class="string">"#log"</span> ).html( msg );</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">request.fail(<span class="function"><span class="keyword">function</span>(<span class="params"> jqXHR, textStatus </span>) </span>&#123;</span><br><span class="line">  alert( <span class="string">"Request failed: "</span> + textStatus );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><p>负<code>z-index</code> &gt; <code>background</code> &gt; <code>border</code> &gt; 块元素  </p>
+<p>-&gt; 浮动 &gt; 文字/内联元素 &gt; 定位 &gt; 正<code>z-index</code></p>
+<p>同级的根据HTML定义顺序，后出现的会覆盖先出现的元素</p>
+<p>已定位 (<code>static</code>默认定位值除外) 的元素才能设置<code>z-index</code></p>
+<hr>
+<h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><p>可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：</p>
+<p>1、根元素(<code>&lt;html&gt;</code>)</p>
+<p>2、<code>position: fixed</code></p>
+<p>2、<code>z-index</code>值不为<code>auto</code>的绝对/相对定位</p>
+<p>3、<code>opacity</code>属性值小于<code>1</code>的元素</p>
+<p>4、<code>transform</code>属性值不为<code>none</code>的元素</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">更多信息参照MDN</a></p>
+<hr>
+<h3 id="PS切图"><a href="#PS切图" class="headerlink" title="PS切图"></a>PS切图</h3><p>鼠标选中<code>移动工具</code></p>
+<p><strong>定位图层</strong></p>
+<p>psd文件 &gt; 右键图标 &gt; 定位到对应图层</p>
+<p><strong>导出图层</strong></p>
+<p>右键指定图层 &gt; 复制图层(选新建) &gt; 图像 &gt; 裁切</p>
+<p><strong>改变画布大小</strong></p>
+<p>图像 &gt; 画布大小</p>
+<hr>
+<h3 id="iconfont的使用"><a href="#iconfont的使用" class="headerlink" title="iconfont的使用"></a>iconfont的使用</h3><p>选择图标 &gt; 加入购物车 &gt; 添加至项目 &gt; 暂无代码，点此生成 &gt; 使用帮助</p>
+<p>HTML字符实体<code>&amp;#xe613</code>对应CSS样式表中的写法为<code>\e613</code></p>
+<p>推荐使用<code>symbol</code>引入方式，默认居中，可以任意放大而不失真，且支持CSS样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    .icon &#123;width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -433,7 +441,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
         </div>
       
@@ -446,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/06/JS-JSONP/" rel="next" title="JS-JSONP">
-                <i class="fa fa-chevron-left"></i> JS-JSONP
+              <a href="/2019/02/11/CSS宽度和高度/" rel="next" title="CSS宽度和高度">
+                <i class="fa fa-chevron-left"></i> CSS宽度和高度
               </a>
             
           </div>
@@ -456,8 +464,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/11/CSS宽度和高度/" rel="prev" title="CSS宽度和高度">
-                CSS宽度和高度 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/15/响应式和Flex布局/" rel="prev" title="响应式和Flex布局">
+                响应式和Flex布局 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX"><span class="nav-number">1.</span> <span class="nav-text">AJAX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同源策略"><span class="nav-number">2.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS跨域"><span class="nav-number">3.</span> <span class="nav-text">CORS跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用jQuery发AJAX请求"><span class="nav-number">4.</span> <span class="nav-text">使用jQuery发AJAX请求</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#堆叠顺序"><span class="nav-number">1.</span> <span class="nav-text">堆叠顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆叠上下文"><span class="nav-number">2.</span> <span class="nav-text">堆叠上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PS切图"><span class="nav-number">3.</span> <span class="nav-text">PS切图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iconfont的使用"><span class="nav-number">4.</span> <span class="nav-text">iconfont的使用</span></a></li></ol></div>
             
 
           </div>
