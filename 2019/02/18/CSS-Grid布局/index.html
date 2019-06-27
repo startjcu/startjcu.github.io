@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="函数的5种声明方式1、具名函数 指有具体名称的函数 fn.name -&amp;gt; fn 1function fn()&amp;#123; return undefined &amp;#125;  2、匿名函数 一般要赋值给一个变量进行调用，且要放在调用前声明 fn.name -&amp;gt; fn 1var fn = function()&amp;#123; return undefined &amp;#125;;  3、将具名函数赋值">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="网格布局概念 CSS网格布局（Grid）是一个二维的基于网格的布局系统 相对于Flex主要是一维系统而言，Grid可以同时处理行和列 使用步骤 1、使用display: grid;将父元素定义为一个网格容器(grid container) 2、使用grid-template-columns和grid-template-rows来设置列和行的大小(和数量) 3、使用grid-template-are">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS函数">
-<meta property="og:url" content="http://yoursite.com/2019/01/28/JS函数/index.html">
+<meta property="og:title" content="CSS-Grid布局">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/CSS-Grid布局/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="函数的5种声明方式1、具名函数 指有具体名称的函数 fn.name -&amp;gt; fn 1function fn()&amp;#123; return undefined &amp;#125;  2、匿名函数 一般要赋值给一个变量进行调用，且要放在调用前声明 fn.name -&amp;gt; fn 1var fn = function()&amp;#123; return undefined &amp;#125;;  3、将具名函数赋值">
+<meta property="og:description" content="网格布局概念 CSS网格布局（Grid）是一个二维的基于网格的布局系统 相对于Flex主要是一维系统而言，Grid可以同时处理行和列 使用步骤 1、使用display: grid;将父元素定义为一个网格容器(grid container) 2、使用grid-template-columns和grid-template-rows来设置列和行的大小(和数量) 3、使用grid-template-are">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T15:26:43.573Z">
+<meta property="og:updated_time" content="2019-06-27T10:15:29.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS函数">
-<meta name="twitter:description" content="函数的5种声明方式1、具名函数 指有具体名称的函数 fn.name -&amp;gt; fn 1function fn()&amp;#123; return undefined &amp;#125;  2、匿名函数 一般要赋值给一个变量进行调用，且要放在调用前声明 fn.name -&amp;gt; fn 1var fn = function()&amp;#123; return undefined &amp;#125;;  3、将具名函数赋值">
+<meta name="twitter:title" content="CSS-Grid布局">
+<meta name="twitter:description" content="网格布局概念 CSS网格布局（Grid）是一个二维的基于网格的布局系统 相对于Flex主要是一维系统而言，Grid可以同时处理行和列 使用步骤 1、使用display: grid;将父元素定义为一个网格容器(grid container) 2、使用grid-template-columns和grid-template-rows来设置列和行的大小(和数量) 3、使用grid-template-are">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/01/28/JS函数/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/18/CSS-Grid布局/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>JS函数 | 冯义星的博客</title>
+  <title>CSS-Grid布局 | 冯义星的博客</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/JS函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/CSS-Grid布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS函数
+          <h1 class="post-title" itemprop="name headline">CSS-Grid布局
 
               
             
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2019-01-28 18:05:11" itemprop="dateCreated datePublished" datetime="2019-01-28T18:05:11+08:00">2019-01-28</time>
+              <time title="创建时间：2019-02-18 16:39:12" itemprop="dateCreated datePublished" datetime="2019-02-18T16:39:12+08:00">2019-02-18</time>
             
 
             
@@ -389,54 +389,50 @@
       
 
       
-        <h3 id="函数的5种声明方式"><a href="#函数的5种声明方式" class="headerlink" title="函数的5种声明方式"></a>函数的5种声明方式</h3><p><strong>1、具名函数</strong></p>
-<p>指有具体名称的函数 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、匿名函数</strong></p>
-<p>一般要赋值给一个变量进行调用，且要放在调用前声明 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、将具名函数赋值给变量</strong></p>
-<p>这种声明方式下，<code>fn</code>只能在函数体里才能访问，外部访问会报错<code>fn1.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn1 = <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>4、使用内置函数<code>Function</code>声明</strong></p>
-<p>这种声明方式比较繁琐，很少用到，而且其<code>name</code>属性值为<code>anonymous</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'return x+y'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>5、<code>ES6</code>箭头函数</strong></p>
-<p>用法同匿名函数，但写法要简洁很多 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><code>()</code>中放参数列表，若只有一个参数，<code>()</code>可以省略不写</p>
-<p><code>{}</code>中放函数体，如果只有一条<code>return</code>语句，可以省略<code>{}</code>和<code>return</code>关键字；若返回的是一个对象，省略后要用<code>()</code>包裹对象</p>
+        <h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p><strong>概念</strong></p>
+<p><code>CSS</code>网格布局（<code>Grid</code>）是一个二维的基于网格的布局系统</p>
+<p>相对于<code>Flex</code>主要是一维系统而言，<code>Grid</code>可以同时处理行和列</p>
+<p><strong>使用步骤</strong></p>
+<p>1、使用<code>display: grid;</code>将父元素定义为一个网格容器(<code>grid container</code>)</p>
+<p>2、使用<code>grid-template-columns</code>和<code>grid-template-rows</code>来设置列和行的大小(和数量)</p>
+<p>3、使用<code>grid-template-areas</code>和<code>grid-area</code>来定义和将子元素放入网格</p>
+<p><strong>相对单位</strong></p>
+<p><code>fr</code>：设置列或行占剩余空间的一个比例(<code>fraction</code>分数)</p>
+<p><code>auto</code>：设置列宽或行高自动等于它的内容的宽度或高度</p>
+<p><code>%</code>：将列宽或行高设置为它的父容器宽度或高度的百分比</p>
 <hr>
-<h3 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h3><p>函数本质是一个对象，可描述为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = &#123;</span><br><span class="line">    params: [<span class="string">'x'</span>, <span class="string">'y'</span>],</span><br><span class="line">    fBody: <span class="string">'return x+y'</span>,</span><br><span class="line">    call: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">eval</span>(fn.fBody) &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="grid-container的属性"><a href="#grid-container的属性" class="headerlink" title="grid container的属性"></a><code>grid container</code>的属性</h3><p>定义网格容器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">display</span>: grid; &#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>函数的调用</strong></p>
-<p><code>f(1, 2)</code>是<code>f.call(undefined, 1, 2)</code>的语法糖</p>
-<hr>
-<h3 id="初识this-amp-arguments"><a href="#初识this-amp-arguments" class="headerlink" title="初识this &amp; arguments"></a>初识<code>this &amp; arguments</code></h3><p><code>call</code> 的第一个参数可以用 <code>this</code> 得到</p>
-<p><code>call</code> 的第一个参数后面的参数可用 <code>arguments</code> 得到</p>
-<h3 id="调用栈call-stack"><a href="#调用栈call-stack" class="headerlink" title="调用栈call stack"></a>调用栈<code>call stack</code></h3><p>先进后出，指后调用的函数先执行，一般是指函数中嵌套其他函数</p>
-<p>如同递归，先执行目标函数，层层递进到结束点，再从结束点回归到目标函数</p>
-<p>常见错误：<code>stack overflow</code>堆栈溢出，是递归深度超过了最大限制而报出的错误</p>
-<hr>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>可以用树结构来描述作用域</p>
-<p><strong>作用域链</strong></p>
-<p>当使用一个变量时，会先在当前作用域中找</p>
-<p>若没有就去上一级作用域，依次往上查找，直至顶层<code>window</code>作用域</p>
-<p><code>a=3</code>这个表达式是赋值，若当前作用域中无<code>a</code>变量的声明，就会沿着作用域链去查找</p>
-<p>如果一直找不到，就会成为一个全局变量，即给<code>window</code>下的变量<code>a</code>赋值为<code>3</code></p>
-<p><strong>变量提升</strong></p>
-<p>在JS一行一行执行代码之前，会进行预解析，将声明提前</p>
-<p>1、变量声明，如<code>var a=1</code>这个表达式包括声明和赋值，故会将<code>var a</code>提到最前面</p>
-<p>若在<code>var a=1</code>之前使用了<code>a</code>变量，JS会视为已声明未赋值而默认赋值为<code>undefined</code></p>
-<p>2、函数声明，会将函数声明提前，这样函数就可以定义在调用代码之后了，函数体内部也存在变量提升</p>
-<p><strong>闭包</strong></p>
-<p>如果一个函数使用了它范围外的变量，那么 <code>这个函数+这个变量</code> 就构成了闭包</p>
+<p>设置模板行高和列宽</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">20px</span> auto <span class="number">1</span>fr;  </span><br><span class="line">    <span class="attribute">grid-template-columns</span>: auto <span class="number">20%</span> <span class="number">1</span>fr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用<code>repeat</code>方法减少重复，如创建一个五列网格</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(2, 1fr 50px) <span class="number">20px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置行高和列宽尺寸范围</p>
+<p>个数可以使用<code>auto-fill</code>(不足尺寸自动填充至最小尺寸)，<code>auto-fit</code>(不足自动适配填充满一行)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, minmax(50px 1fr)); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置不同网格间的行间距和列间距(<code>gap</code>)</p>
+<p><code>grid-gap</code> = <code>grid-row-gap</code> + <code>grid-column-gap</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">grid-row-gap</span>: <span class="number">10px</span>; <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置所有子元素水平和垂直对齐方式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">justify-items</span>: center; <span class="attribute">align-items</span>: end; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>给网格区域命名(<code>.</code>表示空单元格)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: </span><br><span class="line">        <span class="string">"header header header"</span> </span><br><span class="line">        <span class="string">". main sidebar"</span> </span><br><span class="line">        <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="grid-item的属性"><a href="#grid-item的属性" class="headerlink" title="grid item的属性"></a><code>grid item</code>的属性</h3><p>使用网格线设置跨列和跨行(列的左边界线编号为1，行的上边界线编号为1，依次编号)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span>&#123; <span class="attribute">grid-column</span>: <span class="number">2</span>/<span class="number">4</span>; <span class="attribute">grid-row</span>: <span class="number">2</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>水平和垂直对齐方式(取值：<code>start</code>、<code>center</code>、<code>end</code>)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">justify-self</span>: center; <span class="attribute">align-self</span>: end; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>将子元素放置到网格区域中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*用区域名来确定子元素位置*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: footer; &#125;</span><br><span class="line"><span class="comment">/*用左上角和右下角来确定子元素位置，grid-area: 起始水平线/起始垂直线/末尾水平线/终止垂直线;*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: <span class="number">3</span>/<span class="number">1</span>/<span class="number">4</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -463,7 +459,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
         </div>
       
@@ -476,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/25/JS数组和伪数组/" rel="next" title="JS数组和伪数组">
-                <i class="fa fa-chevron-left"></i> JS数组和伪数组
+              <a href="/2019/02/15/响应式和Flex布局/" rel="next" title="响应式和Flex布局">
+                <i class="fa fa-chevron-left"></i> 响应式和Flex布局
               </a>
             
           </div>
@@ -485,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/30/JS-DOM/" rel="prev" title="JS-DOM">
-                JS-DOM <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的5种声明方式"><span class="nav-number">1.</span> <span class="nav-text">函数的5种声明方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的本质"><span class="nav-number">2.</span> <span class="nav-text">函数的本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初识this-amp-arguments"><span class="nav-number">3.</span> <span class="nav-text">初识this &amp; arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用栈call-stack"><span class="nav-number">4.</span> <span class="nav-text">调用栈call stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">5.</span> <span class="nav-text">作用域</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网格布局"><span class="nav-number">1.</span> <span class="nav-text">网格布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid-container的属性"><span class="nav-number">2.</span> <span class="nav-text">grid container的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid-item的属性"><span class="nav-number">3.</span> <span class="nav-text">grid item的属性</span></a></li></ol></div>
             
 
           </div>

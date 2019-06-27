@@ -311,6 +311,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/CSS-Grid布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/18/CSS-Grid布局/" class="post-title-link" itemprop="url">CSS-Grid布局</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-18 16:39:12" itemprop="dateCreated datePublished" datetime="2019-02-18T16:39:12+08:00">2019-02-18</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p><strong>概念</strong></p>
+<p><code>CSS</code>网格布局（<code>Grid</code>）是一个二维的基于网格的布局系统</p>
+<p>相对于<code>Flex</code>主要是一维系统而言，<code>Grid</code>可以同时处理行和列</p>
+<p><strong>使用步骤</strong></p>
+<p>1、使用<code>display: grid;</code>将父元素定义为一个网格容器(<code>grid container</code>)</p>
+<p>2、使用<code>grid-template-columns</code>和<code>grid-template-rows</code>来设置列和行的大小(和数量)</p>
+<p>3、使用<code>grid-template-areas</code>和<code>grid-area</code>来定义和将子元素放入网格</p>
+<p><strong>相对单位</strong></p>
+<p><code>fr</code>：设置列或行占剩余空间的一个比例(<code>fraction</code>分数)</p>
+<p><code>auto</code>：设置列宽或行高自动等于它的内容的宽度或高度</p>
+<p><code>%</code>：将列宽或行高设置为它的父容器宽度或高度的百分比</p>
+<hr>
+<h3 id="grid-container的属性"><a href="#grid-container的属性" class="headerlink" title="grid container的属性"></a><code>grid container</code>的属性</h3><p>定义网格容器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">display</span>: grid; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置模板行高和列宽</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">20px</span> auto <span class="number">1</span>fr;  </span><br><span class="line">    <span class="attribute">grid-template-columns</span>: auto <span class="number">20%</span> <span class="number">1</span>fr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用<code>repeat</code>方法减少重复，如创建一个五列网格</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(2, 1fr 50px) <span class="number">20px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置行高和列宽尺寸范围</p>
+<p>个数可以使用<code>auto-fill</code>(不足尺寸自动填充至最小尺寸)，<code>auto-fit</code>(不足自动适配填充满一行)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, minmax(50px 1fr)); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置不同网格间的行间距和列间距(<code>gap</code>)</p>
+<p><code>grid-gap</code> = <code>grid-row-gap</code> + <code>grid-column-gap</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">grid-row-gap</span>: <span class="number">10px</span>; <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置所有子元素水平和垂直对齐方式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">justify-items</span>: center; <span class="attribute">align-items</span>: end; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>给网格区域命名(<code>.</code>表示空单元格)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: </span><br><span class="line">        <span class="string">"header header header"</span> </span><br><span class="line">        <span class="string">". main sidebar"</span> </span><br><span class="line">        <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="grid-item的属性"><a href="#grid-item的属性" class="headerlink" title="grid item的属性"></a><code>grid item</code>的属性</h3><p>使用网格线设置跨列和跨行(列的左边界线编号为1，行的上边界线编号为1，依次编号)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span>&#123; <span class="attribute">grid-column</span>: <span class="number">2</span>/<span class="number">4</span>; <span class="attribute">grid-row</span>: <span class="number">2</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>水平和垂直对齐方式(取值：<code>start</code>、<code>center</code>、<code>end</code>)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">justify-self</span>: center; <span class="attribute">align-self</span>: end; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>将子元素放置到网格区域中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*用区域名来确定子元素位置*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: footer; &#125;</span><br><span class="line"><span class="comment">/*用左上角和右下角来确定子元素位置，grid-area: 起始水平线/起始垂直线/末尾水平线/终止垂直线;*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: <span class="number">3</span>/<span class="number">1</span>/<span class="number">4</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/响应式和Flex布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,7 +576,7 @@
         
           
             <h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>若只用<code>max-width</code>，要注意书写顺序，像素大的往后放</p>
-<p>国内一般不用响应式，一般用两个域名，或是用两套<code>html</code>和<code>css</code></p>
+<p>国内很少用响应式，一般用两个域名，或是用两套<code>html</code>和<code>css</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    @media(max-width:800px) and (min-width:600px) &#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">body</span>&#123; <span class="attribute">background</span>: red; &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span> <span class="attr">media</span>=<span class="string">"(max-width:800px)"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>苹果手机默认用<code>375</code>像素的宽度去模拟<code>980</code>像素，然后进行缩放，故需要设置<code>viewport</code></p>
@@ -404,11 +586,8 @@
 <p>1、没有<code>hover</code>，2、有<code>touch</code>事件，3、没有resize，4、没有滚动条</p>
 <hr>
 <h3 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h3><p><strong>Flex之前的布局</strong></p>
-<p>1、文档流（正常流 <code>Normal Flow</code>）</p>
-<p>2、<code>float</code> + <code>clear</code></p>
-<p>3、<code>position：relative + absolute</code></p>
-<p>4、<code>display：inline-block</code></p>
-<p>5、负<code>margin</code></p>
+<p>1、文档流（正常流 <code>Normal Flow</code>）； 2、<code>float</code> + <code>clear</code>；</p>
+<p>3、<code>position：relative + absolute</code>；  4、<code>display：inline-block</code>；  5、负<code>margin</code></p>
 <p><strong>Flex布局特点</strong></p>
 <p>1、块级元素侧重垂直方向、行内布局侧重水平方向，<code>flex</code>布局与方向无关</p>
 <p>2、<code>flex</code>布局可以实现空间自动分配、元素自动对齐（<code>flexible</code>：弹性、灵活）</p>
@@ -421,28 +600,31 @@
 <h3 id="flex-container的属性"><a href="#flex-container的属性" class="headerlink" title="flex container的属性"></a><code>flex container</code>的属性</h3><p><strong>1、方向：flex-direction</strong></p>
 <p>属性值：<code>row</code>默认值、<code>column</code>、<code>row-reverse</code>、<code>column-reverse</code></p>
 <p><strong>2、换行：flex-wrap</strong> </p>
-<p>属性值：<code>nowrap</code>默认值、<code>wrap</code></p>
+<p>属性值：<code>nowrap</code>默认值、<code>wrap</code>、<code>wrap-reverse</code></p>
 <p><strong>3、流动：flex-flow</strong></p>
 <p>是方向和换行的复合属性：<code>flex-flow</code> = <code>flex-direction</code> + <code>flex-wrap</code></p>
 <p><strong>4、主轴方向对齐方式：justify-content</strong> </p>
 <p>属性值：<code>flex-start</code>默认值、<code>space-between</code>、<code>center</code>、<code>space-around</code>、<code>flex-end</code></p>
 <p><strong>5、侧轴方向对齐方式：align-items</strong></p>
 <p>属性值：<code>stretch</code>默认值(将所有元素拉伸至最高元素的高度)、<code>flex-start</code>、<code>center</code>、<code>flex-end</code></p>
-<p><strong>6、多行内容对齐方式align-content</strong></p>
+<p><strong>6、行与行之间隔多远：align-content</strong></p>
 <p>(很少用)属性值：<code>stretch</code>默认值、<code>flex-start</code>、<code>flex-end</code>、<code>space-around</code>、<code>space-between</code></p>
 <hr>
 <h3 id="flex-item的属性"><a href="#flex-item的属性" class="headerlink" title="flex item的属性"></a><code>flex item</code>的属性</h3><p><strong>1、增长比例：flex-grow</strong></p>
 <p>空间过多时，多余空间分配比例</p>
 <p><strong>2、收缩比例：flex-shrink</strong></p>
-<p>空间不够时，一般不用</p>
+<p>空间不够时，所缺空间分摊比例，一般不用</p>
 <p><strong>3、默认大小：flex-basis</strong></p>
-<p>一般不用，原始大小一般就是内容大小</p>
+<p>一般不用，原始大小由内容大小决定，无需特意指定</p>
 <p><strong>4、复合属性：flex</strong></p>
 <p><code>flex</code> = <code>flex-grow</code> + <code>flex-shrink</code> + <code>flex-basis</code></p>
 <p><strong>5、属性：order</strong></p>
-<p>改变子元素排列顺序</p>
+<p>改变子元素排列顺序，默认值为<code>0</code></p>
 <p><strong>6、自身的侧轴对齐方式：align-self</strong></p>
 <p>用于改变单独某个子元素的侧轴对齐方式，属性值同父元素的<code>align-items</code>属性</p>
+<hr>
+<h3 id="使用Flex布局"><a href="#使用Flex布局" class="headerlink" title="使用Flex布局"></a>使用Flex布局</h3><p><strong>好玩的Flex小游戏</strong></p>
+<p><a href="http://flexboxfroggy.com/#zh-cn" target="_blank" rel="noopener">帮助青蛙跳到荷叶上</a></p>
 <p><strong>手机页面布局 (topbar + main + tabs)</strong></p>
 <p>上中下布局，上下高度固定(不用<code>fixed</code>定位)，中间自适应，可滚动实现要点</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">main</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span>; <span class="attribute">overflow</span>: auto; &#125;</span><br></pre></td></tr></table></figure>
@@ -609,7 +791,7 @@
 <h3 id="iconfont的使用"><a href="#iconfont的使用" class="headerlink" title="iconfont的使用"></a>iconfont的使用</h3><p>选择图标 &gt; 加入购物车 &gt; 添加至项目 &gt; 暂无代码，点此生成 &gt; 使用帮助</p>
 <p>HTML字符实体<code>&amp;#xe613</code>对应CSS样式表中的写法为<code>\e613</code></p>
 <p>推荐使用<code>symbol</code>引入方式，默认居中，可以任意放大而不失真，且支持CSS样式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    .icon &#123;width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.icon</span> &#123;<span class="attribute">width</span>: <span class="number">1em</span>; <span class="attribute">height</span>: <span class="number">1em</span>; <span class="attribute">vertical-align</span>: -<span class="number">0.15em</span>; <span class="attribute">fill</span>: currentColor; <span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
           
@@ -992,180 +1174,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/JS-JSONP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/06/JS-JSONP/" class="post-title-link" itemprop="url">JS-JSONP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-06 23:35:13" itemprop="dateCreated datePublished" datetime="2019-02-06T23:35:13+08:00">2019-02-06</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h3><p><strong><code>form</code>表单</strong></p>
-<p><a href="https://github.com/startjcu/resume/commit/ac6a8eeb86b3b00e272868e0238980f416f89301" target="_blank" rel="noopener">form表单请求源码</a></p>
-<p>缺点：必须刷新或新开一个页面</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/pay"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">target</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">"result"</span> <span class="attr">src</span>=<span class="string">"abount:blank"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><code>&lt;img&gt;</code>发送请求</strong></p>
-<p><a href="https://github.com/startjcu/resume/commit/c4de80f9bb52e8fe2c66049f0c7d413fc1f00ff9" target="_blank" rel="noopener">img发送请求源码</a></p>
-<p>缺点：只能发送GET请求，服务器必须返回一个图片才能请求成功</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.src = <span class="string">'/pay'</span>; image.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;; image.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>&lt;script&gt;</code>发送请求</strong></p>
-<p><a href="https://github.com/startjcu/resume/commit/2509bdab14f65208dd9a51013c09034168d9cec9" target="_blank" rel="noopener">script发送请求源码</a></p>
-<p>缺点：这种请求方式要求前端程序员对后端接口很清楚才能正确定义请求路径</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">script.src = <span class="string">'/pay'</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a><code>JSONP</code></h3><p><a href="https://github.com/startjcu/resume/commit/e462e189c03572643ebfbae780d3bfc75c24feaa" target="_blank" rel="noopener">JSONP底层实现源码</a></p>
-<p>在<code>script</code>的请求(<code>src</code>)后面添加<code>callback</code>查询参数</p>
-<p><strong><code>JSONP</code>实现原理</strong></p>
-<p>1、请求方(一个网站的前端-浏览器)创建script，src指向响应方，同时传一个查询参数<code>?callbackName=xxx</code></p>
-<p>2、响应方根据查询参数callbackName，构造形如<code>xxx.call(undefined,&#39;你要的数据&#39;)，即xxx(result)</code>的数据返回给客户端</p>
-<p>3、浏览器接收到响应，就会执行xxx.call(undefined, ‘你想要的数据’)</p>
-<p>4、浏览器将执行结果渲染出来，展示给用户，请求方就获得了他想要的数据</p>
-<p>业界约定：1、<code>callbackName</code>一般用<code>callback</code>代替，2、<code>xxx</code>一般为随机数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> functionName = <span class="string">'star'</span> + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100000</span>)</span><br><span class="line">script.src = <span class="string">'http://127.0.0.1:8887/pay?callback='</span> + functionName</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>jQuery</code>实现<code>JSONP</code></strong></p>
-<p>jQuey底层会封装请求参数无需单独指定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'http://127.0.0.1:8887/pay'</span>,</span><br><span class="line">    dataType: <span class="string">'jsonp'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(response)</span><br><span class="line">        amount.innerText -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>其他相关</strong></p>
-<p>1、<code>JSONP</code>为什么不支持<code>POST</code>请求</p>
-<p>因为<code>JSONP</code>是通过动态创建<code>script</code>实现跨域请求的，只能用<code>GET</code>，不能用<code>POST</code></p>
-<p>2、<code>JSONP</code>与<code>JSON</code>无关</p>
-<p>一般服务器端执行<code>callback</code>函数会将参数以<code>JSON</code>的格式传入，加上两端<code>Padding</code>，故称<code>JSONP</code></p>
-<p>3、<code>JSONP</code>与<code>AJAX</code>无关</p>
-<p>因为<code>jQuery</code>将<code>JSONP</code>的实现封装在<code>ajax</code>属性/函数中，但<code>AJAX</code>的出现是在<code>JSONP</code>之后的</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1212,7 +1220,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
