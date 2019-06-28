@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="REM常用单位 px：像素，与显示设备相关 em：相对长度单位，相对于当前元素的font-size的比例 rem：root em，相对于根元素&amp;lt;html&amp;gt;的font-size的比例 vh(viewpoint height)视口高度的1/100，vw视口宽度的1/100，兼容性不好 动态REM 因为手机的分辨率是多种多样的，故让rem的值等于手机屏宽的1/10，来适配所有的手机。实现原理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-28T00:54:44.409Z">
+<meta property="og:updated_time" content="2019-06-28T01:10:46.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态REM与BFC">
 <meta name="twitter:description" content="REM常用单位 px：像素，与显示设备相关 em：相对长度单位，相对于当前元素的font-size的比例 rem：root em，相对于根元素&amp;lt;html&amp;gt;的font-size的比例 vh(viewpoint height)视口高度的1/100，vw视口宽度的1/100，兼容性不好 动态REM 因为手机的分辨率是多种多样的，故让rem的值等于手机屏宽的1/10，来适配所有的手机。实现原理">
@@ -430,6 +430,9 @@
 
 <p><strong>为什么不用inline-block布局</strong></p>
 <p>因为行内元素垂直方向上不容易对齐，且会因<code>html</code>书写的格式产生间隙，故用<code>flex</code>布局或<code>float</code>布局来替代</p>
+<p><strong>防止图片变形的替代方法</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">background</span>: <span class="built_in">url</span>(./image/1.jpg) no-repeat; <span class="attribute">background-size</span>: cover; &#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -478,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/22/JSX的引入和组件化/" rel="prev" title="JSX的引入和组件化">
+                JSX的引入和组件化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -546,7 +553,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -571,7 +578,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
