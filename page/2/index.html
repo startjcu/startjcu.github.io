@@ -311,6 +311,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/JS-AJAX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/08/JS-AJAX/" class="post-title-link" itemprop="url">JS-AJAX</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-08 19:13:12" itemprop="dateCreated datePublished" datetime="2019-02-08T19:13:12+08:00">2019-02-08</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a><code>AJAX</code></h3><p><strong>定义</strong></p>
+<p>异步的<code>JavaScript</code>和<code>XML</code>：<code>Asynchronous Javascript And XML</code></p>
+<p><strong>使用</strong></p>
+<p>1、使用<code>XMLHttpRequest</code>发请求</p>
+<p>2、服务器返回<code>XML</code>格式的字符串</p>
+<p>3、<code>JS</code>解析<code>XML</code>，并更新局部页面</p>
+<p>现在使用更轻量级的<code>JSON</code>代替<code>XML</code></p>
+<p><code>readyState</code>：<code>0</code> - open() - <code>1</code> - send() - <code>2</code> (获取响应头) - <code>3</code> (正在下载响应体) - <code>4</code> (请求完成)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 配置请求报文 */</span></span><br><span class="line"><span class="comment">//第一部分</span></span><br><span class="line">request.open(<span class="string">'POST'</span>, <span class="string">'/pay'</span>)</span><br><span class="line"><span class="comment">//第二部分</span></span><br><span class="line">request.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'x-www-form-urlencoded'</span>)</span><br><span class="line"><span class="comment">//第四部分</span></span><br><span class="line">request.send(<span class="string">'a=1&amp;b=2'</span>)</span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">window</span>.JSON.parse(request.responseText)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/** 获取响应报文 */</span></span><br><span class="line">        <span class="comment">//第一部分</span></span><br><span class="line">        request.status <span class="comment">//获取HTTP状态码</span></span><br><span class="line">        request.statusText <span class="comment">//获取HTTP状态码解释文本</span></span><br><span class="line">        <span class="comment">//第二部分</span></span><br><span class="line">        request.getAllResponseHeaders() <span class="comment">//获取所有响应头</span></span><br><span class="line">        request.getResponseHeader(<span class="string">'Content-Type'</span>) <span class="comment">//获取指定响应头</span></span><br><span class="line">        <span class="comment">//第四部分</span></span><br><span class="line">        request.responseText <span class="comment">//获取响应体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>同源：协议、域名和端口均相同为同源</p>
+<p>目的：保证用户信息的安全，防止恶意的网站窃取数据</p>
+<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a><code>CORS</code>跨域</h3><p>跨域资源共享：<code>Cross-Origin Resource Sharing</code></p>
+<p><code>AJAX</code>请求是严格遵守同源策略的，若要突破同源策略，就需要用到<code>CORS</code>跨域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>,<span class="string">'http://star.com:80'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用jQuery发AJAX请求"><a href="#使用jQuery发AJAX请求" class="headerlink" title="使用jQuery发AJAX请求"></a>使用<code>jQuery</code>发<code>AJAX</code>请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> menuId = $( <span class="string">"ul.nav"</span> ).first().attr( <span class="string">"id"</span> );</span><br><span class="line"><span class="keyword">var</span> request = $.ajax(&#123;</span><br><span class="line">  url: <span class="string">"script.php"</span>,</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  data: &#123; <span class="attr">id</span> : menuId &#125;,</span><br><span class="line">  dataType: <span class="string">"html"</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">request.done(<span class="function"><span class="keyword">function</span>(<span class="params"> msg </span>) </span>&#123;</span><br><span class="line">  $( <span class="string">"#log"</span> ).html( msg );</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">request.fail(<span class="function"><span class="keyword">function</span>(<span class="params"> jqXHR, textStatus </span>) </span>&#123;</span><br><span class="line">  alert( <span class="string">"Request failed: "</span> + textStatus );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/JS-JSONP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,192 +1128,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/JS函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/28/JS函数/" class="post-title-link" itemprop="url">JS函数</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-28 18:05:11" itemprop="dateCreated datePublished" datetime="2019-01-28T18:05:11+08:00">2019-01-28</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="函数的5种声明方式"><a href="#函数的5种声明方式" class="headerlink" title="函数的5种声明方式"></a>函数的5种声明方式</h3><p><strong>1、具名函数</strong></p>
-<p>指有具体名称的函数 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、匿名函数</strong></p>
-<p>一般要赋值给一个变量进行调用，且要放在调用前声明 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、将具名函数赋值给变量</strong></p>
-<p>这种声明方式下，<code>fn</code>只能在函数体里才能访问，外部访问会报错<code>fn1.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn1 = <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="literal">undefined</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>4、使用内置函数<code>Function</code>声明</strong></p>
-<p>这种声明方式比较繁琐，很少用到，而且其<code>name</code>属性值为<code>anonymous</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'return x+y'</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>5、<code>ES6</code>箭头函数</strong></p>
-<p>用法同匿名函数，但写法要简洁很多 <code>fn.name -&gt; fn</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><code>()</code>中放参数列表，若只有一个参数，<code>()</code>可以省略不写</p>
-<p><code>{}</code>中放函数体，如果只有一条<code>return</code>语句，可以省略<code>{}</code>和<code>return</code>关键字；若返回的是一个对象，省略后要用<code>()</code>包裹对象</p>
-<hr>
-<h3 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h3><p>函数本质是一个对象，可描述为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = &#123;</span><br><span class="line">    params: [<span class="string">'x'</span>, <span class="string">'y'</span>],</span><br><span class="line">    fBody: <span class="string">'return x+y'</span>,</span><br><span class="line">    call: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">eval</span>(fn.fBody) &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>函数的调用</strong></p>
-<p><code>f(1, 2)</code>是<code>f.call(undefined, 1, 2)</code>的语法糖</p>
-<hr>
-<h3 id="初识this-amp-arguments"><a href="#初识this-amp-arguments" class="headerlink" title="初识this &amp; arguments"></a>初识<code>this &amp; arguments</code></h3><p><code>call</code> 的第一个参数可以用 <code>this</code> 得到</p>
-<p><code>call</code> 的第一个参数后面的参数可用 <code>arguments</code> 得到</p>
-<h3 id="调用栈call-stack"><a href="#调用栈call-stack" class="headerlink" title="调用栈call stack"></a>调用栈<code>call stack</code></h3><p>先进后出，指后调用的函数先执行，一般是指函数中嵌套其他函数</p>
-<p>如同递归，先执行目标函数，层层递进到结束点，再从结束点回归到目标函数</p>
-<p>常见错误：<code>stack overflow</code>堆栈溢出，是递归深度超过了最大限制而报出的错误</p>
-<hr>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>可以用树结构来描述作用域</p>
-<p><strong>作用域链</strong></p>
-<p>当使用一个变量时，会先在当前作用域中找</p>
-<p>若没有就去上一级作用域，依次往上查找，直至顶层<code>window</code>作用域</p>
-<p><code>a=3</code>这个表达式是赋值，若当前作用域中无<code>a</code>变量的声明，就会沿着作用域链去查找</p>
-<p>如果一直找不到，就会成为一个全局变量，即给<code>window</code>下的变量<code>a</code>赋值为<code>3</code></p>
-<p><strong>变量提升</strong></p>
-<p>在JS一行一行执行代码之前，会进行预解析，将声明提前</p>
-<p>1、变量声明，如<code>var a=1</code>这个表达式包括声明和赋值，故会将<code>var a</code>提到最前面</p>
-<p>若在<code>var a=1</code>之前使用了<code>a</code>变量，JS会视为已声明未赋值而默认赋值为<code>undefined</code></p>
-<p>2、函数声明，会将函数声明提前，这样函数就可以定义在调用代码之后了，函数体内部也存在变量提升</p>
-<p><strong>闭包</strong></p>
-<p>如果一个函数使用了它范围外的变量，那么 <code>这个函数+这个变量</code> 就构成了闭包</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1204,7 +1174,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

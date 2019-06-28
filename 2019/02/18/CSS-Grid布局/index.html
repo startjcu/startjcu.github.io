@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="网格布局概念 CSS网格布局（Grid）是一个二维的基于网格的布局系统 相对于Flex主要是一维系统而言，Grid可以同时处理行和列 使用步骤 1、使用display: grid;将父元素定义为一个网格容器(grid container) 2、使用grid-template-columns和grid-template-rows来设置列和行的大小(和数量) 3、使用grid-template-are">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-27T10:15:29.244Z">
+<meta property="og:updated_time" content="2019-06-27T17:46:32.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS-Grid布局">
 <meta name="twitter:description" content="网格布局概念 CSS网格布局（Grid）是一个二维的基于网格的布局系统 相对于Flex主要是一维系统而言，Grid可以同时处理行和列 使用步骤 1、使用display: grid;将父元素定义为一个网格容器(grid container) 2、使用grid-template-columns和grid-template-rows来设置列和行的大小(和数量) 3、使用grid-template-are">
@@ -400,9 +400,10 @@
 <p><code>fr</code>：设置列或行占剩余空间的一个比例(<code>fraction</code>分数)</p>
 <p><code>auto</code>：设置列宽或行高自动等于它的内容的宽度或高度</p>
 <p><code>%</code>：将列宽或行高设置为它的父容器宽度或高度的百分比</p>
-<hr>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="built_in">calc</span>(40%-20px); &#125; <span class="comment">/*使用calc*/</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="grid-container的属性"><a href="#grid-container的属性" class="headerlink" title="grid container的属性"></a><code>grid container</code>的属性</h3><p>定义网格容器</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">display</span>: grid; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">display</span>: grid; &#125;</span><br></pre></td></tr></table></figure>
 
 <p>设置模板行高和列宽</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">20px</span> auto <span class="number">1</span>fr;  </span><br><span class="line">    <span class="attribute">grid-template-columns</span>: auto <span class="number">20%</span> <span class="number">1</span>fr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -416,7 +417,7 @@
 
 <p>设置不同网格间的行间距和列间距(<code>gap</code>)</p>
 <p><code>grid-gap</code> = <code>grid-row-gap</code> + <code>grid-column-gap</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123; <span class="attribute">grid-row-gap</span>: <span class="number">10px</span>; <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-row-gap</span>: <span class="number">10px</span>; <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
 
 <p>设置所有子元素水平和垂直对齐方式</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">justify-items</span>: center; <span class="attribute">align-items</span>: end; &#125;</span><br></pre></td></tr></table></figure>
@@ -425,7 +426,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: </span><br><span class="line">        <span class="string">"header header header"</span> </span><br><span class="line">        <span class="string">". main sidebar"</span> </span><br><span class="line">        <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="grid-item的属性"><a href="#grid-item的属性" class="headerlink" title="grid item的属性"></a><code>grid item</code>的属性</h3><p>使用网格线设置跨列和跨行(列的左边界线编号为1，行的上边界线编号为1，依次编号)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span>&#123; <span class="attribute">grid-column</span>: <span class="number">2</span>/<span class="number">4</span>; <span class="attribute">grid-row</span>: <span class="number">2</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-column</span>: <span class="number">2</span>/<span class="number">4</span>; <span class="attribute">grid-row</span>: <span class="number">2</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
 
 <p>水平和垂直对齐方式(取值：<code>start</code>、<code>center</code>、<code>end</code>)</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">justify-self</span>: center; <span class="attribute">align-self</span>: end; &#125;</span><br></pre></td></tr></table></figure>
@@ -481,6 +482,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/20/动态REM与BFC/" rel="prev" title="动态REM与BFC">
+                动态REM与BFC <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,7 +554,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

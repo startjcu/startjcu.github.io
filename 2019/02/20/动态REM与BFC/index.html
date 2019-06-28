@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="冯义星">
+  <meta name="description" content="REM常用单位 px：像素，与显示设备相关 em：相对长度单位，相对于当前元素的font-size的比例 rem：root em，相对于根元素&amp;lt;html&amp;gt;的font-size的比例 vh(viewpoint height)视口高度的1/100，vw视口宽度的1/100，兼容性不好 动态REM 因为手机的分辨率是多种多样的，故让rem的值等于手机屏宽的1/10，来适配所有的手机。实现原理">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/01/01/hello-world/index.html">
+<meta property="og:title" content="动态REM与BFC">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/动态REM与BFC/index.html">
 <meta property="og:site_name" content="冯义星的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="REM常用单位 px：像素，与显示设备相关 em：相对长度单位，相对于当前元素的font-size的比例 rem：root em，相对于根元素&amp;lt;html&amp;gt;的font-size的比例 vh(viewpoint height)视口高度的1/100，vw视口宽度的1/100，兼容性不好 动态REM 因为手机的分辨率是多种多样的，故让rem的值等于手机屏宽的1/10，来适配所有的手机。实现原理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T15:11:01.289Z">
+<meta property="og:updated_time" content="2019-06-28T00:54:44.409Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="动态REM与BFC">
+<meta name="twitter:description" content="REM常用单位 px：像素，与显示设备相关 em：相对长度单位，相对于当前元素的font-size的比例 rem：root em，相对于根元素&amp;lt;html&amp;gt;的font-size的比例 vh(viewpoint height)视口高度的1/100，vw视口宽度的1/100，兼容性不好 动态REM 因为手机的分辨率是多种多样的，故让rem的值等于手机屏宽的1/10，来适配所有的手机。实现原理">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/01/01/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/动态REM与BFC/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Hello World | 冯义星的博客</title>
+  <title>动态REM与BFC | 冯义星的博客</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/动态REM与BFC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">动态REM与BFC
 
               
             
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2019-01-01 19:13:12" itemprop="dateCreated datePublished" datetime="2019-01-01T19:13:12+08:00">2019-01-01</time>
+              <time title="创建时间：2019-02-20 04:19:02" itemprop="dateCreated datePublished" datetime="2019-02-20T04:19:02+08:00">2019-02-20</time>
             
 
             
@@ -389,19 +389,47 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a><code>REM</code></h3><p><strong>常用单位</strong></p>
+<p><code>px</code>：像素，与显示设备相关</p>
+<p><code>em</code>：相对长度单位，相对于当前元素的<code>font-size</code>的比例</p>
+<p><code>rem</code>：<code>root em</code>，相对于根元素<code>&lt;html&gt;</code>的<code>font-size</code>的比例</p>
+<p><code>vh</code>(<code>viewpoint height</code>)视口高度的<code>1/100</code>，<code>vw</code>视口宽度的<code>1/100</code>，兼容性不好</p>
+<p><strong>动态REM</strong></p>
+<p>因为手机的分辨率是多种多样的，故让<code>rem</code>的值等于手机屏宽的<code>1/10</code>，来适配所有的手机。实现原理：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth</span></span><br><span class="line"><span class="xml">    document.write(`<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-tag">html</span>&#123; <span class="attribute">font-size</span>: $&#123;pageWidth/<span class="number">10</span>&#125;<span class="selector-tag">px</span>; &#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>`)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>注意点：</p>
+<p>1、该脚本要写在<code>&lt;head&gt;</code>标签中，且一定要添加<code>&lt;meta name=&quot;viewpoint&quot; ...&gt;</code>来取消苹果默认的模拟<code>980px</code></p>
+<p>2、网页默认字号是<code>16px</code>，<code>chrome</code>默认最小字号是<code>12px</code>，若取宽度的<code>1/100</code>，可能会与最小字号冲突，导致排版错乱</p>
+<hr>
+<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a><code>BFC</code></h3><p><strong>定义</strong></p>
+<p>块级格式化上下文：<code>Block Formatting Context</code></p>
+<p>浮动、绝对定位元素、非块盒的块容器(<code>display</code>属性为<code>inline-block</code>、<code>table-cell</code>等)</p>
+<p><code>overflow</code>不为<code>visible</code>(默认值)的块盒会为它的子元素建立一个新的块级格式化上下文</p>
+<p>可以用来解决浮动子元素造成父级坍塌和<code>margin</code>(父元素不包含子元素上边距)合并的问题，但不推荐</p>
+<p>同一个块级格式化上下文中的相邻块级盒（浮动元素不是块级盒）之间的竖直<code>margin</code>会合并，以较大的为准</p>
+<p><strong>触发BFC推荐方式</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">display</span>: flow-root; &#125; <span class="comment">/*相对于 overflow: hidden; 而言没有任何副作用*/</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p><strong>BFC的作用</strong></p>
+<p>1、用<code>BFC</code>包住浮动元素(推荐使用<code>clearfix</code>)，2、用<code>float</code>+<code>div</code>做左定宽右自适应布局(可用<code>Flex</code>替代)</p>
+<hr>
+<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a><code>IFC</code></h3><p><strong>font-size</strong></p>
+<p>字号，可以理解为活字印刷中用来盛放字符的金属方块(容器)的尺寸</p>
+<p>每种字体都有不同的设计师推荐行高，行内元素默认基线(<code>baseline</code>)对齐</p>
+<p>提升线<code>ascender</code> &gt; 大写高度<code>capital-height</code> &gt; x高度<code>x-height</code> &gt; 基线<code>baseline</code> &gt; 下降线<code>descender</code></p>
+<p><strong>line-height</strong></p>
+<p>行高(盒)，用来决定内联元素真实占据高度</p>
+<p><code>line-height</code>的值不带单位指的是相对于字号的倍数，带单位指具体的值</p>
+<p>行盒内部元素垂直方向默认居中对齐，不同字体基线不同，可能会造成设定好的<code>line-height</code>有细微的变化</p>
+<p><strong>vertical-align</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25808995" target="_blank" rel="noopener">详细教程</a></p>
+<p>一个很少用到的属性，取值为<code>top</code>指的是实际占据高度顶线对齐，<code>middle</code>并不是居中对齐</p>
+<p>唯一用途：用来处理图片下面的空隙，因为图片也是行内元素，默认会与父元素的文字基线对齐，从而产生空隙</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123; <span class="attribute">vertical-align</span>: middle; &#125; <span class="comment">/*取值用top、bottom等都行*/</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><strong>为什么不用inline-block布局</strong></p>
+<p>因为行内元素垂直方向上不容易对齐，且会因<code>html</code>书写的格式产生间隙，故用<code>flex</code>布局或<code>float</code>布局来替代</p>
 
       
     </div>
@@ -423,6 +451,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
 
       
       
@@ -432,15 +469,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/18/CSS-Grid布局/" rel="next" title="CSS-Grid布局">
+                <i class="fa fa-chevron-left"></i> CSS-Grid布局
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/02/Markdown语法/" rel="prev" title="Markdown语法">
-                Markdown语法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#REM"><span class="nav-number">1.</span> <span class="nav-text">REM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC"><span class="nav-number">2.</span> <span class="nav-text">BFC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFC"><span class="nav-number">3.</span> <span class="nav-text">IFC</span></a></li></ol></div>
             
 
           </div>

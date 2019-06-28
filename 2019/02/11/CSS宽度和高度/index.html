@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="文档流Normal Flow，常规浮动，内联元素(行内元素)从左往右排，块级元素从上往下排 块级元素的高度若无具体指定，则由其内部的文档流决定，宽度默认为body宽度 内联元素的高度由行高决定，宽度由内容、padding、margin和border决定，无法自定义设置 文字的对齐方式为基线(四线三格中的第三条线)对齐，不同的字体有不同的设计行高，布局时要特别注意 脱离文档流 绝对定位、固定定位(p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T21:54:42.029Z">
+<meta property="og:updated_time" content="2019-06-27T19:46:46.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS宽度和高度">
 <meta name="twitter:description" content="文档流Normal Flow，常规浮动，内联元素(行内元素)从左往右排，块级元素从上往下排 块级元素的高度若无具体指定，则由其内部的文档流决定，宽度默认为body宽度 内联元素的高度由行高决定，宽度由内容、padding、margin和border决定，无法自定义设置 文字的对齐方式为基线(四线三格中的第三条线)对齐，不同的字体有不同的设计行高，布局时要特别注意 脱离文档流 绝对定位、固定定位(p">
@@ -405,7 +405,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">5em</span>; <span class="attribute">height</span>: <span class="number">20px</span>; </span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>; <span class="attribute">text-align</span>: justify; <span class="attribute">overflow</span>: hidden; &#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>清除浮动</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: block; <span class="attribute">clear</span>: both; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: block; <span class="attribute">clear</span>: both; &#125;</span><br><span class="line"><span class="selector-class">.clearfix</span> &#123; <span class="attribute">zoom</span>: <span class="number">1</span>;&#125; <span class="comment">/*用来兼容低版本IE*/</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>多行文本转一行带<code>...</code></strong></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">white-space</span>: nowrap; <span class="attribute">overflow</span>: hidden; <span class="attribute">text-overflow</span>: ellipsis; &#125;</span><br></pre></td></tr></table></figure>
@@ -424,12 +424,14 @@
 <p>父<code>div</code>与子<code>div</code>间若无阻隔(<code>border</code>、<code>padding</code>或内联元素等)，</p>
 <p>那么子元素的<code>margin</code>会与父元素的<code>margin</code>合并，且不会增加父元素的高度</p>
 <p><strong>outline/border</strong></p>
-<p><code>outline</code>不会改变盒模型的大小</p>
+<p><code>outline</code>不会改变盒模型的大小，等价于对<code>border</code>加了以下属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123; <span class="attribute">box-sizing</span>: border-box; &#125;</span><br></pre></td></tr></table></figure>
+
 <p>块级元素水平居中</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">0</span> auto; &#125;</span><br></pre></td></tr></table></figure>
 
 <p>块级元素垂直居中一般在父元素上加上下填充</p>
-<p>如父元素指定了高度，就需在父元素上使用<code>flex</code>布局</p>
+<p>如果父元素指定了高度，就优先选择在父元素上使用<code>flex</code>布局</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">display</span>: flex; <span class="attribute">justify-content</span>: center; <span class="attribute">align-items</span>: center; &#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>1X1的div</strong></p>
@@ -555,7 +557,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
