@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CSS宽度和高度/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/响应式和Flex布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -331,7 +331,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/02/11/CSS宽度和高度/" class="post-title-link" itemprop="url">CSS宽度和高度</a>
+                <a href="/2019/03/09/响应式和Flex布局/" class="post-title-link" itemprop="url">响应式和Flex布局</a>
               
             
           </h1>
@@ -356,7 +356,363 @@
                 
               
 
-              <time title="创建时间：2019-02-11 03:39:31" itemprop="dateCreated datePublished" datetime="2019-02-11T03:39:31+08:00">2019-02-11</time>
+              <time title="创建时间：2019-03-09 23:43:19" itemprop="dateCreated datePublished" datetime="2019-03-09T23:43:19+08:00">2019-03-09</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>若只用<code>max-width</code>，要注意书写顺序，像素大的往后放</p>
+<p>国内很少用响应式，一般用两个域名，或是用两套<code>html</code>和<code>css</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    @media(max-width:800px) and (min-width:600px) &#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">body</span>&#123; <span class="attribute">background</span>: red; &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span> <span class="attr">media</span>=<span class="string">"(max-width:800px)"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>苹果手机默认用<code>375</code>像素的宽度去模拟<code>980</code>像素，然后进行缩放，故需要设置<code>viewport</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, </span></span></span><br><span class="line"><span class="tag"><span class="string">    user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>手机端交互方式的特点</strong></p>
+<p>1、没有<code>hover</code>，2、有<code>touch</code>事件，3、没有<code>resize</code>，4、没有滚动条</p>
+<hr>
+<h3 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h3><p><strong>Flex之前的布局</strong></p>
+<p>1、文档流（正常流 <code>Normal Flow</code>）； 2、<code>float</code> + <code>clear</code>；</p>
+<p>3、<code>position：relative + absolute</code>；  4、<code>display：inline-block</code>；  5、负<code>margin</code></p>
+<p><strong>Flex布局特点</strong></p>
+<p>1、块级元素侧重垂直方向、行内布局侧重水平方向，<code>flex</code>布局与方向无关</p>
+<p>2、<code>flex</code>布局可以实现空间自动分配、元素自动对齐（<code>flexible</code>：弹性、灵活）</p>
+<p>3、<code>flex</code>适用于简单的线性布局，更复杂的布局要用到<code>grid</code>布局</p>
+<p><strong>Flex基本概念</strong></p>
+<p>主轴(<code>main axis</code>)：主尺寸(<code>main size</code>)、主轴起点(<code>main start</code>)、主轴终点(<code>main end</code>)</p>
+<p>侧轴(<code>cross axis</code>)：侧尺寸(<code>cross size</code>)、侧轴起点(<code>cross start</code>)、侧轴终点(<code>cross end</code>)</p>
+<p>子元素(<code>flex item</code>)、父元素(<code>flex container</code>需添加<code>display: flex</code>样式)</p>
+<hr>
+<h3 id="flex-container的属性"><a href="#flex-container的属性" class="headerlink" title="flex container的属性"></a><code>flex container</code>的属性</h3><p><strong>1、方向：flex-direction</strong></p>
+<p>属性值：<code>row</code>默认值、<code>column</code>、<code>row-reverse</code>、<code>column-reverse</code></p>
+<p><strong>2、换行：flex-wrap</strong> </p>
+<p>属性值：<code>nowrap</code>默认值、<code>wrap</code>、<code>wrap-reverse</code></p>
+<p><strong>3、流动：flex-flow</strong></p>
+<p>是方向和换行的复合属性：<code>flex-flow</code> = <code>flex-direction</code> + <code>flex-wrap</code></p>
+<p><strong>4、主轴方向对齐方式：justify-content</strong> </p>
+<p>属性值：<code>flex-start</code>默认值、<code>space-between</code>、<code>center</code>、<code>space-around</code>、<code>flex-end</code></p>
+<p><strong>5、侧轴方向对齐方式：align-items</strong></p>
+<p>属性值：<code>stretch</code>默认值(将所有元素拉伸至最高元素的高度)、<code>flex-start</code>、<code>center</code>、<code>flex-end</code></p>
+<p><strong>6、行与行之间隔多远：align-content</strong></p>
+<p>(很少用)属性值：<code>stretch</code>默认值、<code>flex-start</code>、<code>flex-end</code>、<code>space-around</code>、<code>space-between</code></p>
+<hr>
+<h3 id="flex-item的属性"><a href="#flex-item的属性" class="headerlink" title="flex item的属性"></a><code>flex item</code>的属性</h3><p><strong>1、增长比例：flex-grow</strong></p>
+<p>空间过多时，多余空间分配比例</p>
+<p><strong>2、收缩比例：flex-shrink</strong></p>
+<p>空间不够时，所缺空间分摊比例，一般不用</p>
+<p><strong>3、默认大小：flex-basis</strong></p>
+<p>一般不用，原始大小由内容大小决定，无需特意指定</p>
+<p><strong>4、复合属性：flex</strong></p>
+<p><code>flex</code> = <code>flex-grow</code> + <code>flex-shrink</code> + <code>flex-basis</code></p>
+<p><strong>5、属性：order</strong></p>
+<p>改变子元素排列顺序，默认值为<code>0</code></p>
+<p><strong>6、自身的侧轴对齐方式：align-self</strong></p>
+<p>用于改变单独某个子元素的侧轴对齐方式，属性值同父元素的<code>align-items</code>属性</p>
+<hr>
+<h3 id="使用Flex布局"><a href="#使用Flex布局" class="headerlink" title="使用Flex布局"></a>使用Flex布局</h3><p><strong>好玩的Flex小游戏</strong></p>
+<p><a href="http://flexboxfroggy.com/#zh-cn" target="_blank" rel="noopener">帮助青蛙跳到荷叶上</a></p>
+<p><strong>手机页面布局 (topbar + main + tabs)</strong></p>
+<p>上中下布局，上下高度固定(不用<code>fixed</code>定位)，中间自适应，可滚动实现要点</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">main</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span>; <span class="attribute">overflow</span>: auto; &#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/CSS堆叠与图标/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/06/CSS堆叠与图标/" class="post-title-link" itemprop="url">CSS堆叠与图标</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-06 06:55:11" itemprop="dateCreated datePublished" datetime="2019-03-06T06:55:11+08:00">2019-03-06</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><p>负<code>z-index</code> &gt; <code>background</code> &gt; <code>border</code> &gt; 块元素  </p>
+<p>-&gt; 浮动 &gt; 文字/内联元素 &gt; 定位 &gt; 正<code>z-index</code></p>
+<p>同级的根据HTML定义顺序，后出现的会覆盖先出现的元素</p>
+<p>已定位 (<code>static</code>默认定位值除外) 的元素才能设置<code>z-index</code></p>
+<hr>
+<h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><p>可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：</p>
+<p>1、根元素(<code>&lt;html&gt;</code>)</p>
+<p>2、<code>position: fixed</code></p>
+<p>2、<code>z-index</code>值不为<code>auto</code>的绝对/相对定位</p>
+<p>3、<code>opacity</code>属性值小于<code>1</code>的元素</p>
+<p>4、<code>transform</code>属性值不为<code>none</code>的元素</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">更多信息参照MDN</a></p>
+<hr>
+<h3 id="PS切图"><a href="#PS切图" class="headerlink" title="PS切图"></a>PS切图</h3><p>鼠标选中<code>移动工具</code></p>
+<p><strong>定位图层</strong></p>
+<p>psd文件 &gt; 右键图标 &gt; 定位到对应图层</p>
+<p><strong>导出图层</strong></p>
+<p>右键指定图层 &gt; 复制图层(选新建) &gt; 图像 &gt; 裁切</p>
+<p><strong>改变画布大小</strong></p>
+<p>图像 &gt; 画布大小</p>
+<hr>
+<h3 id="iconfont的使用"><a href="#iconfont的使用" class="headerlink" title="iconfont的使用"></a>iconfont的使用</h3><p>选择图标 &gt; 加入购物车 &gt; 添加至项目 &gt; 暂无代码，点此生成 &gt; 使用帮助</p>
+<p>HTML字符实体<code>&amp;#xe613</code>对应CSS样式表中的写法为<code>\e613</code></p>
+<p>推荐使用<code>symbol</code>引入方式，默认居中，可以任意放大而不失真，且支持CSS样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.icon</span> &#123;<span class="attribute">width</span>: <span class="number">1em</span>; <span class="attribute">height</span>: <span class="number">1em</span>; <span class="attribute">vertical-align</span>: -<span class="number">0.15em</span>; <span class="attribute">fill</span>: currentColor; <span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/CSS宽度和高度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/02/CSS宽度和高度/" class="post-title-link" itemprop="url">CSS宽度和高度</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-02 03:39:31" itemprop="dateCreated datePublished" datetime="2019-03-02T03:39:31+08:00">2019-03-02</time>
             
 
             
@@ -497,7 +853,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/JS-AJAX/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/27/JS-AJAX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -517,7 +873,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/02/08/JS-AJAX/" class="post-title-link" itemprop="url">JS-AJAX</a>
+                <a href="/2019/02/27/JS-AJAX/" class="post-title-link" itemprop="url">JS-AJAX</a>
               
             
           </h1>
@@ -542,7 +898,7 @@
                 
               
 
-              <time title="创建时间：2019-02-08 19:13:12" itemprop="dateCreated datePublished" datetime="2019-02-08T19:13:12+08:00">2019-02-08</time>
+              <time title="创建时间：2019-02-27 19:13:12" itemprop="dateCreated datePublished" datetime="2019-02-27T19:13:12+08:00">2019-02-27</time>
             
 
             
@@ -653,7 +1009,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/JS-JSONP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/JS-JSONP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="冯义星">
@@ -673,7 +1029,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/02/06/JS-JSONP/" class="post-title-link" itemprop="url">JS-JSONP</a>
+                <a href="/2019/02/23/JS-JSONP/" class="post-title-link" itemprop="url">JS-JSONP</a>
               
             
           </h1>
@@ -698,7 +1054,7 @@
                 
               
 
-              <time title="创建时间：2019-02-06 23:35:13" itemprop="dateCreated datePublished" datetime="2019-02-06T23:35:13+08:00">2019-02-06</time>
+              <time title="创建时间：2019-02-23 23:35:13" itemprop="dateCreated datePublished" datetime="2019-02-23T23:35:13+08:00">2019-02-23</time>
             
 
             
@@ -812,331 +1168,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/04/JS-DOM事件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/04/JS-DOM事件/" class="post-title-link" itemprop="url">JS-DOM事件</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-04 23:24:30" itemprop="dateCreated datePublished" datetime="2019-02-04T23:24:30+08:00">2019-02-04</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><p><strong><code>addEventListener</code></strong> </p>
-<p>事件队列，可以给一个元素添加两个<code>click</code>事件，按定义顺序执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.addEventListener(type, listener, <span class="literal">false</span>); <span class="comment">//指事件冒泡：false为默认值，可省</span></span><br></pre></td></tr></table></figure>
-
-<p><strong><code>onclick</code></strong></p>
-<p>是<code>DOM</code>元素都有的一个属性</p>
-<p>相当于一个变量，只能指向一个函数，故同一个元素，通过它后添加的点击事件会覆盖掉前面的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>one</code></strong></p>
-<p>指只执行一次就会移除监听的事件，即事件触发后就会调用<code>removeEventListener</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doLeave(getImage(n)).one(<span class="string">'transitionend'</span>, (e) =&gt; &#123; doStay($(e.currentTarget)) &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>事件冒泡/捕获</strong></p>
-<p>事件冒泡：事件从子元素到父元素的顺序触发，是默认方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#wrapper'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; e.stopPropagation() &#125;); <span class="comment">//阻止冒泡，preventDefault()阻止默认事件</span></span><br></pre></td></tr></table></figure>
-
-<p>事件捕获：事件从父元素到子元素的顺序触发，须将添加事件队列的第三个参数设为<code>true</code></p>
-<p><strong>轮播图</strong></p>
-<p><a href="https://startjcu.com/resume/src/c8-dom/lunbo-new.html" target="_blank" rel="noopener">轮播图预览</a></p>
-<p>切换页面后，轮播图播放混乱处理方案</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'visibilitychange'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.hidden) &#123;</span><br><span class="line">        clearInterval(timer)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            goToSlide(current + <span class="number">1</span>)</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>图片尽量指定宽度，因为<code>&lt;img&gt;</code>是可替换元素，若不指定宽高，浏览器可能因无法正确判断尺寸而造成重复渲染，影响性能</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/JS-jQuery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/01/JS-jQuery/" class="post-title-link" itemprop="url">JS-jQuery</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-01 23:27:47" itemprop="dateCreated datePublished" datetime="2019-02-01T23:27:47+08:00">2019-02-01</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="jQuery本质"><a href="#jQuery本质" class="headerlink" title="jQuery本质"></a><code>jQuery</code>本质</h3><p><code>window</code>下的一个函数，采用闭包的方式，调用原生的<code>JavaScript API</code>，封装一些逻辑，实现一些常用的功能</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> jQuery -&gt; <span class="string">"function"</span></span><br></pre></td></tr></table></figure>
-
-<p>将<code>jQuery</code>赋值给一个简单符号，方便调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123; <span class="keyword">return</span> node &#125; <span class="comment">//将node返回，是jQuery特有的链式操作的实现原理</span></span><br><span class="line"><span class="built_in">window</span>.$ = <span class="built_in">window</span>.jQuery;</span><br></pre></td></tr></table></figure>
-
-<h3 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a><code>jQuery</code>对象</h3><p><code>$(&#39;li&#39;)</code>是一个<code>jQuery</code>对象，它的原型为<code>jQuery.prototype</code>，有<code>addClass</code>、<code>removeClass</code>、<code>text</code>、<code>html</code>和<code>on</code>等属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//div 的属性和方法有childNodes firstChid nodeType等</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>)</span><br><span class="line"><span class="comment">//$div 的 属性和方法有addClass removeClass toggleClass等</span></span><br><span class="line"><span class="keyword">var</span> $div = $(<span class="string">'#x'</span>);</span><br><span class="line"><span class="comment">//$div[0] === div ，$div 的第一项就是 div</span></span><br><span class="line"><span class="comment">//将普通DOM元素转为jQuery对象：btns.eq(n % size)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相关"><a href="#其他相关" class="headerlink" title="其他相关"></a>其他相关</h3><p><a href="https://api.jquery.com/" target="_blank" rel="noopener">jQuery文档</a></p>
-<p><a href="https://www.jquery123.com/" target="_blank" rel="noopener">jQuery中文文档</a></p>
-<p><strong>立即调用函数</strong></p>
-<p>因为全局遍历可能存在互相覆盖的隐患，所以尽量使用局部变量</p>
-<p>在ES5中，有函数作用域，一般用<code>()</code>将整个函数包裹起来</p>
-<p>或在匿名函数前加一元运算符<code>+</code>、<code>-</code>、<code>!</code>、<code>~</code>，然后用<code>call()</code>或<code>()</code>执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>) &#125;)()</span><br></pre></td></tr></table></figure>
-
-<p>在ES6中，新增块级作用域，但需用<code>let</code>声明变量，用<code>const</code>声明常量</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123; <span class="keyword">let</span> a = <span class="number">3</span> &#125; <span class="built_in">console</span>.log(a); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1178,7 +1214,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
