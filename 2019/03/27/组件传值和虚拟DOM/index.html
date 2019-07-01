@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="React的特点1、声明式开发，用数据驱动视图，减少大量的DOM操作 2、可以与其他框架并存，React生成的DOM只会挂载到#root元素上 3、组件化，将复杂的系统进行拆分、解耦，便于开发和维护 4、单向数据流，父组件可以向子组件传数据，但子组件不允许改变该数据 5、视图层框架，因为单向数据流的约束，React不同组件间传值还需要依赖其他框架 6、函数式编程，用React开发的项目更容易实现前">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T02:07:39.089Z">
+<meta property="og:updated_time" content="2019-06-30T10:40:02.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件传值和虚拟DOM">
 <meta name="twitter:description" content="React的特点1、声明式开发，用数据驱动视图，减少大量的DOM操作 2、可以与其他框架并存，React生成的DOM只会挂载到#root元素上 3、组件化，将复杂的系统进行拆分、解耦，便于开发和维护 4、单向数据流，父组件可以向子组件传数据，但子组件不允许改变该数据 5、视图层框架，因为单向数据流的约束，React不同组件间传值还需要依赖其他框架 6、函数式编程，用React开发的项目更容易实现前">
@@ -425,7 +425,27 @@
 <hr>
 <h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p>用来获取页面的<code>DOM</code>元素</p>
 <p><code>setState</code>可以接收两个参数，第一个用来更新<code>state</code>，第二个参数是一个回调函数</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=&#123;(input) =&gt; &#123; <span class="keyword">this</span>.input = input &#125;&#125; /&gt;</span><br><span class="line">handleBtnClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            list: [...prevState.list, prevState.inputValue],</span><br><span class="line">            inputValue: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.ul.querySelectorAll(<span class="string">'li'</span>).length) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul ref=&#123;(ul) =&gt; &#123; <span class="keyword">this</span>.ul = ul &#125;&#125;&gt;...&lt;ul/&gt;</span><br><span class="line">handleBtnClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            list: [...prevState.list, prevState.inputValue],</span><br><span class="line">            inputValue: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.ul.querySelectorAll(<span class="string">'li'</span>).length) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h3><p>指在某一时刻组件会自动调用执行的函数，详见<a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">生命周期图谱</a></p>
+<p><strong>挂载时</strong></p>
+<p><strong>constructor</strong></p>
+<p>(<em><code>getDerivedStateFromProps</code></em>、) <strong>render</strong></p>
+<p><strong>componentDidMount</strong></p>
+<p><strong>更新时</strong></p>
+<p>(<em><code>getDerivedStateFromProps</code></em>、<em><code>shouldComponentUpdate</code></em>、) <strong>render</strong></p>
+<p>(<em><code>getSnapshotBeforeUpdate</code></em>、) <strong>componentDidUpdate</strong></p>
+<p><strong>卸载时</strong></p>
+<p><strong>componentWillUnmount</strong></p>
+<p><strong>生命周期钩子使用场景</strong></p>
+<p>打开<code>React</code>扩展程序的设置，勾选<code>Highlight Updates</code></p>
+<p>1、优化子组件的无谓渲染</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nextProps.item !== <span class="keyword">this</span>.props.item) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、在<code>componentDidMount</code>中发<code>AJAX</code>请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">    axios.get(<span class="string">'/api/list.json'</span>)</span><br><span class="line">        .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">list</span>: [...res.data] &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123; alert(<span class="string">'error'</span>) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -473,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/30/React中的CSS动画/" rel="prev" title="React中的CSS动画">
+                React中的CSS动画 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +565,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -606,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React的特点"><span class="nav-number">1.</span> <span class="nav-text">React的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">2.</span> <span class="nav-text">虚拟DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">3.</span> <span class="nav-text">ref</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React的特点"><span class="nav-number">1.</span> <span class="nav-text">React的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">2.</span> <span class="nav-text">虚拟DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">3.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期函数"><span class="nav-number">4.</span> <span class="nav-text">生命周期函数</span></a></li></ol></div>
             
 
           </div>
