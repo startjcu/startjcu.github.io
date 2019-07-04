@@ -311,6 +311,325 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/React实现TodoList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/23/React实现TodoList/" class="post-title-link" itemprop="url">React实现TodoList</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-23 03:52:55" itemprop="dateCreated datePublished" datetime="2019-03-23T03:52:55+08:00">2019-03-23</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>搭建项目脚手架</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ create-react-app react-project</span><br></pre></td></tr></table></figure>
+
+<p>创建自定义的组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div&gt;TodoList&lt;/div&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoList</span><br></pre></td></tr></table></figure>
+
+<p>在入口文件中引入自定义的组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"><span class="keyword">import</span> TodoList <span class="keyword">from</span> <span class="string">'./TodoList'</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">TodoList</span> /&gt;</span>, document.getElementById('root'));</span></span><br></pre></td></tr></table></figure>
+
+<p><code>React</code>要求<code>render</code>函数返回的内容最外层只能有一个包裹元素</p>
+<p>在不影响布局的要求下，可以使用<code>React</code>提供的<code>Fragment</code>来做最外层元素</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component, Fragment &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;Fragment&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;</span></span><br><span class="line"><span class="string">                    &#123;/*JSX注释的书写方法，相当于插入一段JS代码*/&#125;</span></span><br><span class="line"><span class="string">                    &lt;input /&gt;</span></span><br><span class="line"><span class="string">                    &lt;button&gt;submit&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;ul&gt;</span></span><br><span class="line"><span class="string">                    &lt;li&gt;code&lt;/li&gt;</span></span><br><span class="line"><span class="string">                    &lt;li&gt;read&lt;/li&gt;</span></span><br><span class="line"><span class="string">                &lt;/ul&gt;</span></span><br><span class="line"><span class="string">            &lt;/Fragment&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoList</span><br></pre></td></tr></table></figure>
+
+<p><code>React</code>中的响应式设计思想(页面自动响应数据的变化)和事件绑定</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component, Fragment &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            inputValue: <span class="string">''</span>,</span><br><span class="line">            list: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;Fragment&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;</span></span><br><span class="line"><span class="string">                    &lt;input</span></span><br><span class="line"><span class="string">                        value=&#123;this.state.inputValue&#125;</span></span><br><span class="line"><span class="string">                        onChange=&#123;this.handleInputChange.bind(this)&#125;</span></span><br><span class="line"><span class="string">                    /&gt;</span></span><br><span class="line"><span class="string">                    &lt;button&gt;submit&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;ul&gt;</span></span><br><span class="line"><span class="string">                    &lt;li&gt;code&lt;/li&gt;</span></span><br><span class="line"><span class="string">                    &lt;li&gt;read&lt;/li&gt;</span></span><br><span class="line"><span class="string">                &lt;/ul&gt;</span></span><br><span class="line"><span class="string">            &lt;/Fragment&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleInputChange(e) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            inputValue: e.target.value</span><br><span class="line">        &#125;) <span class="comment">//要改变数据只能通过setState方法，不能直接改变state的值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoList</span><br></pre></td></tr></table></figure>
+
+<p>新增和删除功能的实现</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component, Fragment &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            inputValue: <span class="string">''</span>,</span><br><span class="line">            list: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;Fragment&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;</span></span><br><span class="line"><span class="string">                    &lt;input</span></span><br><span class="line"><span class="string">                        value=&#123;this.state.inputValue&#125;</span></span><br><span class="line"><span class="string">                        onChange=&#123;this.handleInputChange.bind(this)&#125;</span></span><br><span class="line"><span class="string">                        onKeyDown=&#123;this.handleKeydown.bind(this)&#125;</span></span><br><span class="line"><span class="string">                    /&gt;</span></span><br><span class="line"><span class="string">                    &lt;button onClick=&#123;this.handleBtnClick.bind(this)&#125;&gt;submit&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;ul&gt;</span></span><br><span class="line"><span class="string">                    &#123;</span></span><br><span class="line"><span class="string">                        this.state.list.map((item, index) =&gt; &#123;</span></span><br><span class="line"><span class="string">                            return (</span></span><br><span class="line"><span class="string">                                &lt;li</span></span><br><span class="line"><span class="string">                                    key=&#123;index&#125;</span></span><br><span class="line"><span class="string">                                    onClick=&#123;this.handleItemClick.bind(this, index)&#125;</span></span><br><span class="line"><span class="string">                                &gt;</span></span><br><span class="line"><span class="string">                                    &#123;item&#125;</span></span><br><span class="line"><span class="string">                                &lt;/li&gt;</span></span><br><span class="line"><span class="string">                            )</span></span><br><span class="line"><span class="string">                        &#125;)</span></span><br><span class="line"><span class="string">                    &#125;</span></span><br><span class="line"><span class="string">                &lt;/ul&gt;</span></span><br><span class="line"><span class="string">            &lt;/Fragment&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//类似实现了vue的双向数据绑定</span></span><br><span class="line">    handleInputChange(e) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            inputValue: e.target.value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击提交按钮添加数据</span></span><br><span class="line">    handleBtnClick() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            list: [...this.state.list, <span class="keyword">this</span>.state.inputValue],</span><br><span class="line">            inputValue: <span class="string">''</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按下回车键实现提交</span></span><br><span class="line">    handleKeydown(e) &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.keyCode === <span class="number">13</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleBtnClick()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击列表项实现删除</span></span><br><span class="line">    handleItemClick(index) &#123;</span><br><span class="line">        <span class="keyword">var</span> list = [...this.state.list]</span><br><span class="line">        list.splice(index, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; list &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoList</span><br></pre></td></tr></table></figure>
+
+<p>让输入的内容进行<code>html</code>转义</p>
+<p>为避免歧义，在<code>JSX</code>模板标签的属性中，用<code>className</code>代替<code>class</code>，用<code>htmlFor</code>代替<code>for</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">dangerouslySetInnerHTML</span>=<span class="string">&#123;&#123;</span> <span class="attr">__html:</span> <span class="attr">item</span> &#125;&#125; <span class="attr">className</span>=<span class="string">'red'</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/React-JSX和组件化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/20/React-JSX和组件化/" class="post-title-link" itemprop="url">React-JSX和组件化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-20 03:58:54" itemprop="dateCreated datePublished" datetime="2019-03-20T03:58:54+08:00">2019-03-20</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用原生<code>JS</code>实现计数器</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"add"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> result = <span class="built_in">document</span>.querySelector(<span class="string">'#result'</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> add = <span class="built_in">document</span>.querySelector(<span class="string">'#add'</span>)</span></span><br><span class="line"><span class="javascript">    add.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        result.innerText = <span class="built_in">parseInt</span>(result.innerText, <span class="number">10</span>) + <span class="number">1</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> minus = <span class="built_in">document</span>.querySelector(<span class="string">'#minus'</span>)</span></span><br><span class="line"><span class="javascript">    minus.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        result.innerText = <span class="built_in">parseInt</span>(result.innerText, <span class="number">10</span>) - <span class="number">1</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>React</code>只向页面添加元素，无需从页面获取元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.production.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/react-dom/16.9.0-alpha.0/umd/react-dom.production.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> number = <span class="number">0</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> handleBtn1Click = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">        number++</span><br><span class="line">        render()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> handleBtn2Click = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">        number--</span><br><span class="line">        render()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> h1 = React.createElement(<span class="string">'h1'</span>, &#123; <span class="attr">className</span>: <span class="string">'red'</span> &#125;, number)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> btn1 = React.createElement(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn1Click &#125;, <span class="string">'+'</span>)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> btn2 = React.createElement(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn2Click &#125;, <span class="string">'-'</span>)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> div = React.createElement(<span class="string">'div'</span>, &#123; <span class="attr">className</span>: <span class="string">'parent'</span> &#125;, h1, btn1, btn2)</span></span><br><span class="line"><span class="javascript">        ReactDOM.render(div, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>))</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>函数代码优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、给通用函数一个更简洁的标识符</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> h = React.createElement</span><br><span class="line">    <span class="keyword">let</span> h1 = h(<span class="string">'h1'</span>, &#123; <span class="attr">className</span>: <span class="string">'red'</span> &#125;, number)</span><br><span class="line">    <span class="keyword">let</span> btn1 = h(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn1Click &#125;, <span class="string">'+'</span>)</span><br><span class="line">    <span class="keyword">let</span> btn2 = h(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn2Click &#125;, <span class="string">'-'</span>)</span><br><span class="line">    <span class="keyword">let</span> div = h(<span class="string">'div'</span>, &#123; <span class="attr">className</span>: <span class="string">'parent'</span> &#125;, h1, btn1, btn2)</span><br><span class="line">    ReactDOM.render(div, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2、优化只使用一次的变量，将不用每次都重复渲染的变量提到函数外面</span></span><br><span class="line"><span class="keyword">let</span> h = React.createElement</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> div = h(<span class="string">'div'</span>, &#123; <span class="attr">className</span>: <span class="string">'parent'</span> &#125;,</span><br><span class="line">        h(<span class="string">'h1'</span>, &#123; <span class="attr">className</span>: <span class="string">'red'</span> &#125;, number),</span><br><span class="line">        h(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn1Click &#125;, <span class="string">'+'</span>),</span><br><span class="line">        h(<span class="string">'button'</span>, &#123; <span class="attr">onClick</span>: handleBtn2Click &#125;, <span class="string">'-'</span>))</span><br><span class="line">    ReactDOM.render(div, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用<code>JSX</code>做进一步的优化，<code>JSX</code>的底层实现原理(<code>React.createElement(tagName, attributes, children)</code>)</p>
+<p>当<code>tagName</code>不是传统的<code>html</code>标签，而是一个函数的情况下，<code>React</code>会将<code>attributes</code>转化为函数的参数<code>props</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ReactDOM.render(<span class="string">`</span></span><br><span class="line"><span class="string">        &lt;div className="parent"&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 className="red"&gt;&#123;number&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;handleBtn1Click&#125;&gt;+&lt;/button&gt;</span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;handleBtn2Click&#125;&gt;-&lt;/button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;`</span>, <span class="comment">//这里的反引号是用来排版的，代码中并不需要添加</span></span><br><span class="line">        <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组件化，1、函数式组件：<code>props</code> + <code>JSX</code>；2、类组件：<code>class A extends Component</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">        &lt;div className="parent"&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 className="red"&gt;&#123;number&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;handleBtn1Click&#125;&gt;&#123;props.btn1&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;handleBtn2Click&#125;&gt;&#123;props.btn2&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;`</span> <span class="comment">//反引号并不存在</span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123; ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">btn1</span>=<span class="string">"+1"</span> <span class="attr">btn2</span>=<span class="string">"-1"</span> /&gt;</span>, document.querySelector('#root')) &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>用类实现局部渲染，避免组件过多而造成的全局变量污染</p>
+<p>数据源：<code>state</code> + <code>props</code>；更新数据：<code>setState()</code>；更复杂的数据：<code>redux</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            number: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div className="parent"&gt;</span></span><br><span class="line"><span class="string">                &lt;h1 className="red"&gt;&#123;this.state.number&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;button onClick=&#123;this.handleBtn1Click.bind(this)&#125;&gt;&#123;this.props.btn1&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;button onClick=&#123;this.handleBtn2Click.bind(this)&#125;&gt;&#123;this.props.btn2&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;`</span></span><br><span class="line">        ) <span class="comment">//react会默认将函数调用时call的第一个参数置为undefined，所有要绑定this</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleBtn1Click() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            number: <span class="keyword">this</span>.state.number + <span class="number">1</span></span><br><span class="line">        &#125;) <span class="comment">//setState可以对更新进行优化，将多个更新合并成一个</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleBtn2Click() &#123;</span><br><span class="line">        <span class="comment">//this.state.number = 0，用于辅助理解第一种方案异步更新的bug</span></span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            number: <span class="keyword">this</span>.state.number - <span class="number">1</span></span><br><span class="line">        &#125;) <span class="comment">//这段代码执行两次会因为异步更新的原因，看起来好像只执行了一次，解决方案如下</span></span><br><span class="line">        <span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123; <span class="attr">number</span>: prevState.number - <span class="number">1</span> &#125;</span><br><span class="line">        &#125;) <span class="comment">//这种方式看起来像是同步执行的，实际上也是异步执行的，但是它可以取到上一次的状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123; ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">btn1</span>=<span class="string">"+1"</span> <span class="attr">btn2</span>=<span class="string">"-1"</span> /&gt;</span>, document.querySelector('#root')) &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/动态REM与BFC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -853,356 +1172,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/CSS堆叠与图标/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/06/CSS堆叠与图标/" class="post-title-link" itemprop="url">CSS堆叠与图标</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-06 06:55:11" itemprop="dateCreated datePublished" datetime="2019-03-06T06:55:11+08:00">2019-03-06</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><p>负<code>z-index</code> &gt; <code>background</code> &gt; <code>border</code> &gt; 块元素  </p>
-<p>-&gt; 浮动 &gt; 文字/内联元素 &gt; 定位 &gt; 正<code>z-index</code></p>
-<p>同级的根据HTML定义顺序，后出现的会覆盖先出现的元素</p>
-<p>已定位 (<code>static</code>默认定位值除外) 的元素才能设置<code>z-index</code></p>
-<hr>
-<h3 id="堆叠上下文"><a href="#堆叠上下文" class="headerlink" title="堆叠上下文"></a>堆叠上下文</h3><p>可以理解为堆叠作用域(或堆叠参照物)，可以触发堆叠上下文的常见属性有：</p>
-<p>1、根元素(<code>&lt;html&gt;</code>)</p>
-<p>2、<code>position: fixed</code></p>
-<p>2、<code>z-index</code>值不为<code>auto</code>的绝对/相对定位</p>
-<p>3、<code>opacity</code>属性值小于<code>1</code>的元素</p>
-<p>4、<code>transform</code>属性值不为<code>none</code>的元素</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">更多信息参照MDN</a></p>
-<hr>
-<h3 id="PS切图"><a href="#PS切图" class="headerlink" title="PS切图"></a>PS切图</h3><p>鼠标选中<code>移动工具</code></p>
-<p><strong>定位图层</strong></p>
-<p>psd文件 &gt; 右键图标 &gt; 定位到对应图层</p>
-<p><strong>导出图层</strong></p>
-<p>右键指定图层 &gt; 复制图层(选新建) &gt; 图像 &gt; 裁切</p>
-<p><strong>改变画布大小</strong></p>
-<p>图像 &gt; 画布大小</p>
-<hr>
-<h3 id="iconfont的使用"><a href="#iconfont的使用" class="headerlink" title="iconfont的使用"></a>iconfont的使用</h3><p>选择图标 &gt; 加入购物车 &gt; 添加至项目 &gt; 暂无代码，点此生成 &gt; 使用帮助</p>
-<p>HTML字符实体<code>&amp;#xe613</code>对应CSS样式表中的写法为<code>\e613</code></p>
-<p>推荐使用<code>symbol</code>引入方式，默认居中，可以任意放大而不失真，且支持CSS样式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    .icon &#123;width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/CSS宽度和高度/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/02/CSS宽度和高度/" class="post-title-link" itemprop="url">CSS宽度和高度</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-02 03:39:31" itemprop="dateCreated datePublished" datetime="2019-03-02T03:39:31+08:00">2019-03-02</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p><code>Normal Flow</code>，常规浮动，内联元素(行内元素)从左往右排，块级元素从上往下排</p>
-<p>块级元素的高度若无具体指定，则由其内部的文档流决定，宽度默认为<code>body</code>宽度</p>
-<p>内联元素的高度由行高决定，宽度由内容、<code>padding</code>、<code>margin</code>和<code>border</code>决定，无法自定义设置</p>
-<p>文字的对齐方式为基线(四线三格中的第三条线)对齐，不同的字体有不同的设计行高，布局时要特别注意</p>
-<p><strong>脱离文档流</strong></p>
-<p>绝对定位、固定定位(<code>position: absolute/fixed</code>)和浮动(<code>float: left</code>)会脱离文档流</p>
-<p><strong>HTML中的空格</strong></p>
-<p><code>HTML</code>会将内联元素之外的空格全部删去(<code>trim</code>)，内联元素之间的多个空格会合并为一个空格</p>
-<p>若要添加多个空格，须用转义字符<code>nbsp;</code>(no break space)</p>
-<p><strong>长单词遇到阻碍自动换行</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attribute">word-break</span>: break-all; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>单行文字两端对齐</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">5em</span>; <span class="attribute">height</span>: <span class="number">20px</span>; </span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>; <span class="attribute">text-align</span>: justify; <span class="attribute">overflow</span>: hidden; &#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: inline-block; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>清除浮动</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">content</span>: <span class="string">''</span>; <span class="attribute">display</span>: block; <span class="attribute">clear</span>: both; &#125;</span><br><span class="line"><span class="selector-class">.clearfix</span> &#123; <span class="attribute">zoom</span>: <span class="number">1</span>;&#125; <span class="comment">/*用来兼容低版本IE*/</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>多行文本转一行带<code>...</code></strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">white-space</span>: nowrap; <span class="attribute">overflow</span>: hidden; <span class="attribute">text-overflow</span>: ellipsis; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>指定保留若干行，末尾带<code>...</code></strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block-with-text</span> &#123; <span class="attribute">overflow</span>: hidden; <span class="attribute">display</span>: -webkit-box; </span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>; <span class="attribute">-webkit-box-orient</span>: vertical; &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><p>内联元素水平居中，在父元素上加文本居中</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">text-align</span>: center; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>内联元素垂直居中，父元素上使用行高和上下填充</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">line-height</span>: <span class="number">20px</span>; <span class="attribute">padding</span>: <span class="number">8px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>块级元素尽量不要直接指定高度，否则多行会出现溢出，导致排版错乱；一般由其内部文档流决定它的高度</p>
-<p><strong>margin合并</strong></p>
-<p>父<code>div</code>与子<code>div</code>间若无阻隔(<code>border</code>、<code>padding</code>或内联元素等)，</p>
-<p>那么子元素的<code>margin</code>会与父元素的<code>margin</code>合并，且不会增加父元素的高度</p>
-<p><strong>outline/border</strong></p>
-<p><code>outline</code>不会改变盒模型的大小，等价于对<code>border</code>加了以下属性</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123; <span class="attribute">box-sizing</span>: border-box; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>块级元素水平居中</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">0</span> auto; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>块级元素垂直居中一般在父元素上加上下填充</p>
-<p>如果父元素指定了高度，就优先选择在父元素上使用<code>flex</code>布局</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">display</span>: flex; <span class="attribute">justify-content</span>: center; <span class="attribute">align-items</span>: center; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>1X1的div</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">padding-top</span>: <span class="number">100%</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1249,7 +1218,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
