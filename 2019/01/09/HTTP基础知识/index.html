@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="页面相关术语URL：Uniform Resource Locator 统一资源定位符，用来定位页面 HTTP：HyperText Transfer Protocol 超文本传输协议，用来下载页面 HTML：HyperText Markup Language 超文本标记语言，用来显示页面  资源相关术语URI：Uniform Resource Identifier 统一资源标识符，有两种实现方式UR">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T02:01:31.203Z">
+<meta property="og:updated_time" content="2019-07-05T13:24:53.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP基础知识">
 <meta name="twitter:description" content="页面相关术语URL：Uniform Resource Locator 统一资源定位符，用来定位页面 HTTP：HyperText Transfer Protocol 超文本传输协议，用来下载页面 HTML：HyperText Markup Language 超文本标记语言，用来显示页面  资源相关术语URI：Uniform Resource Identifier 统一资源标识符，有两种实现方式UR">
@@ -411,10 +411,14 @@
 <p>锚点(Hash)：<code>#3</code>，用来实现某个页面内不同位置的跳转</p>
 <hr>
 <h3 id="DNS服务"><a href="#DNS服务" class="headerlink" title="DNS服务"></a><code>DNS</code>服务</h3><p>域名系统：<code>Domain Name System</code>，用来将域名解析为对应的IP地址</p>
+<p><strong>页面加载的过程</strong></p>
+<p><code>URL</code>解析 &gt; <code>DNS</code>查询 &gt; 资源请求 &gt; 浏览器解析</p>
 <p>流程：域名 &gt; (本地<code>hosts</code>)电信<code>DNS</code>服务 &gt; <code>IP</code>地址</p>
 <p>服务器(<code>Server</code>电脑) &gt; <code>HTTP</code> &gt; 客户端(<code>Client</code>浏览器)</p>
 <p><code>HTTP</code>的作用是指导服务器和浏览器之间如何通信</p>
-<hr>
+<p>DNS缓存：近期的DNS查询，分布在多处(浏览器、路由器、DNS服务器)，越靠近用户缓存时间越短</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//cdn.bootcss.com"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a><code>HTTP</code>请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST -s -v -- <span class="string">'https://www.baidu.com'</span></span><br></pre></td></tr></table></figure>
 
 <p>curl：<code>command line url</code>，此命令用于在命令行实现url请求</p>
@@ -571,7 +575,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -311,6 +311,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/ES6基础语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/13/ES6基础语法/" class="post-title-link" itemprop="url">ES6基础语法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-13 10:31:46" itemprop="dateCreated datePublished" datetime="2019-04-13T10:31:46+08:00">2019-04-13</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a><code>let</code>和<code>const</code></h3><p>相对于<code>var</code>而言，<code>let</code>和<code>const</code>有块级作用域，</p>
+<p>不存在变量提升，不能重复声明同一变量(使用严格模式)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5中局部作用域，立即执行函数使得person无法被外部访问</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">'star'</span>, <span class="attr">age</span>: <span class="number">27</span> &#125;</span><br><span class="line">    <span class="comment">//闭包使匿名函数可以操作person</span></span><br><span class="line">    <span class="built_in">window</span>.growUp = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        person.age++</span><br><span class="line">        <span class="keyword">return</span> person.age</span><br><span class="line">    &#125; <span class="comment">//任何地方都可以使用window.growUp操作person，但不能直接访问person</span></span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+<h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><p>特点：1、用反引号标注，2、支持多行字符串，3、支持变量和表达式<code>${}</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'star'</span></span><br><span class="line"><span class="keyword">let</span> welcome = <span class="string">`hello + <span class="subst">$&#123;name&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5写法</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'star'</span>, age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: name,</span><br><span class="line">    age: age,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.name &#125;,</span><br><span class="line">    getAge: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.age &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6写法</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'star'</span>, age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="comment">//变量名可以直接用作对象得属性名称</span></span><br><span class="line">    name, age,</span><br><span class="line">    <span class="comment">//对象里的方法可以简写</span></span><br><span class="line">    getName() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.name &#125;,</span><br><span class="line">    <span class="comment">//表达式作为属性名和方法名</span></span><br><span class="line">    [<span class="string">'get'</span> + <span class="string">'Age'</span>]() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.age &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(obj) <span class="comment">//获取属性名数组</span></span><br><span class="line"><span class="built_in">Object</span>.assign(obj1, obj2); <span class="comment">//对象整合</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>1、通过数组实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+
+<p>2、通过对象实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; d1, d2 &#125; = &#123; <span class="attr">d1</span>: <span class="number">1</span>, <span class="attr">d2</span>: <span class="number">2</span> &#125;; <span class="comment">//要求key值必须一致</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="箭头函数-arrow-function：-gt"><a href="#箭头函数-arrow-function：-gt" class="headerlink" title="箭头函数(arrow function：()=&gt;{})"></a>箭头函数(<code>arrow function：()=&gt;{}</code>)</h3><p>当参数个数为<code>1</code>时，可以省略<code>()</code>；当函数体就<code>1</code>条返回语句时，可以省略<code>{}</code>和<code>return</code></p>
+<p><strong>rest参数</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pa = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">prev, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> prev + cur</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;; <span class="comment">//展开运算符，箭头函数没有arguments对象</span></span><br><span class="line">pa.apply(<span class="keyword">this</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数可设初始值</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="function">(<span class="params">word = <span class="string">'hello'</span></span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(word) &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>箭头函数会绑定执行上下文，没有<code>prototype</code>属性</strong></p>
+<p>所以对箭头函数的<code>this</code>处理不会生效，如用<code>call</code>和<code>apply</code>都不能再改变其<code>this</code>指向了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo1 = &#123;</span><br><span class="line">    getClass: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">demo1.getClass.call(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;) <span class="comment">//&#123;a:1&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> demo2 = &#123;</span><br><span class="line">    getClass: <span class="function"><span class="params">()</span> =&gt;</span> &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">demo2.getClass.call(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;); <span class="comment">//Window</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="面向对象class"><a href="#面向对象class" class="headerlink" title="面向对象class"></a>面向对象<code>class</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123; </span><br><span class="line">        <span class="keyword">super</span>() </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>定义：解决一个复杂问题时，自顶向下逐层把系统划分为若干模块的过程</p>
+<p>在<code>JS</code>出现模块化之前，常用的有<code>CommonJS</code>、<code>AMD</code>和<code>CMD</code>模块化方案</p>
+<p>导出，可以使用<code>export default</code>指定默认导出项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; a, b, c &#125;</span><br></pre></td></tr></table></figure>
+
+<p>导入，若导入的是其他模块的默认导出项，可以随意指定名称</p>
+<p>若导入的是对象，须使用解构赋值的方式导入变量/方法，使用<code>as</code>指定别名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; a <span class="keyword">as</span> varA &#125; <span class="keyword">from</span> <span class="string">'./demo'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新增promise语法"><a href="#新增promise语法" class="headerlink" title="新增promise语法"></a>新增promise语法</h3><p>解决回调地狱问题，提升代码的可读性和可维护性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//未使用promise时，回调层层嵌套</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">''</span>,</span><br><span class="line">    type: <span class="string">''</span>,</span><br><span class="line">    success() &#123;</span><br><span class="line">        $.ajax(&#123; </span><br><span class="line">            url: <span class="string">''</span>, </span><br><span class="line">            type: <span class="string">''</span>,</span><br><span class="line">            success() &#123;&#125; </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    error() &#123; &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用promise</span></span><br><span class="line"><span class="keyword">var</span> promiseFn1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: <span class="string">''</span>,</span><br><span class="line">        type: <span class="string">''</span>,</span><br><span class="line">        success(res) &#123; resolve(res) &#125;,</span><br><span class="line">        error(err) &#123; reject(err) &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> promiseFn2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: <span class="string">''</span>,</span><br><span class="line">        type: <span class="string">''</span>,</span><br><span class="line">        success(res) &#123; resolve(res) &#125;,</span><br><span class="line">        error(err) &#123; reject(err) &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//链式操作，then中接收两个参数/函数(resolve, reject)</span></span><br><span class="line">promiseFn1.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn1 success'</span>)</span><br><span class="line">    <span class="keyword">return</span> promiseFn2</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn2 success'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/React-Redux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,205 +1105,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/组件传值和虚拟DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/27/组件传值和虚拟DOM/" class="post-title-link" itemprop="url">组件传值和虚拟DOM</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-27 05:29:16" itemprop="dateCreated datePublished" datetime="2019-03-27T05:29:16+08:00">2019-03-27</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="React的特点"><a href="#React的特点" class="headerlink" title="React的特点"></a>React的特点</h3><p>1、声明式开发，用数据驱动视图，减少大量的<code>DOM</code>操作</p>
-<p>2、可以与其他框架并存，<code>React</code>生成的<code>DOM</code>只会挂载到<code>#root</code>元素上</p>
-<p>3、组件化，将复杂的系统进行拆分、解耦，便于开发和维护</p>
-<p>4、单向数据流，父组件可以向子组件传数据，但子组件不允许改变该数据</p>
-<p>5、视图层框架，因为单向数据流的约束，<code>React</code>不同组件间传值还需要依赖其他框架</p>
-<p>6、函数式编程，用<code>React</code>开发的项目更容易实现前端自动化测试</p>
-<hr>
-<p>父组件通过属性向子组件传递数据</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state.list.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;TodoItem</span><br><span class="line">            key=&#123;index&#125;</span><br><span class="line">            item=&#123;item&#125;</span><br><span class="line">            deleteItem=&#123;() =&gt; &#123; <span class="keyword">this</span>.handleItemClick(index) &#125;&#125;</span><br><span class="line">            &#123;<span class="comment">/*箭头函数不会改变this指向，所以这里无需使用bind(this)*/</span>&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>子组件通过<code>this.props</code>取出从父组件接收的数据</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">'prop-types'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoItem</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将函数的this绑定放在构造函数中可以提升性能</span></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="comment">//使用ES6的解构赋值来进行代码优化</span></span><br><span class="line">        <span class="keyword">const</span> &#123;item&#125; = <span class="keyword">this</span>.props</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`&lt;li onClick=&#123;this.handleClick&#125;&gt;&#123;item&#125;&lt;/li&gt;`</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick() &#123;</span><br><span class="line">        <span class="keyword">this</span>.props.deleteItem()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//属性值类型校验</span></span><br><span class="line">TodoItem.propTypes = &#123;</span><br><span class="line">    item: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),</span><br><span class="line">    deleteItem: PropTypes.func,</span><br><span class="line">    test: PropTypes.string.isRequired</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定属性默认值</span></span><br><span class="line">TodoItem.defaultProps = &#123;</span><br><span class="line">    test: <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoItem</span><br></pre></td></tr></table></figure>
-
-<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟<code>DOM</code></h3><p>虚拟<code>DOM</code>本质是一个用来模拟真实<code>DOM</code>的<code>JS</code>对象</p>
-<p><strong>React中虚拟DOM的使用逻辑</strong></p>
-<p>1、<code>state</code> 数据</p>
-<p>2、<code>JSX</code> 模板</p>
-<p>3、数据 + 模板，生成虚拟<code>DOM</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(<span class="string">'div'</span>, &#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;, React.createElement(<span class="string">'span'</span>, &#123;&#125;, <span class="string">'hello world'</span>));</span><br></pre></td></tr></table></figure>
-
-<p>4、由虚拟<code>DOM</code>生成真实的<code>DOM</code>来显示</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"abc"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>5、当<code>state</code>发生变化时，新数据 + 模板，生成新的虚拟<code>DOM</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(<span class="string">'div'</span>, &#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;, React.createElement(<span class="string">'span'</span>, &#123;&#125;, <span class="string">'bye world'</span>));</span><br></pre></td></tr></table></figure>
-
-<p>6、比较之前虚拟<code>DOM</code>和新的虚拟<code>DOM</code>，找出两者的区别是<code>&lt;span&gt;</code>中的内容发生了变化</p>
-<p>7、操作真实<code>DOM</code>，只改变<code>&lt;span&gt;</code>中的内容，其他的都不变</p>
-<p>虚拟<code>DOM</code>的使用，可以更精准地定位<code>DOM</code>的变化，减少极其消耗性能的<code>DOM</code>操作，进而提升性能</p>
-<p><strong>React中虚拟DOM中的Diff算法</strong></p>
-<p>1、同层比对，这种比对算法简单，比对速度快</p>
-<p>2、<code>key</code>值匹配，能够快速匹配到比对对象，所以<code>key</code>值要唯一且稳定(故不建议使用<code>index</code>做<code>key</code>值)</p>
-<p><code>React</code>中<code>setState()</code>的底层优化：将短时间内的多次<code>setState()</code>合并成一次，减少虚拟<code>DOM</code>的比对次数</p>
-<hr>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p>用来获取页面的<code>DOM</code>元素</p>
-<p><code>setState</code>可以接收两个参数，第一个用来更新<code>state</code>，第二个参数是一个回调函数</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul ref=&#123;(ul) =&gt; &#123; <span class="keyword">this</span>.ul = ul &#125;&#125;&gt;...&lt;ul/&gt;</span><br><span class="line">handleBtnClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            list: [...prevState.list, prevState.inputValue],</span><br><span class="line">            inputValue: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.ul.querySelectorAll(<span class="string">'li'</span>).length) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h3><p>指在某一时刻组件会自动调用执行的函数，详见<a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">生命周期图谱</a></p>
-<p><strong>挂载时</strong></p>
-<p><strong>constructor</strong></p>
-<p>(<em><code>getDerivedStateFromProps</code></em>、) <strong>render</strong></p>
-<p><strong>componentDidMount</strong></p>
-<p><strong>更新时</strong></p>
-<p>(<em><code>getDerivedStateFromProps</code></em>、<em><code>shouldComponentUpdate</code></em>、) <strong>render</strong></p>
-<p>(<em><code>getSnapshotBeforeUpdate</code></em>、) <strong>componentDidUpdate</strong></p>
-<p><strong>卸载时</strong></p>
-<p><strong>componentWillUnmount</strong></p>
-<p><strong>生命周期钩子使用场景</strong></p>
-<p>打开<code>React</code>扩展程序的设置，勾选<code>Highlight Updates</code></p>
-<p>1、优化子组件的无谓渲染</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nextProps.item !== <span class="keyword">this</span>.props.item) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、在<code>componentDidMount</code>中发<code>AJAX</code>请求</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">    axios.get(<span class="string">'/api/list.json'</span>)</span><br><span class="line">        .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">list</span>: [...res.data] &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123; alert(<span class="string">'error'</span>) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1167,7 +1151,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
