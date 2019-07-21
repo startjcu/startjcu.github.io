@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="转字符串1、toString()方法 除null和undefined以外的数据类型都有此方法 对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法 可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39; 因为+只操作相同类型的数据，故其他类型与字符串相加时 会先调用String()方法将其他类型的数据转换成字符串再">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T02:03:12.352Z">
+<meta property="og:updated_time" content="2019-07-05T13:35:10.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS类型转换与内存">
 <meta name="twitter:description" content="转字符串1、toString()方法 除null和undefined以外的数据类型都有此方法 对象使用此方法获得的是&amp;quot;[object Object]&amp;quot; 2、String(data)方法 可以将任意类型的数据转换成字符串 3、在数据后面加空字符串+&amp;#39;&amp;#39; 因为+只操作相同类型的数据，故其他类型与字符串相加时 会先调用String()方法将其他类型的数据转换成字符串再">
@@ -426,12 +426,16 @@
 <h3 id="垃圾回收-GC"><a href="#垃圾回收-GC" class="headerlink" title="垃圾回收(GC)"></a>垃圾回收(GC)</h3><p>如果一个对象没有被引用，他就是垃圾，将被回收</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125; <span class="comment">//函数1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn</span><br><span class="line"></span><br><span class="line">fn = <span class="literal">null</span><span class="comment">//此时函数1还不是垃圾，因为还有document.body.oclick引用它</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.onclick = <span class="literal">null</span>;<span class="comment">//此时函数1已不被引用，就会视作垃圾进行回收</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="引用类型的-浅拷贝和深拷贝"><a href="#引用类型的-浅拷贝和深拷贝" class="headerlink" title="(引用类型的)浅拷贝和深拷贝"></a>(引用类型的)浅拷贝和深拷贝</h3><p><strong>浅拷贝，拷贝的是引用</strong><br>b改变会影响a</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125; </span><br><span class="line"><span class="keyword">var</span> b = a;</span><br></pre></td></tr></table></figure>
+<h3 id="引用类型的-浅拷贝和深拷贝"><a href="#引用类型的-浅拷贝和深拷贝" class="headerlink" title="(引用类型的)浅拷贝和深拷贝"></a>(引用类型的)浅拷贝和深拷贝</h3><p><strong>浅拷贝，拷贝的是引用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125; </span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b改变会影响a</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>深拷贝，拷贝的是值</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(a));</span><br></pre></td></tr></table></figure>
 
+<h3 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h3><p><code>cookie</code>是用户端保存请求信息的机制，用分号分隔多个<code>key-value</code>字段，存储在本地加密文件中</p>
+<p><code>session</code>是服务端保存请求信息的机制，<code>sessionId</code>通常存放在<code>cookie</code>中，浏览器关闭，<code>session</code>失效</p>
+<p><code>localStorage</code>是<code>H5</code>新特性，有域名限制，不存在作用域的概念，没有过期时间，浏览器关闭不消失</p>
+<p><code>sessionStorage</code>会随着会话的关闭而消失，常用<code>API</code>：<code>setItem(key, value)</code>、<code>getItem(key)</code>、<code>removeItem(key)</code></p>
 
       
     </div>
@@ -552,7 +556,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -579,7 +583,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -617,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转字符串"><span class="nav-number">1.</span> <span class="nav-text">转字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转布尔值"><span class="nav-number">2.</span> <span class="nav-text">转布尔值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转数字"><span class="nav-number">3.</span> <span class="nav-text">转数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS内存"><span class="nav-number">4.</span> <span class="nav-text">JS内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收-GC"><span class="nav-number">5.</span> <span class="nav-text">垃圾回收(GC)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型的-浅拷贝和深拷贝"><span class="nav-number">6.</span> <span class="nav-text">(引用类型的)浅拷贝和深拷贝</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转字符串"><span class="nav-number">1.</span> <span class="nav-text">转字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转布尔值"><span class="nav-number">2.</span> <span class="nav-text">转布尔值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转数字"><span class="nav-number">3.</span> <span class="nav-text">转数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS内存"><span class="nav-number">4.</span> <span class="nav-text">JS内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收-GC"><span class="nav-number">5.</span> <span class="nav-text">垃圾回收(GC)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型的-浅拷贝和深拷贝"><span class="nav-number">6.</span> <span class="nav-text">(引用类型的)浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地存储"><span class="nav-number">7.</span> <span class="nav-text">本地存储</span></a></li></ol></div>
             
 
           </div>

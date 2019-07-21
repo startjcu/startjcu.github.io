@@ -311,6 +311,330 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/Redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/03/Redux/" class="post-title-link" itemprop="url">Redux</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-03 04:58:08" itemprop="dateCreated datePublished" datetime="2019-04-03T04:58:08+08:00">2019-04-03</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Recux工作流程"><a href="#Recux工作流程" class="headerlink" title="Recux工作流程"></a>Recux工作流程</h3><p><strong>Components</strong></p>
+<p>组件<code>dispatch(action)</code>派发<code>action</code></p>
+<p><strong>Store</strong></p>
+<p>存储数据的公共区域，作用有：</p>
+<p>1、提供<code>previousState</code>和<code>action</code>给<code>reducer</code></p>
+<p>2、根据<code>reducer</code>返回的<code>newState</code>进行数据更新</p>
+<p><strong>Reducers</strong></p>
+<p>根据<code>action</code>的类型进行相关的逻辑操作，返回<code>newState</code></p>
+<p>根据<code>immutable</code>规范，<code>reducer</code>可以接收<code>state</code>，但是绝不能修改<code>state</code></p>
+<hr>
+<h3 id="Ant-Design"><a href="#Ant-Design" class="headerlink" title="Ant Design"></a>Ant Design</h3><p><a href="https://ant.design/docs/react/introduce-cn" target="_blank" rel="noopener">官网地址</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'antd/dist/antd.css'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Input, Button, List &#125; <span class="keyword">from</span> <span class="string">'antd'</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span> <span class="comment">//若路径为一个目录，默认引入此目录下的index.js文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; getInputChangeAction, getAddItemAction, getDelItemAction &#125; <span class="keyword">from</span> <span class="string">'./store/actionCreators'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoListUI</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = store.getState()</span><br><span class="line">        <span class="keyword">this</span>.handleInputChange = <span class="keyword">this</span>.handleInputChange.bind(<span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">this</span>.handleBtnClick = <span class="keyword">this</span>.handleBtnClick.bind(<span class="keyword">this</span>)</span><br><span class="line">        <span class="comment">//订阅store的变化，才能实现响应式</span></span><br><span class="line">        store.subscribe(<span class="keyword">this</span>.handleStoreChange.bind(<span class="keyword">this</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div style=&#123;&#123; marginTop: '10px', marginLeft: '10px' &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;</span></span><br><span class="line"><span class="string">                    &lt;Input</span></span><br><span class="line"><span class="string">                        value=&#123;this.state.inputValue&#125;</span></span><br><span class="line"><span class="string">                        placeholder="todo info"</span></span><br><span class="line"><span class="string">                        style=&#123;&#123; width: '300px' &#125;&#125;</span></span><br><span class="line"><span class="string">                        onChange=&#123;this.handleInputChange&#125;</span></span><br><span class="line"><span class="string">                    /&gt;</span></span><br><span class="line"><span class="string">                    &lt;Button type="primary" onClick=&#123;this.handleBtnClick&#125;&gt;提交&lt;/Button&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;List</span></span><br><span class="line"><span class="string">                    style=&#123;&#123; marginTop: '10px', width: '363px' &#125;&#125;</span></span><br><span class="line"><span class="string">                    bordered</span></span><br><span class="line"><span class="string">                    dataSource=&#123;this.state.list&#125;</span></span><br><span class="line"><span class="string">                    renderItem=&#123;(item, index) =&gt; (</span></span><br><span class="line"><span class="string">                        &lt;List.Item onClick=&#123;() =&gt; &#123; this.handleItemClick(index) &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                            &#123;item&#125;</span></span><br><span class="line"><span class="string">                        &lt;/List.Item&gt;)&#125;</span></span><br><span class="line"><span class="string">                /&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleInputChange(e) &#123;</span><br><span class="line">        <span class="keyword">const</span> action = getInputChangeAction(e.target.value)</span><br><span class="line">        store.dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleStoreChange() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(<span class="function"><span class="params">()</span> =&gt;</span> store.getState())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleBtnClick() &#123;</span><br><span class="line">        <span class="keyword">const</span> action = getAddItemAction(<span class="keyword">this</span>.state.inputValue)</span><br><span class="line">        store.dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleItemClick(index) &#123;</span><br><span class="line">        <span class="keyword">const</span> action = getDelItemAction(index)</span><br><span class="line">        store.dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redux的使用"><a href="#Redux的使用" class="headerlink" title="Redux的使用"></a>Redux的使用</h3><p><strong>创建store</strong>(<code>store/index.js</code>)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, </span><br><span class="line">    <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__())</span><br><span class="line"><span class="comment">//第二个参数用来激活redux扩展程序</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建reducer</strong>(<code>store/reducer.js</code>)</p>
+<p>reducer是一个纯函数，给定固定的输入，就一定会有固定的输出，而且不会有任何副作用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; INPUT_CHANGE, ADD_ITEM, DEL_ITEM &#125; <span class="keyword">from</span> <span class="string">'./actionTypes'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> defaultState = &#123; <span class="attr">inputValue</span>: <span class="string">''</span>, <span class="attr">list</span>: [] &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state = defaultState, action) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> newState = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state))</span><br><span class="line">    <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> INPUT_CHANGE:</span><br><span class="line">            newState.inputValue = action.value</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> ADD_ITEM:</span><br><span class="line">            newState.list.push(action.value)</span><br><span class="line">            newState.inputValue = <span class="string">''</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> DEL_ITEM:</span><br><span class="line">            newState.list.splice(action.index, <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>提炼actionTypes</strong>(<code>store/actionTypes.js</code>)</p>
+<p>避免<code>action</code>中的<code>type</code>属性值和<code>reducer</code>中写的不一致而造成的不会显式报错难以排查的bug</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> INPUT_CHANGE = <span class="string">'change_input_value'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ADD_ITEM = <span class="string">'add_todo_item'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DEL_ITEM = <span class="string">'delete_todo_item'</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>提炼actionCreators</strong>(<code>store/actionCreators.js</code>)</p>
+<p>统一管理页面上所有的<code>action</code>，让组件中的代码更精炼简洁</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; INPUT_CHANGE, ADD_ITEM, DEL_ITEM &#125; <span class="keyword">from</span> <span class="string">'./actionTypes'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getInputChangeAction = <span class="function">(<span class="params">value</span>) =&gt;</span> (&#123;</span><br><span class="line">    type: INPUT_CHANGE,</span><br><span class="line">    value</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getAddItemAction = <span class="function">(<span class="params">value</span>) =&gt;</span> (&#123;</span><br><span class="line">    type: ADD_ITEM,</span><br><span class="line">    value</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getDelItemAction = <span class="function">(<span class="params">index</span>) =&gt;</span> (&#123;</span><br><span class="line">    type: DEL_ITEM,</span><br><span class="line">    index</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/React中的CSS动画/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="冯义星">
+      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冯义星的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/30/React中的CSS动画/" class="post-title-link" itemprop="url">React中的CSS动画</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-30 19:05:41" itemprop="dateCreated datePublished" datetime="2019-03-30T19:05:41+08:00">2019-03-30</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>内容和行为的实现</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component, Fragment &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            show: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.handleToggle = <span class="keyword">this</span>.handleToggle.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">`</span></span><br><span class="line"><span class="string">            &lt;Fragment&gt;</span></span><br><span class="line"><span class="string">                &lt;div className=&#123;this.state.show ? 'show' : 'hide'&#125;&gt;hello&lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;button onClick=&#123;this.handleToggle&#125;&gt;toggle&lt;/button&gt;</span></span><br><span class="line"><span class="string">            &lt;/Fragment&gt;`</span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleToggle() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(<span class="function"><span class="params">prevState</span> =&gt;</span> (&#123; <span class="attr">show</span>: !prevState.show &#125;))</span><br><span class="line">    &#125; <span class="comment">//箭头函数只有一个参数可以省略括号，只有一个返回语句可以省略return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<p>CSS样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.show</span>&#123; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">transition</span>: all <span class="number">2s</span> ease-in; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.hide</span>&#123; <span class="attribute">opacity</span>: <span class="number">0</span>; <span class="attribute">transition</span>: all <span class="number">2s</span> ease-out; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>CSS动画</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.show</span> &#123; <span class="attribute">animation</span>: show-item <span class="number">2s</span> ease-in forwards; &#125; <span class="comment">/*forwards用来保留最后一帧*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.hide</span> &#123; <span class="attribute">animation</span>: hide-item <span class="number">2s</span> ease-in forwards; &#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> hide-item &#123;</span><br><span class="line">    0% &#123; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">color</span>: red; &#125;</span><br><span class="line">    50% &#123; <span class="attribute">opacity</span>: .<span class="number">5</span>; <span class="attribute">color</span>: orange; &#125;</span><br><span class="line">    100% &#123; <span class="attribute">opacity</span>: <span class="number">0</span>; <span class="attribute">color</span>: yellow; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> show-item &#123;</span><br><span class="line">    100% &#123; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">color</span>: red; &#125;</span><br><span class="line">    50% &#123; <span class="attribute">opacity</span>: .<span class="number">5</span>; <span class="attribute">color</span>: orange; &#125;</span><br><span class="line">    0% &#123; <span class="attribute">opacity</span>: <span class="number">0</span>; <span class="attribute">color</span>: yellow; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>react-transition-group</code>实现动画</p>
+<p><a href="https://reactcommunity.org/react-transition-group/" target="_blank" rel="noopener">使用教程</a></p>
+<p>JSX脚本的变化</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CSSTransition</span></span></span><br><span class="line"><span class="tag">    <span class="attr">in</span>=<span class="string">&#123;this.state.show&#125;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">timeout</span>=<span class="string">&#123;1000&#125;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">classNames</span>=<span class="string">'fade'</span></span></span><br><span class="line"><span class="tag">    <span class="attr">unmountOnExit</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onEntered</span>=<span class="string">&#123;(el)</span> =&gt;</span> &#123; el.style.color = 'blue' &#125;&#125;</span><br><span class="line">    appear=&#123;true&#125;</span><br><span class="line">&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CSSTransition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS样式的变化</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fade-enter</span>, <span class="selector-class">.fade-appear</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span>; &#125; <span class="comment">/*apper能让页面首次加载也有动画效果*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-enter-active</span>, <span class="selector-class">.fade-appear-active</span> &#123; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">transition</span>: opacity <span class="number">1s</span> ease-in; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-enter-done</span> &#123; <span class="attribute">opacity</span>: <span class="number">1</span>; <span class="attribute">color</span>: red; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-exit</span> &#123; <span class="attribute">opacity</span>: <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-exit-active</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span>; <span class="attribute">transition</span>: opacity <span class="number">1s</span> ease-out; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-exit-done</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>多个元素动画通过<code>TransitionGroup</code>实现</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TransitionGroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CSSTransition</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">CSSTransition</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TransitionGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/组件传值和虚拟DOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -809,371 +1133,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/动态REM与BFC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/16/动态REM与BFC/" class="post-title-link" itemprop="url">动态REM与BFC</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-16 04:19:02" itemprop="dateCreated datePublished" datetime="2019-03-16T04:19:02+08:00">2019-03-16</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="REM"><a href="#REM" class="headerlink" title="REM"></a><code>REM</code></h3><p><strong>常用单位</strong></p>
-<p><code>px</code>：像素，与显示设备相关</p>
-<p><code>em</code>：相对长度单位，相对于当前元素的<code>font-size</code>的比例</p>
-<p><code>rem</code>：<code>root em</code>，相对于根元素<code>&lt;html&gt;</code>的<code>font-size</code>的比例</p>
-<p><code>vh</code>(<code>viewpoint height</code>)视口高度的<code>1/100</code>，<code>vw</code>视口宽度的<code>1/100</code>，兼容性不好</p>
-<p><strong>动态REM</strong></p>
-<p>因为手机的分辨率是多种多样的，故让<code>rem</code>的值等于手机屏宽的<code>1/10</code>，来适配所有的手机。实现原理：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth</span></span><br><span class="line"><span class="xml">    document.write(`<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-tag">html</span>&#123; <span class="attribute">font-size</span>: $&#123;pageWidth/<span class="number">10</span>&#125;<span class="selector-tag">px</span>; &#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>`)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注意点：</p>
-<p>1、该脚本要写在<code>&lt;head&gt;</code>标签中，且一定要添加<code>&lt;meta name=&quot;viewpoint&quot; ...&gt;</code>来取消苹果默认的模拟<code>980px</code></p>
-<p>2、网页默认字号是<code>16px</code>，<code>chrome</code>默认最小字号是<code>12px</code>，若取宽度的<code>1/100</code>，可能会与最小字号冲突，导致排版错乱</p>
-<hr>
-<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a><code>BFC</code></h3><p><strong>定义</strong></p>
-<p>块级格式化上下文：<code>Block Formatting Context</code></p>
-<p>浮动、绝对定位元素、非块盒的块容器(<code>display</code>属性为<code>inline-block</code>、<code>table-cell</code>等)</p>
-<p><code>overflow</code>不为<code>visible</code>(默认值)的块盒会为它的子元素建立一个新的块级格式化上下文</p>
-<p>可以用来解决浮动子元素造成父级坍塌和<code>margin</code>(父元素不包含子元素上边距)合并的问题，但不推荐</p>
-<p>同一个块级格式化上下文中的相邻块级盒（浮动元素不是块级盒）之间的竖直<code>margin</code>会合并，以较大的为准</p>
-<p><strong>触发BFC推荐方式</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">display</span>: flow-root; &#125; <span class="comment">/*相对于 overflow: hidden; 而言没有任何副作用*/</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>BFC的作用</strong></p>
-<p>1、用<code>BFC</code>包住浮动元素(推荐使用<code>clearfix</code>)，2、用<code>float</code>+<code>div</code>做左定宽右自适应布局(可用<code>Flex</code>替代)</p>
-<hr>
-<h3 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a><code>IFC</code></h3><p><strong>font-size</strong></p>
-<p>字号，可以理解为活字印刷中用来盛放字符的金属方块(容器)的尺寸</p>
-<p>每种字体都有不同的设计师推荐行高，行内元素默认基线(<code>baseline</code>)对齐</p>
-<p>提升线<code>ascender</code> &gt; 大写高度<code>capital-height</code> &gt; x高度<code>x-height</code> &gt; 基线<code>baseline</code> &gt; 下降线<code>descender</code></p>
-<p><strong>line-height</strong></p>
-<p>行高(盒)，用来决定内联元素真实占据高度</p>
-<p><code>line-height</code>的值不带单位指的是相对于字号的倍数，带单位指具体的值</p>
-<p>行盒内部元素垂直方向默认居中对齐，不同字体基线不同，可能会造成设定好的<code>line-height</code>有细微的变化</p>
-<p><strong>vertical-align</strong></p>
-<p><a href="https://zhuanlan.zhihu.com/p/25808995" target="_blank" rel="noopener">详细教程</a></p>
-<p>一个很少用到的属性，取值为<code>top</code>指的是实际占据高度顶线对齐，<code>middle</code>并不是居中对齐</p>
-<p>唯一用途：用来处理图片下面的空隙，因为图片也是行内元素，默认会与父元素的文字基线对齐，从而产生空隙</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123; <span class="attribute">vertical-align</span>: middle; &#125; <span class="comment">/*取值用top、bottom等都行*/</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么不用inline-block布局</strong></p>
-<p>因为行内元素垂直方向上不容易对齐，且会因<code>html</code>书写的格式产生间隙，故用<code>flex</code>布局或<code>float</code>布局来替代</p>
-<p><strong>防止图片变形的替代方法</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">background</span>: <span class="built_in">url</span>(./image/1.jpg) no-repeat; <span class="attribute">background-size</span>: cover; &#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/CSS-Grid布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="冯义星">
-      <meta itemprop="description" content="不对未发生的事情做无谓的期许，只对能做主的事尽最大的努力">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯义星的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/13/CSS-Grid布局/" class="post-title-link" itemprop="url">CSS-Grid布局</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-13 16:39:12" itemprop="dateCreated datePublished" datetime="2019-03-13T16:39:12+08:00">2019-03-13</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p><strong>概念</strong></p>
-<p><code>CSS</code>网格布局（<code>Grid</code>）是一个二维的基于网格的布局系统</p>
-<p>相对于<code>Flex</code>主要是一维系统而言，<code>Grid</code>可以同时处理行和列</p>
-<p><strong>使用步骤</strong></p>
-<p>1、使用<code>display: grid;</code>将父元素定义为一个网格容器(<code>grid container</code>)</p>
-<p>2、使用<code>grid-template-columns</code>和<code>grid-template-rows</code>来设置列和行的大小(和数量)</p>
-<p>3、使用<code>grid-template-areas</code>和<code>grid-area</code>来定义和将子元素放入网格</p>
-<p><strong>相对单位</strong></p>
-<p><code>fr</code>：设置列或行占剩余空间的一个比例(<code>fraction</code>分数)</p>
-<p><code>auto</code>：设置列宽或行高自动等于它的内容的宽度或高度</p>
-<p><code>%</code>：将列宽或行高设置为它的父容器宽度或高度的百分比</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="built_in">calc</span>(40%-20px); &#125; <span class="comment">/*使用calc*/</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="grid-container的属性"><a href="#grid-container的属性" class="headerlink" title="grid container的属性"></a><code>grid container</code>的属性</h3><p>定义网格容器</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">display</span>: grid; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置模板行高和列宽</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">20px</span> auto <span class="number">1</span>fr;  </span><br><span class="line">    <span class="attribute">grid-template-columns</span>: auto <span class="number">20%</span> <span class="number">1</span>fr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>用<code>repeat</code>方法减少重复，如创建一个五列网格</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(2, 1fr 50px) <span class="number">20px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置行高和列宽尺寸范围</p>
-<p>个数可以使用<code>auto-fill</code>(不足尺寸自动填充至最小尺寸)，<code>auto-fit</code>(不足自动适配填充满一行)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, minmax(50px 1fr)); &#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置不同网格间的行间距和列间距(<code>gap</code>)</p>
-<p><code>grid-gap</code> = <code>grid-row-gap</code> + <code>grid-column-gap</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">grid-row-gap</span>: <span class="number">10px</span>; <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置所有子元素水平和垂直对齐方式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">justify-items</span>: center; <span class="attribute">align-items</span>: end; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>给网格区域命名(<code>.</code>表示空单元格)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: </span><br><span class="line">        <span class="string">"header header header"</span> </span><br><span class="line">        <span class="string">". main sidebar"</span> </span><br><span class="line">        <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="grid-item的属性"><a href="#grid-item的属性" class="headerlink" title="grid item的属性"></a><code>grid item</code>的属性</h3><p>使用网格线设置跨列和跨行(列的左边界线编号为1，行的上边界线编号为1，依次编号)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-column</span>: <span class="number">2</span>/<span class="number">4</span>; <span class="attribute">grid-row</span>: <span class="number">2</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>水平和垂直对齐方式(取值：<code>start</code>、<code>center</code>、<code>end</code>)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">justify-self</span>: center; <span class="attribute">align-self</span>: end; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>将子元素放置到网格区域中</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*用区域名来确定子元素位置*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: footer; &#125;</span><br><span class="line"><span class="comment">/*用左上角和右下角来确定子元素位置，grid-area: 起始水平线/起始垂直线/末尾水平线/终止垂直线;*/</span></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">grid-area</span>: <span class="number">3</span>/<span class="number">1</span>/<span class="number">4</span>/<span class="number">4</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1220,7 +1179,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1247,7 +1206,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
