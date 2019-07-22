@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="vue-router使用步骤 1、安装 1$ npm install vue-router --save  2、引用和配置router/index.js 12345678910111213import Router from &apos;vue-router&apos;import Home from &apos;@/views/Home&apos;Vue.use(Router);export default new Router(&amp;#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-22T23:11:16.976Z">
+<meta property="og:updated_time" content="2019-07-22T23:45:49.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue路由和Vuex">
 <meta name="twitter:description" content="vue-router使用步骤 1、安装 1$ npm install vue-router --save  2、引用和配置router/index.js 12345678910111213import Router from &apos;vue-router&apos;import Home from &apos;@/views/Home&apos;Vue.use(Router);export default new Router(&amp;#">
@@ -429,7 +429,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        num: <span class="number">88</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>3、通过<code>this.$store.state.xxx</code>直接拿到所需的数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">  <span class="keyword">return</span>&#123; <span class="attr">global</span>:<span class="keyword">this</span>.$store.state.num &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    getNum: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.num</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
