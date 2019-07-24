@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="冯义星的博客">
 <meta property="og:description" content="组件注册1、全局注册 优点：所有的Vue实例都可以使用；缺点：权限太大，容错率较低，容易被覆盖 123456789101112&amp;lt;div id=&quot;root&quot;&amp;gt;    &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;script&amp;gt;    Vue.component(&apos;my-component&apos;, &amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-21T20:39:37.843Z">
+<meta property="og:updated_time" content="2019-07-24T23:24:33.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件">
 <meta name="twitter:description" content="组件注册1、全局注册 优点：所有的Vue实例都可以使用；缺点：权限太大，容错率较低，容易被覆盖 123456789101112&amp;lt;div id=&quot;root&quot;&amp;gt;    &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;script&amp;gt;    Vue.component(&apos;my-component&apos;, &amp;#123;">
@@ -406,7 +406,7 @@
 <h3 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h3><p><strong>传值规则</strong></p>
 <p>1、子组件通过<code>props</code>属性(字符串数组)接收父组件传递的参数</p>
 <p>2、<code>props</code>中的数据来自父级，而组件<code>data</code>中<code>return</code>的是组件自己的数据</p>
-<p>两者的作用域均为组件本身，可以在<code>template</code>、<code>computed</code>和<code>method</code>中直接调用</p>
+<p>两者的作用域均为组件本身，可以在<code>template</code>、<code>computed</code>和<code>methods</code>中直接调用</p>
 <p>3、<code>props</code>的值有两种形式，一种字符串数组(由属性名组成)；一种是对象，用来进行数据类型限定</p>
 <p><strong>单向数据流</strong></p>
 <p>父组件数据变化可以传递给子组件，但是反过来就不行</p>
